@@ -1,0 +1,3 @@
+[submodule "list-of-english-cliches"]
+	path = list-of-english-cliches
+	url = https://github.com/leereilly/list-of-english-cliches.git
