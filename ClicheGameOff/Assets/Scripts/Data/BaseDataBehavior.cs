@@ -52,7 +52,11 @@ namespace Data
             maximalScale = scaleCurve.Evaluate(0);
 
             navMeshAgent.speed = regularSpeed;
+        }
 
+        public void Initialize(BoxCollider area)
+        {
+            walkableArea = area;
             StartCoroutine(DataCoroutine());
         }
         
@@ -68,13 +72,14 @@ namespace Data
 
         protected virtual IEnumerator Act()
         {
-            Vector3 validPoint;
+            // ReSharper disable once RedundantAssignment
+            var validPoint = transform.position;
             
             //The safe check is used to avoid the do/while getting into an infinite loop trying to get a valid position.
             var safeCheck = 10;
             do
             {
-                validPoint = CollisionUtils.GetRandomPointWithBox(walkableArea);
+                validPoint = RandomPointUtils.GetRandomPointWithBox(walkableArea);
             } while (safeCheck-- > 0 &&
                      !CollisionUtils.GetValidPointInLayer(validPoint, Vector3.down, 30.0f, walkableLayer,
                          out validPoint));
@@ -83,7 +88,6 @@ namespace Data
             {
                 //This data entity is stuck somewhere and cannot find a valid point
                 stuck = true;
-                validPoint = transform.position;
             }
             
             navMeshAgent.isStopped = false;
