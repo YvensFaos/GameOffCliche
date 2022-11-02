@@ -1,6 +1,8 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Utils;
+using Random = UnityEngine.Random;
 
 namespace Data
 {
@@ -16,42 +18,90 @@ namespace Data
         [SerializeField] private float curveStepFactor = 0.1f;
         [SerializeField] private bool canGrowBack;
         [SerializeField] private LayerMask collisionLayer;
+        
+        [Header("Behavior")]
+        [SerializeField] private BoxCollider walkableArea;
+        [SerializeField] private LayerMask walkableLayer;
+        [SerializeField] private float actTimer;
+        [SerializeField] private float actTimerFluctuation;
+        [SerializeField] private float stopDistance;
 
+        [Header("Attributes")] 
+        [SerializeField] private float minedSpeed;
+        [SerializeField] private float regularSpeed;
+        
+        
         [Header("References")] [SerializeField]
         protected NavMeshAgent navMeshAgent;
 
         //Private
         private float scaleTimeStamp;
         private bool beingMined;
+        private bool wasCollected;
+        private bool stuck;
 
         private float minimalScaleValue;
         private float maximalScaleValue;
 
-        public void OnEnable()
+        private void OnEnable()
         {
             currentScaleFactor = scaleCurve.Evaluate(startCurveValue);
             scaleTimeStamp = startCurveValue;
 
             minimalScale = scaleCurve.Evaluate(scaleCurve.length);
             maximalScale = scaleCurve.Evaluate(0);
+
+            navMeshAgent.speed = regularSpeed;
+
+            StartCoroutine(DataCoroutine());
+        }
+        
+        IEnumerator DataCoroutine()
+        {
+            while (!wasCollected && !stuck)
+            {
+                navMeshAgent.isStopped = true;
+                yield return Act(); 
+                yield return new WaitForSeconds(actTimer + Random.Range(-actTimerFluctuation, actTimerFluctuation));
+            }
         }
 
-        // public void Initialize()
-        // {
-        // }
-        //
-        // public void Act()
-        // {
-        // }
+        protected virtual IEnumerator Act()
+        {
+            Vector3 validPoint;
+            
+            //The safe check is used to avoid the do/while getting into an infinite loop trying to get a valid position.
+            var safeCheck = 10;
+            do
+            {
+                validPoint = CollisionUtils.GetRandomPointWithBox(walkableArea);
+            } while (safeCheck-- > 0 &&
+                     !CollisionUtils.GetValidPointInLayer(validPoint, Vector3.down, 30.0f, walkableLayer,
+                         out validPoint));
+
+            if (safeCheck <= 0)
+            {
+                //This data entity is stuck somewhere and cannot find a valid point
+                stuck = true;
+                validPoint = transform.position;
+            }
+            
+            navMeshAgent.isStopped = false;
+            navMeshAgent.destination = validPoint;
+            yield return new WaitUntil(() => navMeshAgent.remainingDistance <= stopDistance);
+        }
 
         private void Update()
         {
+            if (wasCollected || stuck) return;
+            
             if (beingMined)
             {
                 //Checking if it shrink down to the minimal
                 if (Shrink())
                 {
                     //Collect data!
+                    wasCollected = true;
                 }
             }
             else
@@ -83,15 +133,11 @@ namespace Data
 
         private bool Shrink()
         {
-            Debug.Log("1");
             if (!(currentScaleFactor > minimalScale)) return currentScaleFactor <= minimalScale;
             
-            Debug.Log($"2");
             //The curve goes from 0 (regular size) to 1 (minimal size)
             scaleTimeStamp = Mathf.Clamp(scaleTimeStamp + curveStepFactor, minimalScale, maximalScale);
-            Debug.Log($"3 {scaleTimeStamp}");
             currentScaleFactor = Mathf.Clamp( scaleCurve.Evaluate(scaleTimeStamp), minimalScale, maximalScale);
-            Debug.Log($"4 {currentScaleFactor}");
             UpdateSize();
 
             return currentScaleFactor <= minimalScale;
@@ -110,6 +156,7 @@ namespace Data
         private void ToggleMining(bool mining)
         {
             beingMined = mining;
+            navMeshAgent.speed = (beingMined) ? regularSpeed : minedSpeed;
         }
 
         private void UpdateSize()
