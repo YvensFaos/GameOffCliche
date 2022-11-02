@@ -39,7 +39,7 @@ namespace Gameplay
             var cumulativeChance = 0.0f;
             foreach (var pair in dataTypes)
             {
-                if (pair.Two + cumulativeChance <= chance)
+                if (chance <= pair.Two + cumulativeChance)
                 {
                     return pair.One;
                 }
