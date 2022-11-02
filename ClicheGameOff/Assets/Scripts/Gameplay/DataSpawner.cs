@@ -38,9 +38,9 @@ namespace Gameplay
                 var position = RandomPointUtils.GetRandomPointWithBox(walkableArea);
                 for (var i = 0; i < spawnNumber; i++)
                 {
-                    var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(spawnTypes.dataTypes),
+                    var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(spawnTypes.dataBehaviors),
                         position, Quaternion.identity, selfTransform);
-                    data.Initialize(walkableArea);
+                    data.Initialize(walkableArea, spawnTypes.GetRandomDataTypeFromList());
                 }
             }
         }

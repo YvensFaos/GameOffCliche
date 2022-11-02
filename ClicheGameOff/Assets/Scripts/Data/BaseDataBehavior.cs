@@ -27,6 +27,7 @@ namespace Data
         [SerializeField] private float stopDistance;
 
         [Header("Attributes")] 
+        [SerializeField] private DataType type;
         [SerializeField] private float minedSpeed;
         [SerializeField] private float regularSpeed;
         
@@ -54,9 +55,11 @@ namespace Data
             navMeshAgent.speed = regularSpeed;
         }
 
-        public void Initialize(BoxCollider area)
+        public void Initialize(BoxCollider area, DataType dataType)
         {
             walkableArea = area;
+            type = dataType;
+            name = $"{name}-{dataType.GetName()}";
             StartCoroutine(DataCoroutine());
         }
         
