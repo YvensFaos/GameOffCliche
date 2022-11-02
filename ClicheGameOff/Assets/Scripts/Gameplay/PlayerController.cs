@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 namespace Gameplay
 {
     public class PlayerController : MonoBehaviour
     {
-        [Header("Settings")] 
+        [Header("Settings")]
         [SerializeField] private LayerMask floorMask;
         
         [Header("References")]
