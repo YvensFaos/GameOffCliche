@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Data;
 using UnityEngine;
 
 namespace Gameplay
 {
     //Tick event delegate: called every tick.
-    public delegate void RunTick(float currentTime);
+    public delegate void RunTick(float currentTime, float normalizedTime);
+    //Finished run event: called when the coroutine is about to end and stop all spawners.
+    public delegate void FinishRun();
     
     public class DataMinerRunController : MonoBehaviour
     {
@@ -16,6 +19,7 @@ namespace Gameplay
         private float runTime;
 
         private event RunTick RunTickEvents;
+        private event FinishRun FinishRunEvents;
         private float currentTime;
 
         private Dictionary<DataType, int> collectedData;
@@ -41,9 +45,10 @@ namespace Gameplay
                 //Wait for one frame
                 yield return 0;
 
-                RunTickEvents?.Invoke(currentTime);
+                RunTickEvents?.Invoke(currentTime, currentTime / runTime);
                 currentTime -= Time.deltaTime;
             }
+            FinishRunEvents?.Invoke();
             spawners.ForEach(spawner => spawner.StopSpawner());
         }
 
@@ -62,21 +67,43 @@ namespace Gameplay
             RunTickEvents -= removeEvent;
         }
 
+        public void AddFinishEvent(FinishRun newFinishEvent)
+        {
+            FinishRunEvents += newFinishEvent;
+        }
+
+        public void RemoveFinishEvent(FinishRun removeFinishEvent)
+        {
+            FinishRunEvents -= removeFinishEvent;
+        }
+
         public void CollectData(BaseDataBehavior data)
         {
             if (collectedData == null)
             {
-                //BOOM!
                 Debug.LogError("Collected Data is null!");
                 InitializeCollectedData();
             }
 
+            //Check if any of this DataType has been collected yet
             if (!collectedData.ContainsKey(data.Type))
             {
+                //If not, then create a new entry for that type starting with 0 counts.
+                //Starts with 0 to avoid branching.
                 collectedData.Add(data.Type, 0);
             }
-
             collectedData[data.Type]++;
+        }
+
+        public string GetResults()
+        {
+            var stringBuilder = new StringBuilder();
+            foreach (var pair in collectedData)
+            {
+                stringBuilder.AppendLine($"{pair.Key.GetName()} x{pair.Value}"); 
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }
