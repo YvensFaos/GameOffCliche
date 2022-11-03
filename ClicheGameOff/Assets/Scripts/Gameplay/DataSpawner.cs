@@ -17,15 +17,17 @@ namespace Gameplay
         [Header("References")]
         [SerializeField] private DataSpawnerList spawnTypes;
 
-        private void OnEnable()
+        public void StartSpawner()
         {
             online = true;
             StartCoroutine(SpawnerCoroutine());
         }
 
-        public void CloseSpawner()
+        public void StopSpawner()
         {
             online = false;
+            //Safety check: stop coroutines right away in case this is called between a WaitForSeconds execution.
+            StopAllCoroutines();
         }
         
         private IEnumerator SpawnerCoroutine()

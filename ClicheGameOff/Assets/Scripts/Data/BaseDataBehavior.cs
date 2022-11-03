@@ -31,7 +31,6 @@ namespace Data
         [SerializeField] private float minedSpeed;
         [SerializeField] private float regularSpeed;
         
-        
         [Header("References")] [SerializeField]
         protected NavMeshAgent navMeshAgent;
 
@@ -43,7 +42,7 @@ namespace Data
 
         private float minimalScaleValue;
         private float maximalScaleValue;
-
+        
         private void OnEnable()
         {
             currentScaleFactor = scaleCurve.Evaluate(startCurveValue);
@@ -108,7 +107,7 @@ namespace Data
                 if (Shrink())
                 {
                     //Collect data!
-                    wasCollected = true;
+                    Collect();
                 }
             }
             else
@@ -120,6 +119,12 @@ namespace Data
                     Grown();
                 }
             }
+        }
+
+        private void Collect()
+        {
+            wasCollected = true;
+            GameManager.Instance.CurrentRun.CollectData(this);
         }
 
         private void OnTriggerEnter(Collider collision)
@@ -170,5 +175,7 @@ namespace Data
         {
             transform.localScale = new Vector3(currentScaleFactor, currentScaleFactor, currentScaleFactor);
         }
+        
+        public DataType Type => type;
     }
 }
