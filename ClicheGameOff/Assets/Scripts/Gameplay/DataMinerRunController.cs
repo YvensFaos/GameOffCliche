@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +22,12 @@ namespace Gameplay
         private event RunTick RunTickEvents;
         private event FinishRun FinishRunEvents;
         private float currentTime;
-
+        
+        //Finished run variables
+        private string runTextResults;
+        private int runGoodData;
+        private int runBadData;
+        
         private Dictionary<DataType, int> collectedData;
 
         public void OnEnable()
@@ -48,8 +54,31 @@ namespace Gameplay
                 RunTickEvents?.Invoke(currentTime, currentTime / runTime);
                 currentTime -= Time.deltaTime;
             }
-            FinishRunEvents?.Invoke();
             spawners.ForEach(spawner => spawner.StopSpawner());
+            runGoodData = 0;
+            runBadData = 0;
+            
+            //Add data to the player
+            var stringBuilder = new StringBuilder();
+            foreach (var pair in collectedData)
+            {
+                var dataType = pair.Key;
+                stringBuilder.AppendLine($"<color=#{ColorUtility.ToHtmlStringRGB(dataType.typeColor)}>{dataType.GetName()} x{pair.Value}</color>");
+                switch (dataType.qualifier)
+                {
+                    case DataQualifier.Good:
+                        runGoodData += pair.Value;
+                        break;
+                    case DataQualifier.Bad:
+                        runBadData += pair.Value;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            runTextResults = stringBuilder.ToString();
+            GameManager.Instance.ManagePlayerCollectedData(runGoodData, runBadData);
+            FinishRunEvents?.Invoke();
         }
 
         private void InitializeCollectedData()
@@ -95,16 +124,6 @@ namespace Gameplay
             collectedData[data.Type]++;
         }
 
-        public string GetResults()
-        {
-            var stringBuilder = new StringBuilder();
-            foreach (var pair in collectedData)
-            {
-                var dataType = pair.Key;
-                stringBuilder.AppendLine($"<color=#{ColorUtility.ToHtmlStringRGB(dataType.typeColor)}>{dataType.GetName()} x{pair.Value}</color>");
-            }
-
-            return stringBuilder.ToString();
-        }
+        public string GetResults() => runTextResults;
     }
 }

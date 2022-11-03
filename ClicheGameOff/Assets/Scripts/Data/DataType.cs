@@ -7,5 +7,6 @@ namespace Data
     {
         public string GetName() => name;
         public Color typeColor;
+        public DataQualifier qualifier;
     }
 }
