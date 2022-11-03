@@ -6,5 +6,6 @@ namespace Data
     public class DataType : ScriptableObject
     {
         public string GetName() => name;
+        public Color typeColor;
     }
 }

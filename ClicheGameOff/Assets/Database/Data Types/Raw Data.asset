@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6658e982f8fa4bbb9b72a0aef754906f, type: 3}
   m_Name: Raw Data
   m_EditorClassIdentifier: 
+  typeColor: {r: 1, g: 0.13679248, b: 0.93857634, a: 1}

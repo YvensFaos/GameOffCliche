@@ -100,7 +100,8 @@ namespace Gameplay
             var stringBuilder = new StringBuilder();
             foreach (var pair in collectedData)
             {
-                stringBuilder.AppendLine($"{pair.Key.GetName()} x{pair.Value}"); 
+                var dataType = pair.Key;
+                stringBuilder.AppendLine($"<color=#{ColorUtility.ToHtmlStringRGB(dataType.typeColor)}>{dataType.GetName()} x{pair.Value}</color>");
             }
 
             return stringBuilder.ToString();
