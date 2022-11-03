@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Meme
   m_EditorClassIdentifier: 
   typeColor: {r: 0.7264151, g: 0.14048593, b: 0.24218184, a: 1}
+  qualifier: 1
