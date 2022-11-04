@@ -94,7 +94,7 @@ namespace Data
             
             navMeshAgent.isStopped = false;
             navMeshAgent.destination = validPoint;
-            yield return new WaitUntil(() => navMeshAgent.remainingDistance <= stopDistance);
+            yield return new WaitUntil(() => navMeshAgent != null && navMeshAgent.remainingDistance <= stopDistance);
         }
 
         private void Update()
@@ -125,6 +125,8 @@ namespace Data
         {
             wasCollected = true;
             GameManager.Instance.CurrentRun.CollectData(this);
+            StopAllCoroutines();
+            Destroy(gameObject);
         }
 
         private void OnTriggerEnter(Collider collision)
