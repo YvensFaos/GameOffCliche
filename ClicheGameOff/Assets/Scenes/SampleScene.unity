@@ -1023,6 +1023,7 @@ MonoBehaviour:
   spawnRate: 4
   walkableArea: {fileID: 1833081376}
   spawnTypes: {fileID: 11400000, guid: 69b1fc88df77c4b5eb040f2f53865c86, type: 2}
+  currentData: []
 --- !u!4 &730358128
 Transform:
   m_ObjectHideFlags: 0

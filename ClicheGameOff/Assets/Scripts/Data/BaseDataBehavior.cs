@@ -31,8 +31,9 @@ namespace Data
         [SerializeField] private float minedSpeed;
         [SerializeField] private float regularSpeed;
         
-        [Header("References")] [SerializeField]
-        protected NavMeshAgent navMeshAgent;
+        [Header("References")] 
+        [SerializeField] protected NavMeshAgent navMeshAgent;
+        [SerializeField] private ParticleSystem particles;
 
         //Private
         private float scaleTimeStamp;
@@ -126,6 +127,11 @@ namespace Data
             wasCollected = true;
             GameManager.Instance.CurrentRun.CollectData(this);
             StopAllCoroutines();
+            var particlesTransform = particles.transform;
+            particlesTransform.parent = transform.parent;
+            particlesTransform.localScale = Vector3.one;
+            particles.Stop();
+
             Destroy(gameObject);
         }
 
@@ -176,6 +182,7 @@ namespace Data
         private void UpdateSize()
         {
             transform.localScale = new Vector3(currentScaleFactor, currentScaleFactor, currentScaleFactor);
+            particles.gameObject.transform.localScale = Vector3.one;
         }
         
         public DataType Type => type;
