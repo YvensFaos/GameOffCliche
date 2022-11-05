@@ -1,6 +1,7 @@
 using System;
 using Data;
 using Gameplay;
+using Progression;
 using UnityEngine;
 
 //Tick event delegate: called every tick.
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameConstants constants;
+    [SerializeField]
+    private GameProgression gameProgress;
 
     public void ManagePlayerCollectedData(int goodData, int badData)
     {
@@ -54,16 +57,22 @@ public class GameManager : MonoBehaviour
         currentPlayerData.GoodData += goodData;
     }
 
+    public bool CheckPlayerGoodData(int goodData) => currentPlayerData.GoodData >= goodData;
+
     private void ManagePlayerBadData(int badData)
     {
         currentPlayerData.BadData += badData;
     }
+    
+    public bool CheckPlayerBadData(int badData) => currentPlayerData.BadData >= badData;
 
     //Getters & Setters
     public DataMinerRunController CurrentRun => currentRun;
     public PlayerData CurrentPlayerData => currentPlayerData;
 
     public GameConstants Constants => constants;
+
+    public GameProgression GameProgress => gameProgress;
 
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>
         currentRun = dataMinerRunController;
