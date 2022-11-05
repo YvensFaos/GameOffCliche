@@ -1,4 +1,5 @@
 using System;
+using Data;
 using Gameplay;
 using UnityEngine;
 
@@ -28,11 +29,18 @@ public class GameManager : MonoBehaviour
     {
         //Later replace this with reading from the PlayerPrefs
         currentPlayerData = new PlayerData();
+        if (currentPlayerData.HardDriveSize == 0)
+        {
+            currentPlayerData.HardDriveSize = constants.initialHardDriveSize;
+        }
     }
 
     private PlayerData currentPlayerData;
     private DataMinerRunController currentRun;
     private UpdatePlayerInfo updatePlayerInfo;
+
+    [SerializeField]
+    private GameConstants constants;
 
     public void ManagePlayerCollectedData(int goodData, int badData)
     {
@@ -54,6 +62,9 @@ public class GameManager : MonoBehaviour
     //Getters & Setters
     public DataMinerRunController CurrentRun => currentRun;
     public PlayerData CurrentPlayerData => currentPlayerData;
+
+    public GameConstants Constants => constants;
+
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>
         currentRun = dataMinerRunController;
 

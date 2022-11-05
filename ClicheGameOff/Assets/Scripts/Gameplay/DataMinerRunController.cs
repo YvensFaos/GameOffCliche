@@ -8,9 +8,11 @@ using UnityEngine;
 namespace Gameplay
 {
     //Tick event delegate: called every tick.
-    public delegate void RunTick(float currentTime, float normalizedTime);
+    public delegate void RunTickDelegate(float currentTime, float normalizedTime);
+    //Run every time a new data behavior is collected.
+    public delegate void CollectDataDelegate(BaseDataBehavior dataBehavior, float normalizedHardDriveUsed);
     //Finished run event: called when the coroutine is about to end and stop all spawners.
-    public delegate void FinishRun();
+    public delegate void FinishRunDelegate();
     
     public class DataMinerRunController : MonoBehaviour
     {
@@ -19,14 +21,19 @@ namespace Gameplay
         [SerializeField]
         private float runTime;
 
-        private event RunTick RunTickEvents;
-        private event FinishRun FinishRunEvents;
+        private event RunTickDelegate RunTickEvents;
+        private event CollectDataDelegate CollectDataEvents;
+        private event FinishRunDelegate FinishRunEvents;
         private float currentTime;
         
         //Finished run variables
         private string runTextResults;
         private int runGoodData;
         private int runBadData;
+        
+        private float currentHardDrive;
+        private float accumulatedHardDriveUse;
+        private float normalizedHardDrive;
         
         private Dictionary<DataType, int> collectedData;
 
@@ -37,6 +44,9 @@ namespace Gameplay
 
         public void StartRun()
         {
+            currentHardDrive = GameManager.Instance.CurrentPlayerData.HardDriveSize;
+            accumulatedHardDriveUse = 0.0f;
+            normalizedHardDrive = accumulatedHardDriveUse / currentHardDrive;
             StopAllCoroutines();
             StartCoroutine(RunCoroutine());
         }
@@ -86,22 +96,32 @@ namespace Gameplay
             collectedData = new Dictionary<DataType, int>();
         }
 
-        public void AddTickEvent(RunTick newEvent)
+        public void AddCollectDataEvent(CollectDataDelegate newEvent)
+        {
+            CollectDataEvents += newEvent;
+        }
+
+        public void RemoveCollectDataEvent(CollectDataDelegate removeEvent)
+        {
+            CollectDataEvents -= removeEvent;
+        }
+        
+        public void AddTickEvent(RunTickDelegate newEvent)
         {
             RunTickEvents += newEvent;
         }
 
-        public void RemoveTickEvent(RunTick removeEvent)
+        public void RemoveTickEvent(RunTickDelegate removeEvent)
         {
             RunTickEvents -= removeEvent;
         }
 
-        public void AddFinishEvent(FinishRun newFinishEvent)
+        public void AddFinishEvent(FinishRunDelegate newFinishEvent)
         {
             FinishRunEvents += newFinishEvent;
         }
 
-        public void RemoveFinishEvent(FinishRun removeFinishEvent)
+        public void RemoveFinishEvent(FinishRunDelegate removeFinishEvent)
         {
             FinishRunEvents -= removeFinishEvent;
         }
@@ -113,15 +133,26 @@ namespace Gameplay
                 Debug.LogError("Collected Data is null!");
                 InitializeCollectedData();
             }
-
-            //Check if any of this DataType has been collected yet
-            if (!collectedData.ContainsKey(data.Type))
+            
+            //Check hard drive
+            if (accumulatedHardDriveUse + data.HardDriveUse <= currentHardDrive)
             {
-                //If not, then create a new entry for that type starting with 0 counts.
-                //Starts with 0 to avoid branching.
-                collectedData.Add(data.Type, 0);
+                accumulatedHardDriveUse += data.HardDriveUse;
+                normalizedHardDrive = accumulatedHardDriveUse / currentHardDrive;
+                CollectDataEvents?.Invoke(data, normalizedHardDrive);
+                //Check if any of this DataType has been collected yet
+                if (!collectedData.ContainsKey(data.Type))
+                {
+                    //If not, then create a new entry for that type starting with 0 counts.
+                    //Starts with 0 to avoid branching.
+                    collectedData.Add(data.Type, 0);
+                }
+                collectedData[data.Type]++;
             }
-            collectedData[data.Type]++;
+            else
+            {
+                //Hardware is full!
+            }
         }
 
         public string GetResults() => runTextResults;

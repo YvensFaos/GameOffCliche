@@ -30,6 +30,7 @@ namespace Data
         [SerializeField] private DataType type;
         [SerializeField] private float minedSpeed;
         [SerializeField] private float regularSpeed;
+        [SerializeField] private int hardDriveUse = 1;
         
         [Header("References")] 
         [SerializeField] protected NavMeshAgent navMeshAgent;
@@ -186,5 +187,7 @@ namespace Data
         }
         
         public DataType Type => type;
+
+        public int HardDriveUse => hardDriveUse;
     }
 }
