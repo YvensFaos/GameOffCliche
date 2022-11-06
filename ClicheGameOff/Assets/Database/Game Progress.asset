@@ -12,17 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e20010a353341d59fe9f42e9f07a002, type: 3}
   m_Name: Game Progress
   m_EditorClassIdentifier: 
-  betterResearchSkillsCurve:
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  betterFactCheckingCurve:
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
+  gameUpgrades: []

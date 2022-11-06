@@ -7,11 +7,38 @@ namespace Progression
     [CreateAssetMenu(fileName = "Game Progress", menuName = "Cliche/Game Progress", order = 0)]
     public class GameProgression : ScriptableObject
     {
-        [SerializeField] private List<GameUpgrade> gameUpgrades;
+        [SerializeField] private List<GameUpgradeLevelPair> gameUpgrades;
 
-        public GameUpgrade GetUpgrade(string upgradeName)
+        public int GetGameUpgradeLevel(GameUpgrade upgrade)
         {
-            return gameUpgrades.Find(upgrade => upgrade.GetName().Equals(upgradeName));
+            var upgradePair = gameUpgrades.Find(pair => pair.One.Equals(upgrade));
+            return upgradePair?.GetLevel() ?? -1;
+        }
+
+        public bool IncreaseGameUpgradeLevel(GameUpgrade upgrade)
+        {
+            var upgradePair = gameUpgrades.Find(pair => pair.One.Equals(upgrade));
+            if (upgradePair != null)
+            {
+                return upgradePair.IncreaseLevel();
+            }
+            else
+            {
+                throw new GameUpgradeNotFoundException(upgrade);
+            }
+        }
+        
+        public void SetGameUpgradeLevel(GameUpgrade upgrade, int level)
+        {
+            var upgradePair = gameUpgrades.Find(pair => pair.One.Equals(upgrade));
+            if (upgradePair != null)
+            {
+                upgradePair.SetLevel(level);
+            }
+            else
+            {
+                throw new GameUpgradeNotFoundException(upgrade);
+            }
         }
     }
 }

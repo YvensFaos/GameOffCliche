@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
         currentPlayerData.BadData += badData;
     }
 
+    public void UpgradeUnlocked(GameUpgrade upgrade)
+    {   
+        //Something! :)
+    }
+
     public bool CheckPlayerData(DataQualifier dataQualifier, int value)
     {
         switch (dataQualifier)
@@ -91,7 +96,6 @@ public class GameManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(dataQualifier), dataQualifier, null);
         }
     }
-
     private bool CheckPlayerGoodData(int goodData) => currentPlayerData.GoodData >= goodData;
     private bool CheckPlayerBadData(int badData) => currentPlayerData.BadData >= badData;
 
