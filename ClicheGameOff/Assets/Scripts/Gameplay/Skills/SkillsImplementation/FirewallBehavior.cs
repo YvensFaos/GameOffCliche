@@ -11,6 +11,7 @@ namespace Gameplay.Skills.SkillsImplementation
         {
             var firewallParticlesMain = firewallParticles.main;
             firewallParticlesMain.duration = firewallDuration;
+            firewallParticles.Play();
         }
     
         private void Start()

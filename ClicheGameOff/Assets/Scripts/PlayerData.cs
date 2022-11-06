@@ -27,7 +27,6 @@ public class PlayerData
         {
             hardDriveSize = GameManager.Instance.Constants.initialHardDriveSize;    
         }
-
         upgrades = new List<GameUpgradeLevelPair>();
     }
 

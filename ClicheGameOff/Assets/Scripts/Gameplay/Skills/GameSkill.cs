@@ -16,7 +16,10 @@ namespace Gameplay.Skills
         {
             if (isOnCooldown) return false;
             var input = Input.GetKeyUp(shortCut);
-            isOnCooldown = true;
+            if (input)
+            {
+                isOnCooldown = true;    
+            }
             return input;
         }
 

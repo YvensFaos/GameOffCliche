@@ -75,7 +75,11 @@ public class GameManager : MonoBehaviour
                 pair.One.UpgradeUnlock(pair.Two);
             });
             var playerSkills = currentPlayerData.Skills;
-            playerSkills.ForEach(skill => skill.Reset());
+            playerSkills.ForEach(skill =>
+            {
+                skill.Reset();
+                player.TryToAddSkill(skill);
+            });
         }
     }
 

@@ -4,12 +4,10 @@ namespace Gameplay.Skills
 {
     public abstract class PlayerSkill : MonoBehaviour
     {
-        [SerializeField]
-        private GameSkill skill;
+        [SerializeField] private GameSkill skill;
 
-        private void Start()
+        protected void Start()
         {
-            Debug.Log($"Subscribe skill -> {name}");
             GameManager.Instance.SubscribeUseSkillDelegate(UseSkill);
         }
 
@@ -18,7 +16,7 @@ namespace Gameplay.Skills
             GameManager.Instance.UnsubscribeUseSkillDelegate(UseSkill);
         }
 
-        protected void UseSkill(GameSkill usedSkill, in PlayerController playerController)
+        private void UseSkill(GameSkill usedSkill, in PlayerController playerController)
         {
             if (skill.Equals(usedSkill))
             {

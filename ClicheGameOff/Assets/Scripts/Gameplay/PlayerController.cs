@@ -24,7 +24,6 @@ namespace Gameplay
         
         private readonly int MOUSE_LEFT = 0;
 
-
         private void Update()
         {
             var ray = mainCamera.ScreenPointToRay (Input.mousePosition);
@@ -66,6 +65,14 @@ namespace Gameplay
             if (!skill.CheckKeyAndCoolDown()) return;
             StartCoroutine(skill.CoolDownCoroutine());
             GameManager.Instance.UseSkill(skill);
+        }
+
+        public void TryToAddSkill(GameSkill skill)
+        {
+            if (!skills.Contains(skill))
+            {
+                skills.Add(skill);
+            }
         }
         
         public Vector3 LastValidHit => lastValidHit;
