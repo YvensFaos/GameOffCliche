@@ -16,7 +16,7 @@ namespace Editor
 
             var gameManager = (GameManager)target;
             
-            GUILayout.Space(10.0f);
+            GUILayout.Space(15.0f);
 
             if (GUILayout.Button("Test Player Data JSON"))
             {
@@ -33,7 +33,7 @@ namespace Editor
             
             if (GUILayout.Button("Delete Player Data JSON"))
             {
-                gameManager.DeleteSave();
+                GameManager.DeleteSave();
             }
         }
     }

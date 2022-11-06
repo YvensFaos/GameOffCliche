@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Utils;
@@ -35,6 +36,10 @@ namespace Data
         [Header("References")] 
         [SerializeField] protected NavMeshAgent navMeshAgent;
         [SerializeField] private ParticleSystem particles;
+        [SerializeField] private Renderer selfRenderer;
+
+        [Header("Types")]
+        [SerializeField] private List<GameUpgradeMaterialPair> materials;
 
         //Private
         private float scaleTimeStamp;
@@ -44,6 +49,14 @@ namespace Data
 
         private float minimalScaleValue;
         private float maximalScaleValue;
+
+        private void Awake()
+        {
+            if (selfRenderer == null)
+            {
+                selfRenderer = GetComponent<Renderer>();
+            }
+        }
         
         private void OnEnable()
         {
@@ -61,6 +74,19 @@ namespace Data
             walkableArea = area;
             type = dataType;
             name = $"{name}-{dataType.GetName()}";
+            
+            //Calculate material type given the player knowledge
+            var upgrade = materials.Find(pair => pair.One.RequiredData == type.qualifier);
+            if (upgrade != null)
+            {
+                var chance = GameManager.Instance.GetCurrentUpgradeValue(upgrade.One);
+                //Try to change the material to be the specific material for this upgrade
+                if (RandomChanceUtils.GetChance(chance))
+                {
+                    selfRenderer.material = upgrade.Two;
+                }
+            }
+            
             StartCoroutine(DataCoroutine());
         }
         

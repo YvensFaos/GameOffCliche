@@ -204,8 +204,15 @@ MonoBehaviour:
   type: {fileID: 0}
   minedSpeed: 0.5
   regularSpeed: 4
+  hardDriveUse: 1
   navMeshAgent: {fileID: 1686528903558524880}
   particles: {fileID: 67949546731364357}
+  selfRenderer: {fileID: 1686528903558524893}
+  materials:
+  - one: {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
+    two: {fileID: 2100000, guid: 6ce95d0fe7b4741fcb2eaf1f4d034fbd, type: 2}
+  - one: {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
+    two: {fileID: 2100000, guid: 4a92a468f0b994f36aecd593b194a359, type: 2}
 --- !u!1 &5606213179449411509
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +351,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033329997455337372}
   serializedVersion: 8
-  lengthInSec: 4
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0

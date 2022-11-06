@@ -13,18 +13,6 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance;
     
-    [SerializeField]
-    private GameConstants constants;
-    [SerializeField]
-    private GameProgression gameProgress;
-    [SerializeField]
-    private PlayerData currentPlayerData;
-    
-    private DataMinerRunController currentRun;
-    private UpdatePlayerInfo updatePlayerInfo;
-
-    private const string PlayerPrefString = "playerData";
-    
     private void Awake()
     {
         if (instance != null)
@@ -37,6 +25,20 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
     #endregion
+    
+    [SerializeField]
+    private GameConstants constants;
+    [SerializeField]
+    private GameProgression gameProgress;
+    [SerializeField] 
+    private GameUpgradeUnlocker gameUpgradeUnlocker;
+    [SerializeField]
+    private PlayerData currentPlayerData;
+    
+    private DataMinerRunController currentRun;
+    private UpdatePlayerInfo updatePlayerInfo;
+
+    private const string PlayerPrefString = "playerData";
 
     private void OnEnable()
     {
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString(PlayerPrefString, currentPlayerData.ToJson());
     }
 
-    public void DeleteSave()
+    public static void DeleteSave()
     {
         PlayerPrefs.DeleteKey(PlayerPrefString);
     }
@@ -116,10 +118,13 @@ public class GameManager : MonoBehaviour
     public void UpgradeUnlocked(GameUpgrade upgrade, int level)
     {   
         currentPlayerData.SetUpgradeLevel(upgrade, level);
-        
-        //Unlock
-        
+        gameUpgradeUnlocker.UnlockEvent(upgrade, currentPlayerData);
         Save();
+    }
+
+    public float GetCurrentUpgradeValue(GameUpgrade upgrade)
+    {
+        return upgrade.ValueCurve.EvaluateAtLevel(currentPlayerData.GetUpgradeLevel(upgrade), out _);
     }
 
     public bool CheckPlayerData(DataQualifier dataQualifier, int value)

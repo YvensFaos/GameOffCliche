@@ -56,7 +56,11 @@ public class PlayerData
 
     public List<GameUpgradeLevelPair> Upgrades => upgrades;
 
-    public int GetUpgradeLevel(GameUpgrade upgrade) => Upgrades.Find(pair => pair.One.Equals(upgrade)).Two;
+    public int GetUpgradeLevel(GameUpgrade upgrade)
+    {
+        var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
+        return pair?.Two ?? 0;
+    } 
 
     public void SetUpgradeLevel(GameUpgrade upgrade, int value)
     {

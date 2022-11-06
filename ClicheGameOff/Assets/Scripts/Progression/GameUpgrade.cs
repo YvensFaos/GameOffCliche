@@ -15,6 +15,8 @@ namespace Progression
         [SerializeField] 
         private CurveHandler progressCurve;
         [SerializeField] 
+        private CurveHandler valueCurve;
+        [SerializeField] 
         private DataQualifier requiredData;
         [SerializeField] 
         private List<GameUpgrade> requiredUpgrades;
@@ -23,6 +25,7 @@ namespace Progression
         public string Description => description;
         public bool RepeatableUpgrade => repeatableUpgrade;
         public CurveHandler ProgressCurve => progressCurve;
+        public CurveHandler ValueCurve => valueCurve;
         public DataQualifier RequiredData => requiredData;
 
         public virtual void UpgradeUnlock(int level)
