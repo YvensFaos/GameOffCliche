@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using UnityEngine;
 using Utils;
@@ -19,7 +20,7 @@ namespace Progression
         [SerializeField] 
         private DataQualifier requiredData;
         [SerializeField] 
-        private List<GameUpgrade> requiredUpgrades;
+        protected List<GameUpgrade> requiredUpgrades;
         
         public string GetName() => name;
         public string Description => description;
@@ -32,6 +33,15 @@ namespace Progression
         {
             GameManager.Instance.UpgradeUnlocked(this, level);
         }
+
+        public virtual bool CheckRequirements()
+        {
+            if (!HasRequirements()) return true;
+            var playerData = GameManager.Instance.CurrentPlayerData;
+            return requiredUpgrades.Select(upgrade => playerData.GetUpgradeLevel(upgrade)).All(level => level > -1);
+        }
+
+        public bool HasRequirements() => requiredUpgrades.Count > 0;
 
         public override bool Equals(object other)
         {

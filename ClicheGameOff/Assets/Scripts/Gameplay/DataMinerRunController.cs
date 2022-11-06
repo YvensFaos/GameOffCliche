@@ -151,7 +151,7 @@ namespace Gameplay
             }
             else
             {
-                //Hardware is full!
+                //Hard drive is full!
             }
         }
 

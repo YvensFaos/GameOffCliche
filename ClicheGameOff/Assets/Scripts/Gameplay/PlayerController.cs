@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using Gameplay.Skills;
 using UnityEngine;
 
 namespace Gameplay
@@ -8,12 +11,12 @@ namespace Gameplay
         [SerializeField] private LayerMask floorMask;
         
         [Header("References")]
-        [SerializeField]
-        private GameObject displayObject;
-        [SerializeField]
-        private GameObject turnedOnObject;
-        [SerializeField] 
-        private Camera mainCamera;
+        [SerializeField] private GameObject displayObject;
+        [SerializeField] private GameObject turnedOnObject;
+        [SerializeField] private Camera mainCamera;
+
+        [Header("Skills")] 
+        [SerializeField] private List<GameSkill> skills;
 
         //Private
         private Vector3 currentHit;
@@ -48,6 +51,20 @@ namespace Gameplay
                 displayObject.SetActive(true);
                 displayObject.transform.position = currentHit;
             }
+
+            UseSkills();
+        }
+
+        private void UseSkills()
+        {
+            skills.ForEach(TryToUseSkill);
+        }
+
+        public void TryToUseSkill(GameSkill skill)
+        {
+            if (!skill.CheckKeyAndCoolDown()) return;
+            StartCoroutine(skill.CoolDownCoroutine());
+            GameManager.Instance.UseSkill(skill);
         }
     }
 }

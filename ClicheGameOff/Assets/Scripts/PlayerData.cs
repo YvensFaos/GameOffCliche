@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Gameplay.Skills;
 using Progression;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class PlayerData
     private int hardDriveSize;
     [SerializeField]
     private List<GameUpgradeLevelPair> upgrades;
+    [SerializeField] 
+    private List<GameSkill> skills;
 
     public PlayerData() : this(0, 0, 0)
     {
@@ -56,10 +59,16 @@ public class PlayerData
 
     public List<GameUpgradeLevelPair> Upgrades => upgrades;
 
+    public List<GameSkill> Skills
+    {
+        get => skills;
+        set => skills = value;
+    }
+
     public int GetUpgradeLevel(GameUpgrade upgrade)
     {
         var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
-        return pair?.Two ?? 0;
+        return pair?.Two ?? -1;
     } 
 
     public void SetUpgradeLevel(GameUpgrade upgrade, int value)
