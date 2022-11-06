@@ -8,5 +8,13 @@ namespace Data
         public string GetName() => name;
         public Color typeColor;
         public DataQualifier qualifier;
+
+        private void OnValidate()
+        {
+            if (GameManager.Instance != null && GameManager.Instance.Constants != null)
+            {
+                typeColor = GameManager.Instance.Constants.GetColorForQualifier(qualifier);
+            }
+        }
     }
 }

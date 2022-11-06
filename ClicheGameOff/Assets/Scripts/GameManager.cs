@@ -45,6 +45,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameProgression gameProgress;
 
+    public void ManagePlayerCollected(DataQualifier dataQualifier, int value)
+    {
+        switch (dataQualifier)
+        {
+            case DataQualifier.Good:
+                ManagePlayerGoodData(value);
+                updatePlayerInfo?.Invoke(currentPlayerData);
+                break;
+            case DataQualifier.Bad:
+                ManagePlayerBadData(value);
+                updatePlayerInfo?.Invoke(currentPlayerData);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(dataQualifier), dataQualifier, null);
+        }
+    }
+    
     public void ManagePlayerCollectedData(int goodData, int badData)
     {
         ManagePlayerGoodData(goodData);
@@ -57,21 +74,31 @@ public class GameManager : MonoBehaviour
         currentPlayerData.GoodData += goodData;
     }
 
-    public bool CheckPlayerGoodData(int goodData) => currentPlayerData.GoodData >= goodData;
-
     private void ManagePlayerBadData(int badData)
     {
         currentPlayerData.BadData += badData;
     }
-    
-    public bool CheckPlayerBadData(int badData) => currentPlayerData.BadData >= badData;
+
+    public bool CheckPlayerData(DataQualifier dataQualifier, int value)
+    {
+        switch (dataQualifier)
+        {
+            case DataQualifier.Good:
+                return CheckPlayerGoodData(value);
+            case DataQualifier.Bad:
+                return CheckPlayerBadData(value);
+            default:
+                throw new ArgumentOutOfRangeException(nameof(dataQualifier), dataQualifier, null);
+        }
+    }
+
+    private bool CheckPlayerGoodData(int goodData) => currentPlayerData.GoodData >= goodData;
+    private bool CheckPlayerBadData(int badData) => currentPlayerData.BadData >= badData;
 
     //Getters & Setters
     public DataMinerRunController CurrentRun => currentRun;
     public PlayerData CurrentPlayerData => currentPlayerData;
-
     public GameConstants Constants => constants;
-
     public GameProgression GameProgress => gameProgress;
 
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>
