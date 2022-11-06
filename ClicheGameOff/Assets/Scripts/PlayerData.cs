@@ -65,6 +65,14 @@ public class PlayerData
         set => skills = value;
     }
 
+    public void AddSkill(GameSkill skill)
+    {
+        if (!skills.Contains(skill))
+        {
+            skills.Add(skill);
+        }
+    }
+
     public int GetUpgradeLevel(GameUpgrade upgrade)
     {
         var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));

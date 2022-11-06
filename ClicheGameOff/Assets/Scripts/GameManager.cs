@@ -3,6 +3,7 @@ using Data;
 using Gameplay;
 using Gameplay.Skills;
 using Progression;
+using UnityEditor.Connect;
 using UnityEngine;
 
 //Tick event delegate: called every tick.
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
             playerUpgrades.ForEach(pair =>
             {
                 gameProgress.SetGameUpgradeLevel(pair.One, pair.Two);
+                pair.One.UpgradeUnlock(pair.Two);
             });
             var playerSkills = currentPlayerData.Skills;
             playerSkills.ForEach(skill => skill.Reset());

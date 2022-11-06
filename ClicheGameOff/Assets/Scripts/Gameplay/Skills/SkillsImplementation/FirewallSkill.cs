@@ -12,7 +12,7 @@ namespace Gameplay.Skills.SkillsImplementation
         protected override void SkillEffect(in PlayerController playerController)
         {
             var playerTransform = playerController.transform;
-            var firewall = Instantiate(firewallObject, playerTransform.position, playerTransform.rotation);
+            var firewall = Instantiate(firewallObject, playerController.LastValidHit, playerTransform.rotation);
             Destroy(firewall, firewallDuration);
         }
     }

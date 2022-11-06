@@ -33,7 +33,7 @@ namespace GameUI.Buttons
         {
             shortCut.text = skill.shortCut.ToString().ToUpper();
             skillTitle.text = skill.GetName();
-            skillImage.fillAmount = 0;
+            skillImage.fillAmount = 1;
         }
 
         private void UseSkillDelegate(GameSkill usedSkill, in PlayerController playerController)
@@ -48,7 +48,6 @@ namespace GameUI.Buttons
         public void Click()
         {
             GameManager.Instance.Player.TryToUseSkill(skill);
-            
         }
 
         private void AnimateButtonCooldown()

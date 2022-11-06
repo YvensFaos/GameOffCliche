@@ -17,9 +17,15 @@ namespace GameUI
         [SerializeField] 
         private List<SkillButton> skillButtons;
         
-        private void OnEnable()
+        private void Start()
         {
             GenerateButtons();
+            GameManager.Instance.SubscribeUpdatePlayerInfo(UpdatePlayerInfo);
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.UnsubscribeUpdatePlayerInfo(UpdatePlayerInfo);
         }
 
         private void GenerateButtons()
@@ -27,12 +33,17 @@ namespace GameUI
             TransformUtils.ClearObjects(skillButtonParent);
             skillButtons = new List<SkillButton>();
             skills = GameManager.Instance.CurrentPlayerData.Skills;
-            skills.ForEach(upgrade =>
+            skills?.ForEach(upgrade =>
             {
                 var button = Instantiate(skillButtonPrefab, skillButtonParent);
                 skillButtons.Add(button);
                 button.Initialize(upgrade);
             });
+        }
+
+        private void UpdatePlayerInfo(in PlayerData playerData)
+        {
+            GenerateButtons();
         }
     }
 }

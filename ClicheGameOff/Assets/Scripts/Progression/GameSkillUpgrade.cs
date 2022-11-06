@@ -13,7 +13,7 @@ namespace Progression
         public override void UpgradeUnlock(int level)
         {
             base.UpgradeUnlock(level);
-            GameManager.Instance.CurrentPlayerData.Skills.Add(skill);
+            GameManager.Instance.CurrentPlayerData.AddSkill(skill);
         }
 
         /// <summary>

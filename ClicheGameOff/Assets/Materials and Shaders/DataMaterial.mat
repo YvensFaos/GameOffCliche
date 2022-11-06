@@ -92,7 +92,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _AlphaFactor: 0.106
+    - _AlphaFactor: 0.152
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -102,16 +102,16 @@ Material:
     - _DataMovementIntensity: -1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DistortionAmount: 0.1
+    - _DistortionAmount: 0.205
     - _DistortionFieldIntensity: 60
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FresnelPower: 0.79
+    - _FresnelPower: 0.85
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GridStep: 2
-    - _GridThickness: 0.9
+    - _GridThickness: 0.769
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -126,9 +126,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 7.6089554, g: 1.5063415, b: 8.072445, a: 1}
+    - _BaseColor: {r: 16.06103, g: 3.194459, b: 16.94838, a: 1}
     - _Color: {r: 0.77363044, g: 0.15098791, b: 0.8207547, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 25.992073, g: 3.5675397, b: 24.361198, a: 1}
+    - _FresnelColor: {r: 77.87429, g: 11.008408, b: 73.38938, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
