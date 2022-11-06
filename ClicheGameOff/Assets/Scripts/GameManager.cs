@@ -13,6 +13,18 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance;
     
+    [SerializeField]
+    private GameConstants constants;
+    [SerializeField]
+    private GameProgression gameProgress;
+    [SerializeField]
+    private PlayerData currentPlayerData;
+    
+    private DataMinerRunController currentRun;
+    private UpdatePlayerInfo updatePlayerInfo;
+
+    private const string PlayerPrefString = "playerData";
+    
     private void Awake()
     {
         if (instance != null)
@@ -28,22 +40,32 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //Later replace this with reading from the PlayerPrefs
-        currentPlayerData = new PlayerData();
-        if (currentPlayerData.HardDriveSize == 0)
+        Load();
+    }
+
+    private void Load()
+    {
+        //Update to use names for different save files
+        var playerPrefsData = PlayerPrefs.GetString(PlayerPrefString);
+        gameProgress.Reset();
+        if (playerPrefsData is null or "")
         {
-            currentPlayerData.HardDriveSize = constants.initialHardDriveSize;
+            currentPlayerData = new PlayerData();
+            if (currentPlayerData.HardDriveSize == 0)
+            {
+                currentPlayerData.HardDriveSize = constants.initialHardDriveSize;
+            }
+        }
+        else
+        {
+            currentPlayerData = JsonUtility.FromJson<PlayerData>(playerPrefsData);
         }
     }
 
-    private PlayerData currentPlayerData;
-    private DataMinerRunController currentRun;
-    private UpdatePlayerInfo updatePlayerInfo;
-
-    [SerializeField]
-    private GameConstants constants;
-    [SerializeField]
-    private GameProgression gameProgress;
+    private void Save()
+    {
+        PlayerPrefs.SetString(PlayerPrefString, currentPlayerData.ToJson());
+    }
 
     public void ManagePlayerCollected(DataQualifier dataQualifier, int value)
     {
@@ -60,6 +82,7 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(dataQualifier), dataQualifier, null);
         }
+        Save();
     }
     
     public void ManagePlayerCollectedData(int goodData, int badData)
@@ -67,6 +90,7 @@ public class GameManager : MonoBehaviour
         ManagePlayerGoodData(goodData);
         ManagePlayerBadData(badData);
         updatePlayerInfo?.Invoke(currentPlayerData);
+        Save();
     }
 
     private void ManagePlayerGoodData(int goodData)
@@ -79,9 +103,13 @@ public class GameManager : MonoBehaviour
         currentPlayerData.BadData += badData;
     }
 
-    public void UpgradeUnlocked(GameUpgrade upgrade)
+    public void UpgradeUnlocked(GameUpgrade upgrade, int level)
     {   
-        //Something! :)
+        currentPlayerData.SetUpgradeLevel(upgrade, level);
+        
+        //Unlock
+        
+        Save();
     }
 
     public bool CheckPlayerData(DataQualifier dataQualifier, int value)
@@ -107,6 +135,12 @@ public class GameManager : MonoBehaviour
 
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>
         currentRun = dataMinerRunController;
+
+    public void SetPlayerData(PlayerData playerData)
+    {
+        currentPlayerData = playerData;
+        updatePlayerInfo?.Invoke(currentPlayerData);
+    } 
 
     public void SubscribeUpdatePlayerInfo(UpdatePlayerInfo newUpdatePlayerInfo) =>
         updatePlayerInfo += newUpdatePlayerInfo;

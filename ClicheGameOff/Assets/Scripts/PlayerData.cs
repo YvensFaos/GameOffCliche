@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Progression;
 using UnityEngine;
 
 /**
@@ -13,6 +15,8 @@ public class PlayerData
     private int badData;
     [SerializeField] 
     private int hardDriveSize;
+    [SerializeField]
+    private List<GameUpgradeLevelPair> upgrades;
 
     public PlayerData() : this(0, 0, 0)
     {
@@ -20,6 +24,8 @@ public class PlayerData
         {
             hardDriveSize = GameManager.Instance.Constants.initialHardDriveSize;    
         }
+
+        upgrades = new List<GameUpgradeLevelPair>();
     }
 
     public PlayerData(int goodData, int badData, int hardDriveSize)
@@ -27,6 +33,7 @@ public class PlayerData
         this.goodData = goodData;
         this.badData = badData;
         this.hardDriveSize = hardDriveSize;
+        upgrades = new List<GameUpgradeLevelPair>();
     }
 
     public int GoodData
@@ -45,5 +52,24 @@ public class PlayerData
     {
         get => hardDriveSize;
         set => hardDriveSize = value;
+    }
+
+    public int GetUpgradeLevel(GameUpgrade upgrade) => upgrades.Find(pair => pair.One.Equals(upgrade)).Two;
+
+    public void SetUpgradeLevel(GameUpgrade upgrade, int value)
+    {
+        var pair = upgrades.Find(pair => pair.One.Equals(upgrade));
+        if (pair == null)
+        {
+            pair = new GameUpgradeLevelPair(upgrade, 0);
+            upgrades.Add(pair);
+        }
+
+        pair.Two = value;
+    }
+
+    public string ToJson()
+    {
+        return JsonUtility.ToJson(this);
     }
 }

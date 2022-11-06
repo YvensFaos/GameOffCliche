@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using GameUI.Buttons;
 using Progression;
@@ -30,8 +29,8 @@ namespace GameUI
             processUpgrades.ForEach(upgrade =>
             {
                 var button = Instantiate(processButtonPrefab, processButtonParent);
-                button.Initialize(upgrade);
                 processButtons.Add(button);
+                button.Initialize(upgrade);
             });
         }
     }

@@ -15,9 +15,10 @@ namespace Progression
             return Two >= One.ProgressCurve.GetMaxLevel();
         }
         
-        public void SetLevel(int level)
+        public bool SetLevel(int level)
         {
             Two = (int) Mathf.Min(level, One.ProgressCurve.GetMaxLevel());
+            return Two >= One.ProgressCurve.GetMaxLevel();
         } 
 
         public int GetLevel() => Two;

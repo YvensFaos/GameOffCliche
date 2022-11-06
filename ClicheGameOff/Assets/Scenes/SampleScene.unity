@@ -5609,7 +5609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constants: {fileID: 11400000, guid: 0fa3a4f6f3c124a4d909e539a1487629, type: 2}
-  gameProgress: {fileID: 0}
+  gameProgress: {fileID: 11400000, guid: 496c93d98993243879f4025bc37e9df3, type: 2}
 --- !u!4 &1851474783
 Transform:
   m_ObjectHideFlags: 0

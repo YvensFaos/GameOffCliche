@@ -12,7 +12,7 @@ namespace Utils
 
         public float EvaluateAtLevel(float level, out bool maxLevel)
         {
-            maxLevel = level < GetMaxLevel();
+            maxLevel = level >= GetMaxLevel();
             return maxLevel ? -1 : curve.Evaluate(level);
         } 
     }

@@ -25,9 +25,9 @@ namespace Progression
         public CurveHandler ProgressCurve => progressCurve;
         public DataQualifier RequiredData => requiredData;
 
-        public virtual void UpgradeUnlock()
+        public virtual void UpgradeUnlock(int level)
         {
-            GameManager.Instance.UpgradeUnlocked(this);
+            GameManager.Instance.UpgradeUnlocked(this, level);
         }
 
         public override bool Equals(object other)

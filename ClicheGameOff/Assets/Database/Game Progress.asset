@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e20010a353341d59fe9f42e9f07a002, type: 3}
   m_Name: Game Progress
   m_EditorClassIdentifier: 
-  gameUpgrades: []
+  gameUpgrades:
+  - one: {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
+    two: 0
+  - one: {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
+    two: 0

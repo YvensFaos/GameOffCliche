@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Data;
 using UnityEngine;
 
 namespace Progression
@@ -22,23 +21,23 @@ namespace Progression
             {
                 return upgradePair.IncreaseLevel();
             }
-            else
-            {
-                throw new GameUpgradeNotFoundException(upgrade);
-            }
+            throw new GameUpgradeNotFoundException(upgrade);
         }
-        
-        public void SetGameUpgradeLevel(GameUpgrade upgrade, int level)
+
+        // NOT USED
+        // public bool SetGameUpgradeLevel(GameUpgrade upgrade, int level)
+        // {
+        //     var upgradePair = gameUpgrades.Find(pair => pair.One.Equals(upgrade));
+        //     if (upgradePair != null)
+        //     {
+        //         return upgradePair.SetLevel(level);
+        //     }
+        //     throw new GameUpgradeNotFoundException(upgrade);
+        // }
+
+        public void Reset()
         {
-            var upgradePair = gameUpgrades.Find(pair => pair.One.Equals(upgrade));
-            if (upgradePair != null)
-            {
-                upgradePair.SetLevel(level);
-            }
-            else
-            {
-                throw new GameUpgradeNotFoundException(upgrade);
-            }
+            gameUpgrades.ForEach(pair => pair.Two = 0);
         }
     }
 }
