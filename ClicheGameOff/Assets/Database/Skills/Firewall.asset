@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb936fe44e84727ad57cace56bee8b5, type: 3}
   m_Name: Firewall
   m_EditorClassIdentifier: 
-  cooldown: 4
+  cooldown: 4.5
   shortCut: 113

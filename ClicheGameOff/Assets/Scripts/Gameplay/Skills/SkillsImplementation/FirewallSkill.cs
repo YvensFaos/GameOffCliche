@@ -5,7 +5,7 @@ namespace Gameplay.Skills.SkillsImplementation
     public class FirewallSkill : PlayerSkill
     {
         [SerializeField]
-        private GameObject firewallObject;
+        private FirewallBehavior firewallObject;
         [SerializeField] 
         private float firewallDuration;
         
@@ -13,6 +13,7 @@ namespace Gameplay.Skills.SkillsImplementation
         {
             var playerTransform = playerController.transform;
             var firewall = Instantiate(firewallObject, playerController.LastValidHit, playerTransform.rotation);
+            firewall.Initialize(firewallDuration);
             Destroy(firewall, firewallDuration);
         }
     }

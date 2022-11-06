@@ -9,6 +9,7 @@ namespace Gameplay.Skills
 
         private void Start()
         {
+            Debug.Log($"Subscribe skill -> {name}");
             GameManager.Instance.SubscribeUseSkillDelegate(UseSkill);
         }
 
@@ -17,7 +18,7 @@ namespace Gameplay.Skills
             GameManager.Instance.UnsubscribeUseSkillDelegate(UseSkill);
         }
 
-        protected virtual void UseSkill(GameSkill usedSkill, in PlayerController playerController)
+        protected void UseSkill(GameSkill usedSkill, in PlayerController playerController)
         {
             if (skill.Equals(usedSkill))
             {
