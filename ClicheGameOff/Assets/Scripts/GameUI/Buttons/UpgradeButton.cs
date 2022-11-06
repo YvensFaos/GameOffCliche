@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace GameUI.Buttons
 {
-    public class ProcessButton : MonoBehaviour
+    public class UpgradeButton : MonoBehaviour
     {
         [SerializeField] private GameUpgrade processUpgrade;
         [SerializeField] private TextMeshProUGUI upgradeName;
@@ -27,7 +27,6 @@ namespace GameUI.Buttons
             upgradeName.text = processUpgrade.GetName();
             upgradeDescription.text = processUpgrade.Description;
             resourceImage.color = GameManager.Instance.Constants.GetColorForQualifier(processUpgrade.RequiredData);
-            
             
             UpdateLabels();
             if (!maxLevel) return;

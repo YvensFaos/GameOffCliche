@@ -59,12 +59,22 @@ public class GameManager : MonoBehaviour
         else
         {
             currentPlayerData = JsonUtility.FromJson<PlayerData>(playerPrefsData);
+            var playerUpgrades = currentPlayerData.Upgrades;
+            playerUpgrades.ForEach(pair =>
+            {
+                gameProgress.SetGameUpgradeLevel(pair.One, pair.Two);
+            });
         }
     }
 
     private void Save()
     {
         PlayerPrefs.SetString(PlayerPrefString, currentPlayerData.ToJson());
+    }
+
+    public void DeleteSave()
+    {
+        PlayerPrefs.DeleteKey(PlayerPrefString);
     }
 
     public void ManagePlayerCollected(DataQualifier dataQualifier, int value)

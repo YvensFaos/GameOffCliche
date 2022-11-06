@@ -30,6 +30,11 @@ namespace Editor
             {
                 gameManager.SetPlayerData(JsonUtility.FromJson<PlayerData>(testJson));
             }
+            
+            if (GUILayout.Button("Delete Player Data JSON"))
+            {
+                gameManager.DeleteSave();
+            }
         }
     }
 }

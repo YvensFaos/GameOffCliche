@@ -54,15 +54,17 @@ public class PlayerData
         set => hardDriveSize = value;
     }
 
-    public int GetUpgradeLevel(GameUpgrade upgrade) => upgrades.Find(pair => pair.One.Equals(upgrade)).Two;
+    public List<GameUpgradeLevelPair> Upgrades => upgrades;
+
+    public int GetUpgradeLevel(GameUpgrade upgrade) => Upgrades.Find(pair => pair.One.Equals(upgrade)).Two;
 
     public void SetUpgradeLevel(GameUpgrade upgrade, int value)
     {
-        var pair = upgrades.Find(pair => pair.One.Equals(upgrade));
+        var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
         if (pair == null)
         {
             pair = new GameUpgradeLevelPair(upgrade, 0);
-            upgrades.Add(pair);
+            Upgrades.Add(pair);
         }
 
         pair.Two = value;

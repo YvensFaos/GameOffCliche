@@ -24,16 +24,15 @@ namespace Progression
             throw new GameUpgradeNotFoundException(upgrade);
         }
 
-        // NOT USED
-        // public bool SetGameUpgradeLevel(GameUpgrade upgrade, int level)
-        // {
-        //     var upgradePair = gameUpgrades.Find(pair => pair.One.Equals(upgrade));
-        //     if (upgradePair != null)
-        //     {
-        //         return upgradePair.SetLevel(level);
-        //     }
-        //     throw new GameUpgradeNotFoundException(upgrade);
-        // }
+        public bool SetGameUpgradeLevel(GameUpgrade upgrade, int level)
+        {
+            var upgradePair = gameUpgrades.Find(pair => pair.One.Equals(upgrade));
+            if (upgradePair != null)
+            {
+                return upgradePair.SetLevel(level);
+            }
+            throw new GameUpgradeNotFoundException(upgrade);
+        }
 
         public void Reset()
         {
