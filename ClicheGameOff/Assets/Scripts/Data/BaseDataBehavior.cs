@@ -46,7 +46,6 @@ namespace Data
         private bool beingMined;
         private bool wasCollected;
         private bool stuck;
-
         private float minimalScaleValue;
         private float maximalScaleValue;
 

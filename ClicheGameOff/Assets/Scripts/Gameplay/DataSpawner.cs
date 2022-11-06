@@ -12,12 +12,14 @@ namespace Gameplay
     {
         [Header("Settings")]
         [SerializeField] private bool online;
+        [SerializeField] private float particlesTime;
         [SerializeField] private float spawnTime;
         [SerializeField] private float spawnRate;
         [SerializeField] private BoxCollider walkableArea;
         
         [Header("References")]
         [SerializeField] private DataSpawnerList spawnTypes;
+        [SerializeField] private ParticleSystem spawnParticles;
 
         [SerializeField] private List<BaseDataBehavior> currentData;
 
@@ -47,12 +49,21 @@ namespace Gameplay
             {
                 var selfTransform = transform;
                 var spawnNumber = Random.Range(1, spawnRate);
-                var position = RandomPointUtils.GetRandomPointWithBox(walkableArea);
+
+                var positionPlaces = new List<Vector3>();
+                for (var i = 0; i < spawnNumber; i++)
+                {
+                    var position = RandomPointUtils.GetRandomPointWithBox(walkableArea);
+                    positionPlaces.Add(position);
+                    var particles = Instantiate(spawnParticles, position, Quaternion.identity, selfTransform);
+                    particles.Play();
+                }
+                yield return new WaitForSeconds(particlesTime);
                 
                 for (var i = 0; i < spawnNumber; i++)
                 {
                     var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(spawnTypes.dataBehaviors),
-                        position, Quaternion.identity, selfTransform);
+                        positionPlaces[i], Quaternion.identity, selfTransform);
                     data.Initialize(walkableArea, spawnTypes.GetRandomDataTypeFromList());
                     currentData.Add(data);
                 }

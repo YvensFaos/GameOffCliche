@@ -1918,10 +1918,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   online: 1
-  spawnTime: 2.5
+  particlesTime: 2
+  spawnTime: 0.5
   spawnRate: 4
   walkableArea: {fileID: 1833081376}
   spawnTypes: {fileID: 11400000, guid: 69b1fc88df77c4b5eb040f2f53865c86, type: 2}
+  spawnParticles: {fileID: 4301203614384923183, guid: 30e88e8747abd4e55a804d1bd4df633c, type: 3}
   currentData: []
 --- !u!4 &730358128
 Transform:
