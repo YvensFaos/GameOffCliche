@@ -63,6 +63,10 @@ namespace GameUI.Buttons
                 {
                     UpdateLabels();
                 }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
             else
             {

@@ -28,6 +28,7 @@ public class PlayerData
             hardDriveSize = GameManager.Instance.Constants.initialHardDriveSize;    
         }
         upgrades = new List<GameUpgradeLevelPair>();
+        skills = new List<GameSkill>();
     }
 
     public PlayerData(int goodData, int badData, int hardDriveSize)
@@ -36,6 +37,7 @@ public class PlayerData
         this.badData = badData;
         this.hardDriveSize = hardDriveSize;
         upgrades = new List<GameUpgradeLevelPair>();
+        skills = new List<GameSkill>();
     }
 
     public int GoodData

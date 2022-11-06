@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
     {   
         currentPlayerData.SetUpgradeLevel(upgrade, level);
         gameUpgradeUnlocker.UnlockEvent(upgrade, currentPlayerData);
+        updatePlayerInfoDelegate?.Invoke(currentPlayerData);
         Save();
     }
 
