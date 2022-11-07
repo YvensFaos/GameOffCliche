@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Gameplay.Skills;
 using UnityEngine;
 
@@ -14,9 +12,6 @@ namespace Gameplay
         [SerializeField] private GameObject displayObject;
         [SerializeField] private GameObject turnedOnObject;
         [SerializeField] private Camera mainCamera;
-
-        [Header("Skills")] 
-        [SerializeField] private List<GameSkill> skills;
 
         //Private
         private Vector3 lastValidHit;
@@ -57,7 +52,7 @@ namespace Gameplay
 
         private void UseSkills()
         {
-            skills.ForEach(TryToUseSkill);
+            GameManager.Instance.CurrentPlayerData.Skills.ForEach(TryToUseSkill);
         }
 
         public void TryToUseSkill(GameSkill skill)
@@ -67,14 +62,6 @@ namespace Gameplay
             GameManager.Instance.UseSkill(skill);
         }
 
-        public void TryToAddSkill(GameSkill skill)
-        {
-            if (!skills.Contains(skill))
-            {
-                skills.Add(skill);
-            }
-        }
-        
         public Vector3 LastValidHit => lastValidHit;
     }
 }

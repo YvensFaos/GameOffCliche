@@ -28,6 +28,7 @@ namespace GameUI
             processButtons = new List<UpgradeButton>();
             processUpgrades.ForEach(upgrade =>
             {
+                if (GameManager.Instance.CurrentPlayerData.IsUpgradeMaxedOut(upgrade)) return;
                 var button = Instantiate(upgradeButtonPrefab, processButtonParent);
                 processButtons.Add(button);
                 button.Initialize(upgrade);

@@ -33,11 +33,12 @@ namespace GameUI
             TransformUtils.ClearObjects(skillButtonParent);
             skillButtons = new List<SkillButton>();
             skills = GameManager.Instance.CurrentPlayerData.Skills;
-            skills?.ForEach(upgrade =>
+            skills?.ForEach(skill =>
             {
+                if (!GameManager.Instance.CurrentPlayerData.HasSkill(skill)) return;
                 var button = Instantiate(skillButtonPrefab, skillButtonParent);
                 skillButtons.Add(button);
-                button.Initialize(upgrade);
+                button.Initialize(skill);
             });
         }
 

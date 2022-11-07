@@ -9,7 +9,6 @@ namespace Gameplay.Skills
         public string GetName() => name;
         public float cooldown;
         public KeyCode shortCut = KeyCode.Q;
-
         private bool isOnCooldown;
         
         public bool CheckKeyAndCoolDown()

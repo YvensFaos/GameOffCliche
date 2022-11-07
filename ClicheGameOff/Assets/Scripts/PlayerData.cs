@@ -78,10 +78,7 @@ public class PlayerData
         {
             gameUpgradeLevelPair.UpgradeUnlock();    
         });
-        skills.ForEach(skill =>
-        {
-            GameManager.Instance.Player.TryToAddSkill(skill);    
-        });
+        skills.ForEach(skill => skill.Reset());
     }
     
     public void InitializeUpgrades()
@@ -100,11 +97,23 @@ public class PlayerData
         skills.Add(skill);
     }
 
+    public bool HasSkill(GameSkill skill) => skills.Contains(skill);
+
     public int GetUpgradeLevel(GameUpgrade upgrade)
     {
         var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
         return pair?.Two ?? -1;
-    } 
+    }
+
+    public bool IsUpgradeMaxedOut(GameUpgrade upgrade)
+    {
+        var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
+        if (pair != null)
+        {
+            return pair.IsMaxedOut();    
+        }
+        throw new GameUpgradeNotFoundException(upgrade);
+    }
 
     public void SetUpgradeLevel(GameUpgrade upgrade, int value)
     {
@@ -115,6 +124,16 @@ public class PlayerData
             Upgrades.Add(pair);
         }
         pair.Two = value;
+    }
+    
+    public bool IncreaseUpgradeLevel(GameUpgrade upgrade)
+    {
+        var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
+        if (pair != null)
+        {
+            return pair.IncreaseLevel();
+        }
+        throw new GameUpgradeNotFoundException(upgrade);
     }
 
     public string ToJson()
@@ -130,7 +149,6 @@ public class PlayerData
         {
             skillNames.Add(skill.GetName());
         });
-        
         return JsonUtility.ToJson(this);
     }
     

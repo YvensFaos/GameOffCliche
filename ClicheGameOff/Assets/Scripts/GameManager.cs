@@ -33,8 +33,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameConstants constants;
     [SerializeField]
-    private GameProgression gameProgress;
-    [SerializeField]
     private PlayerController player;
     [SerializeField]
     private PlayerData currentPlayerData;
@@ -61,7 +59,6 @@ public class GameManager : MonoBehaviour
     {
         //Update to use names for different save files
         var playerPrefsData = PlayerPrefs.GetString(PlayerPrefString);
-        gameProgress.Reset();
         if (playerPrefsData is null or "")
         {
             currentPlayerData = new PlayerData();
@@ -157,7 +154,6 @@ public class GameManager : MonoBehaviour
     public DataMinerRunController CurrentRun => currentRun;
     public PlayerData CurrentPlayerData => currentPlayerData;
     public GameConstants Constants => constants;
-    public GameProgression GameProgress => gameProgress;
     public PlayerController Player => player;
     public List<GameUpgrade> GameUpgrades => gameUpgrades;
     public List<GameSkill> GameSkills => gameSkills;
