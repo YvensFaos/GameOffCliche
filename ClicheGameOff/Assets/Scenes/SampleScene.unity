@@ -1839,51 +1839,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &601400951
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 601400953}
-  - component: {fileID: 601400952}
-  m_Layer: 0
-  m_Name: GameProgressUnlocker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &601400952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601400951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae0174b994b42f98cc8a8df863e5348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlockEvents: []
---- !u!4 &601400953
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601400951}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1851474783}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &613698816
 GameObject:
   m_ObjectHideFlags: 0
@@ -5225,37 +5180,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1473461336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1473461337}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1473461337
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473461336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1851474783}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1641828864
 GameObject:
   m_ObjectHideFlags: 0
@@ -6774,7 +6698,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constants: {fileID: 11400000, guid: 0fa3a4f6f3c124a4d909e539a1487629, type: 2}
   gameProgress: {fileID: 11400000, guid: 496c93d98993243879f4025bc37e9df3, type: 2}
-  gameUpgradeUnlocker: {fileID: 601400952}
   player: {fileID: 334081033}
   currentPlayerData:
     goodData: 0
@@ -6782,6 +6705,14 @@ MonoBehaviour:
     hardDriveSize: 0
     upgrades: []
     skills: []
+    upgradeNames: []
+    skillNames: []
+  gameUpgrades:
+  - {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
+  - {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
+  - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
+  gameSkills:
+  - {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
 --- !u!4 &1851474783
 Transform:
   m_ObjectHideFlags: 0
@@ -6793,9 +6724,7 @@ Transform:
   m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 601400953}
-  - {fileID: 1473461337}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

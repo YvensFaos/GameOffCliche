@@ -21,17 +21,10 @@ namespace Progression
         private DataQualifier requiredData;
         [SerializeField] 
         protected List<GameUpgrade> requiredUpgrades;
-        
-        public string GetName() => name;
-        public string Description => description;
-        public bool RepeatableUpgrade => repeatableUpgrade;
-        public CurveHandler ProgressCurve => progressCurve;
-        public CurveHandler ValueCurve => valueCurve;
-        public DataQualifier RequiredData => requiredData;
 
         public virtual void UpgradeUnlock(int level)
         {
-            GameManager.Instance.UpgradeUnlocked(this, level);
+            GameManager.Instance.UpgradeUnlock(this, level);
         }
 
         public virtual bool CheckRequirements()
@@ -53,5 +46,13 @@ namespace Progression
         {
             return base.GetHashCode();
         }
+        
+        //Getters & Setters
+        public string GetName() => name;
+        public string Description => description;
+        public bool RepeatableUpgrade => repeatableUpgrade;
+        public CurveHandler ProgressCurve => progressCurve;
+        public CurveHandler ValueCurve => valueCurve;
+        public DataQualifier RequiredData => requiredData;
     }
 }
