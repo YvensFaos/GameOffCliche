@@ -35,7 +35,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.796
-    - _DistortionStrength: 0.04
+    - _DistortionStrength: 0.07
     - _MovementStrength: 1.03
     - _NoiseMax: 0.5
     - _NoiseScale: 30

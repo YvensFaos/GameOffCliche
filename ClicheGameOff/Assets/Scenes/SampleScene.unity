@@ -6782,6 +6782,14 @@ MonoBehaviour:
     hardDriveSize: 0
     upgrades: []
     skills: []
+    upgradeNames: []
+    skillNames: []
+  gameUpgrades:
+  - {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
+  - {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
+  - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
+  gameSkills:
+  - {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
 --- !u!4 &1851474783
 Transform:
   m_ObjectHideFlags: 0

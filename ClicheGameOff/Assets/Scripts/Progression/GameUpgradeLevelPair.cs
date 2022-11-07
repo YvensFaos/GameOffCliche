@@ -9,6 +9,11 @@ namespace Progression
         public GameUpgradeLevelPair(GameUpgrade one, int two) : base(one, two)
         { }
 
+        public void UpgradeUnlock()
+        {
+            One.UpgradeUnlock(Two);
+        }
+        
         public bool IncreaseLevel()
         {
             Two = (int) Mathf.Min(Two + 1, One.ProgressCurve.GetMaxLevel());
@@ -19,7 +24,7 @@ namespace Progression
         {
             Two = (int) Mathf.Min(level, One.ProgressCurve.GetMaxLevel());
             return Two >= One.ProgressCurve.GetMaxLevel();
-        } 
+        }
 
         public int GetLevel() => Two;
     }

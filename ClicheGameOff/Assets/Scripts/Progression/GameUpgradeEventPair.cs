@@ -9,10 +9,10 @@ namespace Progression
     {
         public GameUpgradeEventPair(GameUpgrade one, UnityEvent<PlayerData> two) : base(one, two)
         { }
-
-        public void UnlockUpgrade(PlayerData playerData)
-        {
-            Two?.Invoke(playerData);
-        }
+        
+        // public void UnlockUpgrade(PlayerData playerData)
+        // {
+        //     Two?.Invoke(playerData);
+        // }
     }
 }

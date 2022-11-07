@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Data;
 using Gameplay;
 using Gameplay.Skills;
@@ -33,12 +34,16 @@ public class GameManager : MonoBehaviour
     private GameConstants constants;
     [SerializeField]
     private GameProgression gameProgress;
-    [SerializeField] 
-    private GameUpgradeUnlocker gameUpgradeUnlocker;
     [SerializeField]
     private PlayerController player;
     [SerializeField]
     private PlayerData currentPlayerData;
+
+    [Header("All Upgrades")] 
+    [SerializeField]
+    private List<GameUpgrade> gameUpgrades;
+    [SerializeField]
+    private List<GameSkill> gameSkills;
 
     private DataMinerRunController currentRun;
     private UpdatePlayerInfoDelegate updatePlayerInfoDelegate;
@@ -67,19 +72,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            currentPlayerData = JsonUtility.FromJson<PlayerData>(playerPrefsData);
-            var playerUpgrades = currentPlayerData.Upgrades;
-            playerUpgrades.ForEach(pair =>
-            {
-                gameProgress.SetGameUpgradeLevel(pair.One, pair.Two);
-                pair.One.UpgradeUnlock(pair.Two);
-            });
-            var playerSkills = currentPlayerData.Skills;
-            playerSkills.ForEach(skill =>
-            {
-                skill.Reset();
-                player.TryToAddSkill(skill);
-            });
+            currentPlayerData = PlayerData.InitializeFromJson(playerPrefsData);
+            currentPlayerData.InitializeUpgradesAndSkills();
         }
     }
 
@@ -135,10 +129,9 @@ public class GameManager : MonoBehaviour
         useSkillDelegate?.Invoke(skill, player);
     }
     
-    public void UpgradeUnlocked(GameUpgrade upgrade, int level)
+    public void UpgradeUnlock(GameUpgrade upgrade, int level)
     {   
         currentPlayerData.SetUpgradeLevel(upgrade, level);
-        gameUpgradeUnlocker.UnlockEvent(upgrade, currentPlayerData);
         updatePlayerInfoDelegate?.Invoke(currentPlayerData);
         Save();
     }
@@ -150,15 +143,12 @@ public class GameManager : MonoBehaviour
 
     public bool CheckPlayerData(DataQualifier dataQualifier, int value)
     {
-        switch (dataQualifier)
+        return dataQualifier switch
         {
-            case DataQualifier.Good:
-                return CheckPlayerGoodData(value);
-            case DataQualifier.Bad:
-                return CheckPlayerBadData(value);
-            default:
-                throw new ArgumentOutOfRangeException(nameof(dataQualifier), dataQualifier, null);
-        }
+            DataQualifier.Good => CheckPlayerGoodData(value),
+            DataQualifier.Bad => CheckPlayerBadData(value),
+            _ => throw new ArgumentOutOfRangeException(nameof(dataQualifier), dataQualifier, null)
+        };
     }
     private bool CheckPlayerGoodData(int goodData) => currentPlayerData.GoodData >= goodData;
     private bool CheckPlayerBadData(int badData) => currentPlayerData.BadData >= badData;
@@ -169,6 +159,18 @@ public class GameManager : MonoBehaviour
     public GameConstants Constants => constants;
     public GameProgression GameProgress => gameProgress;
     public PlayerController Player => player;
+    public List<GameUpgrade> GameUpgrades => gameUpgrades;
+    public List<GameSkill> GameSkills => gameSkills;
+
+    public GameUpgrade GetUpgradeByName(string upgradeName)
+    {
+        return GameUpgrades.Find(upgrade => upgrade.GetName().Equals(upgradeName));
+    }
+
+    public GameSkill GetSkillByName(string skillName)
+    {
+        return GameSkills.Find(skill => skill.GetName().Equals(skillName));
+    }
 
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>
         currentRun = dataMinerRunController;

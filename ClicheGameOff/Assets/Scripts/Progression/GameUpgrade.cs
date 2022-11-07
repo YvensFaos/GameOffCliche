@@ -31,7 +31,7 @@ namespace Progression
 
         public virtual void UpgradeUnlock(int level)
         {
-            GameManager.Instance.UpgradeUnlocked(this, level);
+            GameManager.Instance.UpgradeUnlock(this, level);
         }
 
         public virtual bool CheckRequirements()
