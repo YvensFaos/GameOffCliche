@@ -129,6 +129,6 @@ Material:
     - _BaseColor: {r: 16.06103, g: 3.194459, b: 16.94838, a: 1}
     - _Color: {r: 0.77363044, g: 0.15098791, b: 0.8207547, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 77.87429, g: 11.008408, b: 73.38938, a: 1}
+    - _FresnelColor: {r: 79.44747, g: 9.368804, b: 74.74706, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
