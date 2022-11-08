@@ -1,0 +1,51 @@
+﻿title: Start
+---
+<<displayLeftPortrait PortraitManager Scientist>>
+Scientist: Hey! You should be the new data mining assistant, right?
+-> Yes, I am.
+-> No, I think you are mistaking me for someone else
+    Scientist: Quite the sense of humour, right?
+Scientist: Good. Good. I was expecting you to start today indeed.
+Scientist: So, as you know, we are doing some fancy data mining to learn things.
+Scientist: All sorts of things!
+Scientist: Should I give you some instructions?
+-> Yes. Please!
+-> Yes, of course!
+-> No. Please, let me skip the tutorial!
+    Scientist: HaHaHa!
+    <<wait 1.5>> 
+    Scientist: You wish!    
+Scientist: Use the <b>Start Run</b> button to start a mining run.
+Scientist: Data will show up in the <b>Arena</b>.
+<<callEvent Floor>>
+<<wait 2.0>>
+Scientist: Use your <b>Mouse</b> in the arena to control the <b>Collector</b>.
+<<wait 0.2>>
+<<callEvent TutorialCollector>>
+<<wait 0.5>>
+Scientist: <b>Left Click</b> will mine the data the <b>Collector</b>. It will also make it shine.
+Scientist: Fancy, right?
+-> Quite fancy!
+-> Boring...
+    Scientist: Like you could so better, right?
+    Scientist: Anyway, let's get back to the TUTORIAL!
+Scientist: During the run, Data will show up for you to mine.
+<<callEvent TutorialCollector2>>
+<<wait 0.2>>
+Scientist: Unknown Data shows up in <color=\#b524bf>purple</color> like that.
+<<changeMaterial TutorialBaseCube "GoodDataMaterial" 1.0>>
+<<wait 1.1>>
+Scientist: Good Data shows up in <color=\#008abf>blue</color> like that.
+<<changeMaterial TutorialBaseCube "BadDataMaterial" 1.0>>
+<<wait 1.1>>
+Scientist: And Bad Data shows up in <color=\#bf0615>red</color> like that.
+<<callReverseEvent TutorialCollector2>>
+<<callReverseEvent TutorialCollector>>
+<<callReverseEvent Floor>>
+<<wait 0.5>>
+Scientist: Unknown, Good, Bad... All Data is useful one way or another.
+Scientist: You can use it to improve your <b>Knowledge</b> and get better at it.
+Scientist: But I think that is enough for now.
+Scientist: Now it is time to work!
+Scientist: Let's Mine some Data!!
+===
