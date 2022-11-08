@@ -1,11 +1,26 @@
 ﻿title: Start
 ---
-Wow!
+Scientist: Wow!
 My first ever Yarn script in Unity!
 
 -> Gosh!
+    Scientist: That is very cool!
+    <<jump Explanation>>
 -> Incredible!
+    Scientist: What do you mean?
 -> I'm amazed!
 
+<<jump Done>>
+===
+title: Explanation
+---
+Scientist: So this is me explaining stuff.
+Scientist: I know it sounds easy.
+Scientist: It kinda is, actually...
+<<jump Done>>
+===
+title: Done
+---
 Anyway, time to get writing!
+Scientist: Let's play this!
 ===
