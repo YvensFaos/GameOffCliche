@@ -1,5 +1,6 @@
 ﻿title: Start
 ---
+<<displayLeftPortrait PortraitManager Scientist>>
 Scientist: Wow!
 My first ever [wave]Yarn script[/wave] in Unity!
 
