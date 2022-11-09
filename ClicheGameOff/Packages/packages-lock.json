@@ -151,7 +151,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.core": {
-      "version": "1.4.2",
+      "version": "1.5.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -239,7 +239,7 @@
       "url": "https://packages.unity.com"
     },
     "dev.yarnspinner.unity": {
-      "version": "2.2.2",
+      "version": "2.1.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
