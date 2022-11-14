@@ -45,15 +45,28 @@ namespace GameUI
         {
             var playerData = GameManager.Instance.CurrentPlayerData;
             publicationProgress = playerData.PublicationProgress;
-            currentPublication = publications[publicationProgress];
+            UpdateCurrentPublication();
             goodDataUsedSoFar = playerData.GoodDataUsedSoFar;
             badDataUsedSoFar = playerData.BadDataUsedSoFar;
-            publicationNecessaryAmount = currentPublication.requiredContentAmount;
             publicationCurrentAmount = goodDataUsedSoFar + badDataUsedSoFar;
             
             UpdateButtonCosts();
             NormalizeAndDisplayPublicationFill();
             UpdateUIController();
+        }
+
+        private void UpdateCurrentPublication()
+        {
+            if (publicationProgress < publications.Count)
+            {
+                currentPublication = publications[publicationProgress];
+                publicationNecessaryAmount = currentPublication.requiredContentAmount;
+            }
+            else
+            {
+                currentPublication = publications[^1];
+                //Max publication reached!
+            }
         }
 
         private void UpdateButtonCosts()
@@ -111,6 +124,7 @@ namespace GameUI
         public void SubmitPublication()
         {
             NormalizeAndDisplayPublicationFill();
+            
             if (RandomChanceUtils.GetChance(publicationChance * 100.0f))
             {
                 //Success!
@@ -120,8 +134,7 @@ namespace GameUI
                 
                 var playerData = GameManager.Instance.CurrentPlayerData;
                 playerData.PublicationProgress++;
-                publicationProgress = playerData.PublicationProgress;
-                currentPublication = publications[publicationProgress];
+                UpdateCurrentPublication();
                 UpdateButtonCosts();
             }
             else
@@ -129,6 +142,10 @@ namespace GameUI
                 //Fail
                 failurePanel.gameObject.SetActive(true);
             }
+
+            //Reset data used so far - it is lost.
+            goodDataUsedSoFar = 0;
+            badDataUsedSoFar = 0;
             ResetPublication();
         }
 

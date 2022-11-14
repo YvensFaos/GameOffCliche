@@ -27,10 +27,10 @@ namespace Editor
                 Debug.Log(gameManager.CurrentPlayerData.ToJson());
             }
 
-            GUILayout.Label("Test Read Player Data JSON");
-            testJson = GUILayout.TextArea(testJson);
+            GUILayout.Label("Print Player Data JSON");
             
-            if (GUILayout.Button("Read Player Data JSON"))
+            testJson = GUILayout.TextArea(testJson);
+            if (GUILayout.Button("Load Player Data JSON"))
             {
                 gameManager.SetPlayerData(JsonUtility.FromJson<PlayerData>(testJson));
             }

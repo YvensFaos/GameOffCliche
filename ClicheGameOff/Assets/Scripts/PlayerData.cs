@@ -122,11 +122,7 @@ public class PlayerData
     public bool IsUpgradeMaxedOut(GameUpgrade upgrade)
     {
         var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
-        if (pair != null)
-        {
-            return pair.IsMaxedOut();    
-        }
-        throw new GameUpgradeNotFoundException(upgrade);
+        return pair != null && pair.IsMaxedOut();
     }
 
     public void SetUpgradeLevel(GameUpgrade upgrade, int value)
@@ -147,7 +143,9 @@ public class PlayerData
         {
             return pair.IncreaseLevel();
         }
-        throw new GameUpgradeNotFoundException(upgrade);
+
+        Upgrades.Add(new GameUpgradeLevelPair(upgrade, 1));
+        return false;
     }
 
     public string ToJson()
