@@ -20,9 +20,19 @@ namespace Gameplay
         [Header("References")]
         [SerializeField] private DataSpawnerList spawnTypes;
         [SerializeField] private ParticleSystem spawnParticles;
-
+        
+        [Header("Run Data")]
         [SerializeField] private List<BaseDataBehavior> currentData;
 
+        public void SetDataSpawnerList(DataSpawnerList spawnerList)
+        {
+            spawnTypes = spawnerList;
+            particlesTime = spawnerList.particlesTime;
+            spawnTime = spawnerList.spawnTime;
+            spawnRate = spawnerList.spawnRate;
+            spawnParticles = spawnerList.spawnParticle;
+        }
+        
         public void StartSpawner()
         {
             online = true;
@@ -62,13 +72,19 @@ namespace Gameplay
                 
                 for (var i = 0; i < spawnNumber; i++)
                 {
-                    var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(spawnTypes.dataBehaviors),
+                    var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(SpawnTypes.dataBehaviors),
                         positionPlaces[i], Quaternion.identity, selfTransform);
-                    data.Initialize(walkableArea, spawnTypes.GetRandomDataTypeFromList());
+                    data.Initialize(walkableArea, SpawnTypes.GetRandomDataTypeFromList());
                     currentData.Add(data);
                 }
                 yield return new WaitForSeconds(spawnTime);
             }
+        }
+        
+        public DataSpawnerList SpawnTypes
+        {
+            get => spawnTypes;
+            set => spawnTypes = value;
         }
     }
 }

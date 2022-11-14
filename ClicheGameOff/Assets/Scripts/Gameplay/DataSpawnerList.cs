@@ -9,12 +9,23 @@ namespace Gameplay
     [CreateAssetMenu(fileName = "New Data Spawner List", menuName = "Cliche/Data Spawner List", order = 0)]
     public class DataSpawnerList : ScriptableObject
     {
+        [Header("Data Spawns")]
         [SerializeField]
         public List<BaseDataBehavior> dataBehaviors;
         [SerializeField]
         public List<DataTypeChancePair> dataTypes;
         [SerializeField]
         public DataType defaultType;
+        [SerializeField]
+        public ParticleSystem spawnParticle;
+        
+        [Header("Spawner Info")]
+        [SerializeField] 
+        public float particlesTime;
+        [SerializeField]
+        public float spawnTime;
+        [SerializeField] 
+        public float spawnRate;
 
         private float totalChance;
 
@@ -50,6 +61,5 @@ namespace Gameplay
         }
         
         public float TotalChance => totalChance;
-
     }
 }

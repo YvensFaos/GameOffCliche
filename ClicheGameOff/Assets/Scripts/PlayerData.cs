@@ -21,12 +21,20 @@ public class PlayerData
     [SerializeField] 
     private List<GameSkill> skills;
     
+    [Header("")]
+    [SerializeField]
+    private int publicationProgress;
+    [SerializeField]
+    private int goodDataUsedSoFar;
+    [SerializeField]
+    private int badDataUsedSoFar;
+    
     [SerializeField, HideInInspector]
     private List<GameUpgradeNameLevelPair> upgradeNames;
     [SerializeField, HideInInspector]
     private List<string> skillNames;
 
-    public PlayerData() : this(0, 0, 0)
+    public PlayerData() : this(0, 0, 0, 0, 0, 0)
     {
         if (GameManager.Instance != null)
         {
@@ -38,11 +46,14 @@ public class PlayerData
         skillNames = new List<string>();
     }
 
-    public PlayerData(int goodData, int badData, int hardDriveSize)
+    public PlayerData(int goodData, int badData, int hardDriveSize, int publicationProgress, int goodDataUsedSoFar, int badDataUsedSoFar)
     {
         this.goodData = goodData;
         this.badData = badData;
         this.hardDriveSize = hardDriveSize;
+        this.publicationProgress = publicationProgress;
+        this.goodDataUsedSoFar = goodDataUsedSoFar;
+        this.badDataUsedSoFar = badDataUsedSoFar;
         InitializeUpgrades();
         upgradeNames = new List<GameUpgradeNameLevelPair>();
         InitializeSkills();
@@ -178,4 +189,22 @@ public class PlayerData
     }
     
     public List<GameUpgradeLevelPair> Upgrades => upgrades;
+
+    public int PublicationProgress
+    {
+        get => publicationProgress;
+        set => publicationProgress = value;
+    }
+
+    public int GoodDataUsedSoFar
+    {
+        get => goodDataUsedSoFar;
+        set => goodDataUsedSoFar = value;
+    }
+
+    public int BadDataUsedSoFar
+    {
+        get => badDataUsedSoFar;
+        set => badDataUsedSoFar = value;
+    }
 }
