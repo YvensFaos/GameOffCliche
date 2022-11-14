@@ -4570,6 +4570,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 338374205}
   - {fileID: 674640162}
+  progressText: {fileID: 1925515161}
   publications:
   - {fileID: 11400000, guid: faff9302aa69b48b79485f83b438ca61, type: 2}
 --- !u!1 &980916945
@@ -12421,7 +12422,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510637828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 979081275}
+        m_TargetAssemblyTypeName: GameUI.PublishUIController, Assembly-CSharp
+        m_MethodName: ResetPublication
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1510637828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14317,6 +14330,7 @@ MonoBehaviour:
     hardDriveSize: 0
     upgrades: []
     skills: []
+    papers: []
     publicationProgress: 0
     goodDataUsedSoFar: 0
     badDataUsedSoFar: 0
@@ -14755,7 +14769,7 @@ GameObject:
   - component: {fileID: 1925515162}
   - component: {fileID: 1925515161}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Progress Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16081,7 +16095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2788043409209639569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16224,7 +16238,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: -400.00003, y: 100.22}
+  m_SizeDelta: {x: -400.00003, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &3292657647063158060
 RectTransform:
@@ -16241,10 +16255,10 @@ RectTransform:
   m_Father: {fileID: 3292657646563795295}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -50.11}
-  m_SizeDelta: {x: 520, y: 60.22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3292657647063158061
 GameObject:
@@ -16490,7 +16504,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: -400, y: 263.24}
+  m_SizeDelta: {x: -400, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &7778558434653164723
 GameObject:
@@ -16859,10 +16873,10 @@ RectTransform:
   m_Father: {fileID: 7778558434653164722}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -181.73}
-  m_SizeDelta: {x: 520, y: 123.02}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7778558435382279943
 GameObject:
@@ -17042,10 +17056,10 @@ RectTransform:
   m_Father: {fileID: 7778558434653164722}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -90.22}
-  m_SizeDelta: {x: 520, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7778558436054042705
 CanvasRenderer:
@@ -17070,10 +17084,10 @@ RectTransform:
   m_Father: {fileID: 7778558434653164722}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -40.11}
-  m_SizeDelta: {x: 520, y: 40.22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7778558436136806245
 GameObject:

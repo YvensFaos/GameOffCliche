@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using UnityEngine;
+using Utils;
 
 [CreateAssetMenu(fileName = "Game Constants", menuName = "Cliche/Game Constants", order = 0)]
 public class GameConstants : ScriptableObject
@@ -11,10 +13,20 @@ public class GameConstants : ScriptableObject
     public Color defaultColorQualifier;
     [SerializeField] 
     private List<DataQualifierColorPair> colorPerQualifier;
+    [SerializeField]
+    private TextAsset clicheNames;
 
+    private List<string> cliches;
+    
     public Color GetColorForQualifier(DataQualifier qualifier)
     {
         var color = colorPerQualifier.Find(pair => pair.One.Equals(qualifier));
         return color?.Two ?? defaultColorQualifier;
+    }
+
+    public string GetRandomTitle()
+    {
+        cliches ??= clicheNames.text.Split(new[] { '\r', '\n' }).ToList();
+        return RandomHelper<string>.GetRandomFromList(cliches);
     }
 }

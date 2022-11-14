@@ -133,6 +133,13 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
+    public PublishedPaper PublishNewPaper(int goodData, int badData)
+    {
+        var paper = new PublishedPaper(goodData, badData);
+        currentPlayerData.Papers.Add(paper);
+        return paper;
+    }
+
     public float GetCurrentUpgradeValue(GameUpgrade upgrade)
     {
         return upgrade.ValueCurve.EvaluateAtLevel(currentPlayerData.GetUpgradeLevel(upgrade), out _);

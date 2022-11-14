@@ -19,3 +19,4 @@ MonoBehaviour:
     two: {r: 0, g: 0.7172313, b: 1, a: 1}
   - one: 1
     two: {r: 0.7264151, g: 0.14048593, b: 0.24218184, a: 1}
+  clicheNames: {fileID: 4900000, guid: b82f10d626dac44b384934b6dfed23f5, type: 3}

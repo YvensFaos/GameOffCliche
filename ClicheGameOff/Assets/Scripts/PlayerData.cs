@@ -10,6 +10,7 @@ using UnityEngine;
 [Serializable]
 public class PlayerData
 {
+    [Header("Player Data")]
     [SerializeField]
     private int goodData;
     [SerializeField]
@@ -20,8 +21,10 @@ public class PlayerData
     private List<GameUpgradeLevelPair> upgrades;
     [SerializeField] 
     private List<GameSkill> skills;
+    [SerializeField] 
+    private List<PublishedPaper> papers;
     
-    [Header("")]
+    [Header("Publication Data")]
     [SerializeField]
     private int publicationProgress;
     [SerializeField]
@@ -35,22 +38,20 @@ public class PlayerData
     private List<string> skillNames;
 
     public PlayerData() : this(0, 0, 0, 0, 0, 0)
-    {
-        if (GameManager.Instance != null)
-        {
-            hardDriveSize = GameManager.Instance.Constants.initialHardDriveSize;    
-        }
-        InitializeUpgrades();
-        upgradeNames = new List<GameUpgradeNameLevelPair>();
-        InitializeSkills();
-        skillNames = new List<string>();
-    }
+    { }
 
     public PlayerData(int goodData, int badData, int hardDriveSize, int publicationProgress, int goodDataUsedSoFar, int badDataUsedSoFar)
     {
         this.goodData = goodData;
         this.badData = badData;
-        this.hardDriveSize = hardDriveSize;
+        if (hardDriveSize == 0 && GameManager.Instance != null)
+        {
+            this.hardDriveSize = GameManager.Instance.Constants.initialHardDriveSize;    
+        }
+        else
+        {
+            this.hardDriveSize = hardDriveSize;    
+        }
         this.publicationProgress = publicationProgress;
         this.goodDataUsedSoFar = goodDataUsedSoFar;
         this.badDataUsedSoFar = badDataUsedSoFar;
@@ -58,6 +59,8 @@ public class PlayerData
         upgradeNames = new List<GameUpgradeNameLevelPair>();
         InitializeSkills();
         skillNames = new List<string>();
+        
+        Papers = new List<PublishedPaper>();
     }
 
     public static PlayerData InitializeFromJson(string json)
@@ -206,5 +209,11 @@ public class PlayerData
     {
         get => badDataUsedSoFar;
         set => badDataUsedSoFar = value;
+    }
+
+    public List<PublishedPaper> Papers
+    {
+        get => papers;
+        set => papers = value;
     }
 }

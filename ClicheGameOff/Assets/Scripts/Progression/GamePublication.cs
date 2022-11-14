@@ -12,5 +12,21 @@ namespace Progression
         public DataSpawnerList spawnerUnlocked;
         public List<GameUpgrade> upgradesToOpen;
         public List<GameUpgrade> upgradesToUnlock;
+
+        public string UpgradesText()
+        {
+            var unlockedText = "";
+            upgradesToOpen.ForEach(upgrade =>
+            {
+                unlockedText += $"Unlocked: <b>{upgrade.name}</b>!\r\n";
+            });
+
+            upgradesToUnlock.ForEach(upgrade =>
+            {
+                unlockedText += $"Discovered:  <b>{upgrade.name}</b>!\r\n";
+            });
+
+            return unlockedText;
+        }
     }
 }
