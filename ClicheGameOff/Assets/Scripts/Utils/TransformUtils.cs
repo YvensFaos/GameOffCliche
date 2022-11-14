@@ -12,5 +12,10 @@ namespace Utils
                 Object.DestroyImmediate(transform.GetChild(i).gameObject);
             }
         }
+
+        public static Vector3 GetPointOnTheGround(Vector3 point, LayerMask floorMask, float maxDistance = 100.0f)
+        {
+            return Physics.Raycast(point, Vector3.down, out RaycastHit hit, maxDistance, floorMask) ? hit.point : point;
+        }
     }
 }

@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Data;
 using UnityEngine;
 using Utils;
@@ -26,7 +28,7 @@ public class GameConstants : ScriptableObject
 
     public string GetRandomTitle()
     {
-        cliches ??= clicheNames.text.Split(new[] { '\r', '\n' }).ToList();
+        cliches = Regex.Split(clicheNames.text, Environment.NewLine).ToList();
         return RandomHelper<string>.GetRandomFromList(cliches);
     }
 }

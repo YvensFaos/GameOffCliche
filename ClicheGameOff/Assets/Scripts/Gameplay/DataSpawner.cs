@@ -16,10 +16,12 @@ namespace Gameplay
         [SerializeField] private float spawnTime;
         [SerializeField] private float spawnRate;
         [SerializeField] private BoxCollider walkableArea;
+        [SerializeField] private LayerMask floorMask;
         
         [Header("References")]
         [SerializeField] private DataSpawnerList spawnTypes;
         [SerializeField] private ParticleSystem spawnParticles;
+        [SerializeField] private float particlesYOffset;
         
         [Header("Run Data")]
         [SerializeField] private List<BaseDataBehavior> currentData;
@@ -64,7 +66,9 @@ namespace Gameplay
                 for (var i = 0; i < spawnNumber; i++)
                 {
                     var position = RandomPointUtils.GetRandomPointWithBox(walkableArea);
+                    position = TransformUtils.GetPointOnTheGround(position, floorMask);
                     positionPlaces.Add(position);
+                    position.y += particlesYOffset;
                     var particles = Instantiate(spawnParticles, position, Quaternion.identity, selfTransform);
                     particles.Play();
                 }
@@ -80,11 +84,7 @@ namespace Gameplay
                 yield return new WaitForSeconds(spawnTime);
             }
         }
-        
-        public DataSpawnerList SpawnTypes
-        {
-            get => spawnTypes;
-            set => spawnTypes = value;
-        }
+
+        private DataSpawnerList SpawnTypes => spawnTypes;
     }
 }
