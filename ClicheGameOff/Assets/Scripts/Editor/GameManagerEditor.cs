@@ -22,14 +22,14 @@ namespace Editor
             GUILayout.Space(15.0f);
             GUILayout.Label("PERSISTENCE",  new GUIStyle{fontSize = 15, normal = { textColor = Color.white}});
 
-            if (GUILayout.Button("Test Player Data JSON"))
+            if (GUILayout.Button("Print Player Data JSON"))
             {
                 Debug.Log(gameManager.CurrentPlayerData.ToJson());
             }
 
-            GUILayout.Label("Print Player Data JSON");
-            
+            GUILayout.Label("Player Data JSON to be loaded:");
             testJson = GUILayout.TextArea(testJson);
+            
             if (GUILayout.Button("Load Player Data JSON"))
             {
                 gameManager.SetPlayerData(JsonUtility.FromJson<PlayerData>(testJson));

@@ -39,6 +39,7 @@ namespace Gameplay
 
         public void OnEnable()
         {
+            if (GameManager.Instance == null) return;
             GameManager.Instance.SetDataMinerRunController(this);
         }
 

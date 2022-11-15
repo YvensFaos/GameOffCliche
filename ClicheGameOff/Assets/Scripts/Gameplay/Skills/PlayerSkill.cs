@@ -8,11 +8,13 @@ namespace Gameplay.Skills
 
         protected void Start()
         {
+            if (GameManager.Instance == null) return;
             GameManager.Instance.SubscribeUseSkillDelegate(UseSkill);
         }
 
         private void OnDestroy()
         {
+            if (GameManager.Instance == null) return;
             GameManager.Instance.UnsubscribeUseSkillDelegate(UseSkill);
         }
 

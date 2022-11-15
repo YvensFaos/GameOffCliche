@@ -25,6 +25,7 @@ namespace GameUI
 
         private void OnDestroy()
         {
+            if (GameManager.Instance == null) return;
             GameManager.Instance.UnsubscribeUpdatePlayerInfo(UpdatePlayerInfo);
         }
 

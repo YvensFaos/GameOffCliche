@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     private PlayerController player;
     [SerializeField]
     private PlayerData currentPlayerData;
+    [SerializeField] 
+    private GameDialogController dialogController;
 
     [Header("All Upgrades")] 
     [SerializeField]
@@ -66,6 +68,9 @@ public class GameManager : MonoBehaviour
             {
                 currentPlayerData.HardDriveSize = constants.initialHardDriveSize;
             }
+            
+            //First run
+            dialogController.StartTutorial();
         }
         else
         {
@@ -164,6 +169,7 @@ public class GameManager : MonoBehaviour
     public PlayerController Player => player;
     public List<GameUpgrade> GameUpgrades => gameUpgrades;
     public List<GameSkill> GameSkills => gameSkills;
+    public GameDialogController DialogController => dialogController;
 
     public GameUpgrade GetUpgradeByName(string upgradeName)
     {
@@ -178,6 +184,9 @@ public class GameManager : MonoBehaviour
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>
         currentRun = dataMinerRunController;
 
+    public void SetDialogueController(GameDialogController gameDialogController) =>
+        dialogController = gameDialogController;
+    
     public void SetPlayerData(PlayerData playerData)
     {
         currentPlayerData = playerData;

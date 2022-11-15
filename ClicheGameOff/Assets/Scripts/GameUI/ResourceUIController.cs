@@ -12,6 +12,7 @@ namespace GameUI
 
         private void OnEnable()
         {
+            if (GameManager.Instance == null) return;
             GameManager.Instance.SubscribeUpdatePlayerInfo(UpdatePlayerInfo);
             
             //Manually update the values when enabling this component
@@ -20,6 +21,7 @@ namespace GameUI
 
         private void OnDisable()
         {
+            if (GameManager.Instance == null) return;
             GameManager.Instance.UnsubscribeUpdatePlayerInfo(UpdatePlayerInfo);
         }
 

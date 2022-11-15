@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Dialog;
 using Gameplay;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Progression
         public DataSpawnerList spawnerUnlocked;
         public List<GameUpgrade> upgradesToOpen;
         public List<GameUpgrade> upgradesToUnlock;
+        public GameDialog dialog;
 
         public string UpgradesText()
         {
