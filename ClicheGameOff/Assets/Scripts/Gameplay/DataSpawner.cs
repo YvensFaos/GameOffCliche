@@ -50,6 +50,7 @@ namespace Gameplay
             //Kill uncollected data behaviors
             foreach (var dataBehavior in currentData.Where(dataBehavior => dataBehavior != null))
             {
+                //TODO change to use animations
                 Destroy(dataBehavior.gameObject, 0.1f);
             }
         }
@@ -78,6 +79,7 @@ namespace Gameplay
                 {
                     var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(SpawnTypes.dataBehaviors),
                         positionPlaces[i], Quaternion.identity, selfTransform);
+                    //TODO change to use animations
                     data.Initialize(walkableArea, SpawnTypes.GetRandomDataTypeFromList());
                     currentData.Add(data);
                 }

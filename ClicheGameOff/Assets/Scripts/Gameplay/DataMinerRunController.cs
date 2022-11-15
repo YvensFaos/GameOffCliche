@@ -70,17 +70,16 @@ namespace Gameplay
             
             //Add data to the player
             var stringBuilder = new StringBuilder();
-            foreach (var pair in collectedData)
+            foreach (var (dataType, value) in collectedData)
             {
-                var dataType = pair.Key;
-                stringBuilder.AppendLine($"<color=#{ColorUtility.ToHtmlStringRGB(dataType.typeColor)}>{dataType.GetName()} x{pair.Value}</color>");
+                stringBuilder.AppendLine($"<color=#{ColorUtility.ToHtmlStringRGB(dataType.typeColor)}>{dataType.GetName()} x{value}</color>");
                 switch (dataType.qualifier)
                 {
                     case DataQualifier.Good:
-                        runGoodData += pair.Value;
+                        runGoodData += value;
                         break;
                     case DataQualifier.Bad:
-                        runBadData += pair.Value;
+                        runBadData += value;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

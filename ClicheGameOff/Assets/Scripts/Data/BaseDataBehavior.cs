@@ -26,6 +26,7 @@ namespace Data
         [SerializeField] private float actTimer;
         [SerializeField] private float actTimerFluctuation;
         [SerializeField] private float stopDistance;
+        //TODO add animator
 
         [Header("Attributes")] 
         [SerializeField] private DataType type;
