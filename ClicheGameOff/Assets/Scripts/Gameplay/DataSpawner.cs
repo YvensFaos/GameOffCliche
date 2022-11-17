@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,20 +20,28 @@ namespace Gameplay
         [SerializeField] private LayerMask floorMask;
         
         [Header("References")]
-        [SerializeField] private DataSpawnerList spawnTypes;
+        [SerializeField] private DataSpawnerList spawnerList;
         [SerializeField] private ParticleSystem spawnParticles;
         [SerializeField] private float particlesYOffset;
         
         [Header("Run Data")]
         [SerializeField] private List<BaseDataBehavior> currentData;
 
-        public void SetDataSpawnerList(DataSpawnerList spawnerList)
+        private void Start()
         {
-            spawnTypes = spawnerList;
-            particlesTime = spawnerList.particlesTime;
-            spawnTime = spawnerList.spawnTime;
-            spawnRate = spawnerList.spawnRate;
-            spawnParticles = spawnerList.spawnParticle;
+            if (spawnerList != null)
+            {
+                SetDataSpawnerList(spawnerList);
+            }
+        }
+
+        public void SetDataSpawnerList(DataSpawnerList dataSpawnerList)
+        {
+            spawnerList = dataSpawnerList;
+            particlesTime = dataSpawnerList.particlesTime;
+            spawnTime = dataSpawnerList.spawnTime;
+            spawnRate = dataSpawnerList.spawnRate;
+            spawnParticles = dataSpawnerList.spawnParticle;
         }
         
         public void StartSpawner()
@@ -41,12 +50,18 @@ namespace Gameplay
             StartCoroutine(SpawnerCoroutine());
         }
 
-        public void StopSpawner()
+        public void StopSpawner(bool killRemnants = true)
         {
             online = false;
             //Safety check: stop coroutines right away in case this is called between a WaitForSeconds execution.
             StopAllCoroutines();
-            
+
+            if (!killRemnants) return;
+            KillRemainingData();
+        }
+
+        public void KillRemainingData()
+        {
             //Kill uncollected data behaviors
             foreach (var dataBehavior in currentData.Where(dataBehavior => dataBehavior != null))
             {
@@ -77,16 +92,16 @@ namespace Gameplay
                 
                 for (var i = 0; i < spawnNumber; i++)
                 {
-                    var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(SpawnTypes.dataBehaviors),
+                    var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(SpawnerList.dataBehaviors),
                         positionPlaces[i], Quaternion.identity, selfTransform);
                     //TODO change to use animations
-                    data.Initialize(walkableArea, SpawnTypes.GetRandomDataTypeFromList());
+                    data.Initialize(walkableArea, SpawnerList.GetRandomDataTypeFromList());
                     currentData.Add(data);
                 }
                 yield return new WaitForSeconds(spawnTime);
             }
         }
 
-        private DataSpawnerList SpawnTypes => spawnTypes;
+        public DataSpawnerList SpawnerList => spawnerList;
     }
 }

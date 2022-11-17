@@ -18,6 +18,12 @@ namespace Gameplay
         public DataType defaultType;
         [SerializeField]
         public ParticleSystem spawnParticle;
+
+        [Header("Run Info")] 
+        [SerializeField] 
+        public float runLength;
+        [SerializeField, Range(0, 100)] 
+        public float activeSpawnTime; 
         
         [Header("Spawner Info")]
         [SerializeField] 
@@ -59,7 +65,9 @@ namespace Gameplay
             }
             return defaultType;
         }
-        
+
+        public float ActiveTime => runLength * (activeSpawnTime / 100.0f);
+        public float RestTime => runLength * ((100 - activeSpawnTime) / 100.0f);
         public float TotalChance => totalChance;
     }
 }

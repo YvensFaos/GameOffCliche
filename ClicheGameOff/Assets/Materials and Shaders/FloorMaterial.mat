@@ -42,12 +42,13 @@ Material:
     - _NormalStrength: 0.03
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.26
-    - _SpherizeStrength: -0.7
+    - _Smoothness: 0.23
+    - _SpherizeStrength: -0.02
     m_Colors:
     - _BackgroundColor: {r: 0.2763439, g: 0.2830189, b: 0.2792709, a: 1}
     - _LineColor: {r: 0.49092203, g: 0.5283019, b: 0.52716917, a: 1}
     - _NoiseColor: {r: 0.7924528, g: 0.23088305, b: 0.1981132, a: 1}
+    - _SpherizeCenter: {r: 0.5, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7388469481844695354
 MonoBehaviour:

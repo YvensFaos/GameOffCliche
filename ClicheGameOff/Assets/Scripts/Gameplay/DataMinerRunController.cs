@@ -16,8 +16,8 @@ namespace Gameplay
     
     public class DataMinerRunController : MonoBehaviour
     {
-        [SerializeField]
-        private List<DataSpawner> spawners;
+        // [SerializeField]
+        // private List<DataSpawner> spawners;
         [SerializeField]
         private float runTime;
 
@@ -43,29 +43,39 @@ namespace Gameplay
             GameManager.Instance.SetDataMinerRunController(this);
         }
 
-        public void StartRun()
+        public void StartRun(DataSpawner spawner)
         {
             currentHardDrive = GameManager.Instance.CurrentPlayerData.HardDriveSize;
             accumulatedHardDriveUse = 0.0f;
             normalizedHardDrive = accumulatedHardDriveUse / currentHardDrive;
             StopAllCoroutines();
-            StartCoroutine(RunCoroutine());
+            StartCoroutine(RunCoroutine(spawner));
         }
 
-        private IEnumerator RunCoroutine()
+        private IEnumerator RunCoroutine(DataSpawner spawner)
         {
             InitializeCollectedData();
-            spawners.ForEach(spawner => spawner.StartSpawner());
-            currentTime = runTime;
+            spawner.StartSpawner();
+            var spawnerList = spawner.SpawnerList;
+            currentTime = spawnerList.runLength;
+            var restTime = spawnerList.RestTime;
+            
             while (currentTime >= 0)
             {
                 //Wait for one frame
                 yield return 0;
 
                 RunTickEvents?.Invoke(currentTime, currentTime / runTime);
+                
                 currentTime -= Time.deltaTime;
+                
+                if (currentTime < restTime)
+                {
+                    spawner.StopSpawner();
+                }
             }
-            spawners.ForEach(spawner => spawner.StopSpawner());
+            spawner.KillRemainingData();
+            
             runGoodData = 0;
             runBadData = 0;
             

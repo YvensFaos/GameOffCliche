@@ -35,6 +35,9 @@
         },
         {
             "m_Id": "12ed2133785740b38b872bc759cb754d"
+        },
+        {
+            "m_Id": "8b7e0d80b8604d1b80211c7e221d0c5d"
         }
     ],
     "m_Keywords": [],
@@ -191,6 +194,9 @@
         },
         {
             "m_Id": "0592ed36db474e76899564a12eded8ab"
+        },
+        {
+            "m_Id": "4de0515b72244844a125d2c32912343f"
         }
     ],
     "m_GroupDatas": [],
@@ -460,6 +466,20 @@
                     "m_Id": "0e4373b178714a2197b33efe78462c0c"
                 },
                 "m_SlotId": -5840739
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "4de0515b72244844a125d2c32912343f"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "a32d006a11f046348a11c425b9f88a8f"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -1142,6 +1162,9 @@
         },
         {
             "m_Id": "6c0c97b12ff14debbd73555e9ac03f93"
+        },
+        {
+            "m_Id": "8b7e0d80b8604d1b80211c7e221d0c5d"
         },
         {
             "m_Id": "439c71796de54c10816ac17782f30d9c"
@@ -2200,6 +2223,27 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "35b4f020d41647d7af612278fa16efb7",
+    "m_Id": 0,
+    "m_DisplayName": "SpherizeCenter",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "379ab4d9798e49ae82a715315a7d825a",
     "m_Group": {
@@ -2888,6 +2932,41 @@
         "m_SerializableColors": []
     },
     "m_OutputChannel": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "4de0515b72244844a125d2c32912343f",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -606.0,
+            "y": 205.0,
+            "width": 158.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "35b4f020d41647d7af612278fa16efb7"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "8b7e0d80b8604d1b80211c7e221d0c5d"
+    }
 }
 
 {
@@ -3913,6 +3992,33 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "8b7e0d80b8604d1b80211c7e221d0c5d",
+    "m_Guid": {
+        "m_GuidSerialized": "7be6e7ce-4136-418c-b9ac-430c53b84982"
+    },
+    "m_Name": "SpherizeCenter",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "SpherizeCenter",
+    "m_DefaultReferenceName": "_SpherizeCenter",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.0,
+        "w": 0.0
     }
 }
 

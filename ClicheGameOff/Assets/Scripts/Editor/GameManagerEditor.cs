@@ -7,8 +7,10 @@ namespace Editor
     public class GameManagerEditor : UnityEditor.Editor
     {
         //Example
-        private string testJson = "{\"goodData\":100,\"badData\":100,\"hardDriveSize\":100," +
-                                  "\"upgrades\":[{\"one\":{\"instanceID\":-63214},\"two\":1}]}";
+        private string testJson =
+            $"{{\"goodData\":32,\"badData\":22,\"hardDriveSize\":10,\"stunResistance\":0.0,\"upgrades\":[],\"skills\":[]," +
+            $"\"papers\":[],\"publicationProgress\":0,\"goodDataUsedSoFar\":0,\"badDataUsedSoFar\":0,\"upgradeNames\":[]," +
+            $"\"skillNames\":[]}}";
 
         private int addGoodData = 10;
         private int addBadData = 10;

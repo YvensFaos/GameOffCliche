@@ -21,7 +21,7 @@ namespace GameUI
         
         private TweenerCore<float, float, FloatOptions> hardDriveFillerTween;
 
-        public void StartRun()
+        public void StartRun(DataSpawner spawner)
         {
             ToggleStartButton(false);
             ToggleResultPanel(false);
@@ -30,7 +30,7 @@ namespace GameUI
             hardDriveFillSprite.fillAmount = 0.0f;
             
             dataMinerRunController.AddTickEvent(RunUITick);
-            dataMinerRunController.StartRun();
+            dataMinerRunController.StartRun(spawner);
             dataMinerRunController.AddFinishEvent(FinishUIRun);
             dataMinerRunController.AddCollectDataEvent(CollectData);
         }
