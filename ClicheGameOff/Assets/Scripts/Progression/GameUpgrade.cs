@@ -18,9 +18,13 @@ namespace Progression
         [SerializeField] 
         private CurveHandler valueCurve;
         [SerializeField] 
+        private int uniqueCost;
+        [SerializeField] 
         private DataQualifier requiredData;
         [SerializeField] 
         protected List<GameUpgrade> requiredUpgrades;
+        [SerializeField] 
+        protected List<GamePublication> requiredPublications;
 
         public virtual void UpgradeUnlock(int level)
         {
@@ -31,7 +35,10 @@ namespace Progression
         {
             if (!HasRequirements()) return true;
             var playerData = GameManager.Instance.CurrentPlayerData;
-            return requiredUpgrades.Select(upgrade => playerData.GetUpgradeLevel(upgrade)).All(level => level > -1);
+            var hasUpgrades = requiredUpgrades.Select(upgrade => playerData.GetUpgradeLevel(upgrade)).All(level => level > -1);
+            // var hasPublications = requiredPublications.Select(publication => playerData.Get)
+
+            return hasUpgrades;
         }
 
         public bool HasRequirements() => requiredUpgrades.Count > 0;
@@ -54,5 +61,8 @@ namespace Progression
         public CurveHandler ProgressCurve => progressCurve;
         public CurveHandler ValueCurve => valueCurve;
         public DataQualifier RequiredData => requiredData;
+        public int UniqueCost => uniqueCost;
+
+        protected List<GamePublication> RequiredPublications => requiredPublications;
     }
 }

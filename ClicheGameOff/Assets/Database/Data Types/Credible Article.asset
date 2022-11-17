@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89678784cd8c4d35ab0471f1124b02dc, type: 3}
-  m_Name: FirstPublication
+  m_Script: {fileID: 11500000, guid: 6658e982f8fa4bbb9b72a0aef754906f, type: 3}
+  m_Name: Credible Article
   m_EditorClassIdentifier: 
-  yarnProject: {fileID: 7545569452688597077, guid: 751bb56f29b7e40498ec656961a46747, type: 3}
-  startNode: FirstPublication
+  typeColor: {r: 0, g: 0.7172313, b: 1, a: 1}
+  qualifier: 0

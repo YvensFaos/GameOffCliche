@@ -38,12 +38,16 @@ public class GameManager : MonoBehaviour
     private PlayerData currentPlayerData;
     [SerializeField] 
     private GameDialogController dialogController;
+    [SerializeField] 
+    private DataSpawner spawner;
 
     [Header("All Upgrades")] 
     [SerializeField]
     private List<GameUpgrade> gameUpgrades;
     [SerializeField]
     private List<GameSkill> gameSkills;
+    [SerializeField]
+    private List<GamePublication> gamePublications;
 
     private DataMinerRunController currentRun;
     private UpdatePlayerInfoDelegate updatePlayerInfoDelegate;
@@ -138,9 +142,9 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-    public PublishedPaper PublishNewPaper(int goodData, int badData)
+    public PublishedPaper PublishNewPaper(GamePublication publication, int goodData, int badData)
     {
-        var paper = new PublishedPaper(goodData, badData);
+        var paper = new PublishedPaper(goodData, badData, publication.name);
         currentPlayerData.Papers.Add(paper);
         return paper;
     }
@@ -170,6 +174,8 @@ public class GameManager : MonoBehaviour
     public List<GameUpgrade> GameUpgrades => gameUpgrades;
     public List<GameSkill> GameSkills => gameSkills;
     public GameDialogController DialogController => dialogController;
+    public List<GamePublication> GamePublications => gamePublications;
+    public DataSpawner Spawner => spawner;
 
     public GameUpgrade GetUpgradeByName(string upgradeName)
     {
@@ -179,6 +185,11 @@ public class GameManager : MonoBehaviour
     public GameSkill GetSkillByName(string skillName)
     {
         return GameSkills.Find(skill => skill.GetName().Equals(skillName));
+    }
+
+    public GamePublication GetPublicationByName(string publicationName)
+    {
+        return GamePublications.Find(publication => publication.name.Equals(publicationName));
     }
 
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>

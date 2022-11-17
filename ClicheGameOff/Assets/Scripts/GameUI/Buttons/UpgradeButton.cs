@@ -36,7 +36,15 @@ namespace GameUI.Buttons
         private void UpdateLabels()
         {
             var currentLevel = GameManager.Instance.CurrentPlayerData.GetUpgradeLevel(processUpgrade);
-            currentCost = (int)processUpgrade.ProgressCurve.EvaluateAtLevel(currentLevel, out maxLevel);
+            if (processUpgrade.RepeatableUpgrade)
+            {
+                currentCost = (int)processUpgrade.ProgressCurve.EvaluateAtLevel(currentLevel, out maxLevel);    
+            }
+            else
+            {
+                currentCost = processUpgrade.UniqueCost;
+            }
+            
             resourceNeeded.text = currentCost.ToString();
         }
 

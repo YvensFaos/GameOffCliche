@@ -34,5 +34,10 @@ namespace GameUI
                 button.Initialize(upgrade);
             });
         }
+
+        public void AddUpgrade(GameUpgrade gameUpgrade)
+        {
+            processUpgrades.Add(gameUpgrade);
+        }
     }
 }

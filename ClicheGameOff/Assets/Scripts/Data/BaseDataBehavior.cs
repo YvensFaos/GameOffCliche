@@ -183,7 +183,7 @@ namespace Data
             if (!(currentScaleFactor > minimalScale)) return currentScaleFactor <= minimalScale;
             
             //The curve goes from 0 (regular size) to 1 (minimal size)
-            scaleTimeStamp = Mathf.Clamp(scaleTimeStamp + curveStepFactor, minimalScale, maximalScale);
+            scaleTimeStamp = Mathf.Clamp(scaleTimeStamp + curveStepFactor * (100.0f * Time.deltaTime), minimalScale, maximalScale);
             currentScaleFactor = Mathf.Clamp( scaleCurve.Evaluate(scaleTimeStamp), minimalScale, maximalScale);
             UpdateSize();
 

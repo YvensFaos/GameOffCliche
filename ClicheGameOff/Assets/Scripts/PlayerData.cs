@@ -17,6 +17,8 @@ public class PlayerData
     private int badData;
     [SerializeField] 
     private int hardDriveSize;
+    [SerializeField] 
+    private float stunResistance;
     [SerializeField]
     private List<GameUpgradeLevelPair> upgrades;
     [SerializeField] 
@@ -37,10 +39,10 @@ public class PlayerData
     [SerializeField, HideInInspector]
     private List<string> skillNames;
 
-    public PlayerData() : this(0, 0, 0, 0, 0, 0)
+    public PlayerData() : this(0, 0, 0, 0.0f, 0, 0, 0)
     { }
 
-    public PlayerData(int goodData, int badData, int hardDriveSize, int publicationProgress, int goodDataUsedSoFar, int badDataUsedSoFar)
+    public PlayerData(int goodData, int badData, int hardDriveSize, float stunResistance, int publicationProgress, int goodDataUsedSoFar, int badDataUsedSoFar)
     {
         this.goodData = goodData;
         this.badData = badData;
@@ -52,6 +54,8 @@ public class PlayerData
         {
             this.hardDriveSize = hardDriveSize;    
         }
+
+        this.stunResistance = stunResistance;
         this.publicationProgress = publicationProgress;
         this.goodDataUsedSoFar = goodDataUsedSoFar;
         this.badDataUsedSoFar = badDataUsedSoFar;
@@ -93,6 +97,11 @@ public class PlayerData
             gameUpgradeLevelPair.UpgradeUnlock();    
         });
         skills.ForEach(skill => skill.Reset());
+        papers.ForEach(paper =>
+        {
+            var publication = GameManager.Instance.GetPublicationByName(paper.publicationName);
+            // publication.Up
+        });
     }
     
     public void InitializeUpgrades()
@@ -104,7 +113,7 @@ public class PlayerData
     {
         skills = new List<GameSkill>();
     }
-
+    
     public void AddSkill(GameSkill skill)
     {
         if (skills.Contains(skill)) return;
@@ -117,6 +126,12 @@ public class PlayerData
     {
         var pair = Upgrades.Find(pair => pair.One.Equals(upgrade));
         return pair?.Two ?? -1;
+    }
+
+    public bool HasPublished(GamePublication publication)
+    {
+        var found = Papers.FindIndex(paper => paper.publicationName.Equals(publication.name));
+        return found >= 0;
     }
 
     public bool IsUpgradeMaxedOut(GameUpgrade upgrade)
@@ -213,5 +228,11 @@ public class PlayerData
     {
         get => papers;
         set => papers = value;
+    }
+
+    public float StunResistance
+    {
+        get => stunResistance;
+        set => stunResistance = value;
     }
 }

@@ -128,12 +128,14 @@ namespace GameUI
             if (RandomChanceUtils.GetChance(publicationChance * 100.0f))
             {
                 //Success!
-                var paper = GameManager.Instance.PublishNewPaper(goodDataUsedSoFar, badDataUsedSoFar);
+                var paper = GameManager.Instance.PublishNewPaper(currentPublication, goodDataUsedSoFar, badDataUsedSoFar);
                 successPanel.gameObject.SetActive(true);
                 successPanel.Initialize(paper, currentPublication);
                 
                 var playerData = GameManager.Instance.CurrentPlayerData;
                 playerData.PublicationProgress++;
+                
+                currentPublication.UnlockPublication();
                 UpdateCurrentPublication();
                 UpdateButtonCosts();
             }

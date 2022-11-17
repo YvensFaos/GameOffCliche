@@ -9,18 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade069a9adac4129bceb9ef3b443be37, type: 3}
-  m_Name: Skill Firewall
+  m_Script: {fileID: 11500000, guid: c83de28020be446fac5971b62d39f9a8, type: 3}
+  m_Name: External Hard Drive
   m_EditorClassIdentifier: 
-  description: Creates a wall of fire that destroys Bad Data.
+  description: Increase the Hard Drive capacity by 10.
   repeatableUpgrade: 0
   progressCurve:
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  valueCurve:
     curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 30
+        value: 40
         inSlope: 0
         outSlope: 0
         tangentMode: 34
@@ -29,7 +36,7 @@ MonoBehaviour:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 30
+        value: 40
         inSlope: 0
         outSlope: 0
         tangentMode: 34
@@ -39,15 +46,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  valueCurve:
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  uniqueCost: 30
+  uniqueCost: 0
   requiredData: 0
   requiredUpgrades: []
   requiredPublications: []
-  skill: {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
+  type: 0
+  increaseBy: 10
