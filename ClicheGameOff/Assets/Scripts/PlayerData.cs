@@ -90,18 +90,18 @@ public class PlayerData
         return playerData;
     }
 
-    public void InitializeUpgradesAndSkills()
+    public void UnlockCurrentProgress()
     {
+        papers.ForEach(paper =>
+        {
+            var publication = GameManager.Instance.GetPublicationByName(paper.publicationName);
+            publication.UnlockPublication();
+        });
         upgrades.ForEach(gameUpgradeLevelPair =>
         {
             gameUpgradeLevelPair.UpgradeUnlock();    
         });
         skills.ForEach(skill => skill.Reset());
-        papers.ForEach(paper =>
-        {
-            var publication = GameManager.Instance.GetPublicationByName(paper.publicationName);
-            // publication.Up
-        });
     }
     
     public void InitializeUpgrades()

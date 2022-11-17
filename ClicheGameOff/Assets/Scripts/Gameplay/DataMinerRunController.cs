@@ -16,14 +16,13 @@ namespace Gameplay
     
     public class DataMinerRunController : MonoBehaviour
     {
-        // [SerializeField]
-        // private List<DataSpawner> spawners;
         [SerializeField]
         private float runTime;
 
         private event RunTickDelegate RunTickEvents;
         private event CollectDataDelegate CollectDataEvents;
         private event FinishRunDelegate FinishRunEvents;
+        
         private float currentTime;
         
         //Finished run variables
@@ -37,7 +36,7 @@ namespace Gameplay
         
         private Dictionary<DataType, int> collectedData;
 
-        public void OnEnable()
+        public void Start()
         {
             if (GameManager.Instance == null) return;
             GameManager.Instance.SetDataMinerRunController(this);

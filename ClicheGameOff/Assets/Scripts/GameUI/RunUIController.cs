@@ -25,7 +25,7 @@ namespace GameUI
         {
             ToggleStartButton(false);
             ToggleResultPanel(false);
-            dataMinerRunController = GameManager.Instance.CurrentRun;
+            dataMinerRunController = GameManager.Instance.MainRunner;
             timeFillSprite.fillAmount = 0.0f;
             hardDriveFillSprite.fillAmount = 0.0f;
             

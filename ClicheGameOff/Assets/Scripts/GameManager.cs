@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Data;
 using Gameplay;
 using Gameplay.Skills;
+using GameUI;
 using Progression;
 using UnityEngine;
 
@@ -36,10 +37,12 @@ public class GameManager : MonoBehaviour
     private PlayerController player;
     [SerializeField]
     private PlayerData currentPlayerData;
-    [SerializeField] 
+    [SerializeField]
     private GameDialogController dialogController;
+    [SerializeField]
+    private DataSpawner mainSpawner;
     [SerializeField] 
-    private DataSpawner spawner;
+    private List<UpgradeUIController> upgradeUIControllers;
 
     [Header("All Upgrades")] 
     [SerializeField]
@@ -48,8 +51,10 @@ public class GameManager : MonoBehaviour
     private List<GameSkill> gameSkills;
     [SerializeField]
     private List<GamePublication> gamePublications;
-
-    private DataMinerRunController currentRun;
+    
+    private DataMinerRunController mainRunner;
+    
+    //Delegates
     private UpdatePlayerInfoDelegate updatePlayerInfoDelegate;
     private UseSkillDelegate useSkillDelegate;
 
@@ -79,7 +84,7 @@ public class GameManager : MonoBehaviour
         else
         {
             currentPlayerData = PlayerData.InitializeFromJson(playerPrefsData);
-            currentPlayerData.InitializeUpgradesAndSkills();
+            currentPlayerData.UnlockCurrentProgress();
         }
     }
 
@@ -142,6 +147,14 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
+    public void OpenUpgrade(GameUpgrade upgrade)
+    {
+        upgradeUIControllers.ForEach(upgradeUIController =>
+        {
+            upgradeUIController.AddUpgrade(upgrade);
+        });
+    }
+
     public PublishedPaper PublishNewPaper(GamePublication publication, int goodData, int badData)
     {
         var paper = new PublishedPaper(goodData, badData, publication.name);
@@ -167,7 +180,7 @@ public class GameManager : MonoBehaviour
     private bool CheckPlayerBadData(int badData) => currentPlayerData.BadData >= badData;
 
     //Getters & Setters
-    public DataMinerRunController CurrentRun => currentRun;
+    public DataMinerRunController MainRunner => mainRunner;
     public PlayerData CurrentPlayerData => currentPlayerData;
     public GameConstants Constants => constants;
     public PlayerController Player => player;
@@ -175,7 +188,7 @@ public class GameManager : MonoBehaviour
     public List<GameSkill> GameSkills => gameSkills;
     public GameDialogController DialogController => dialogController;
     public List<GamePublication> GamePublications => gamePublications;
-    public DataSpawner Spawner => spawner;
+    public DataSpawner MainSpawner => mainSpawner;
 
     public GameUpgrade GetUpgradeByName(string upgradeName)
     {
@@ -193,7 +206,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetDataMinerRunController(DataMinerRunController dataMinerRunController) =>
-        currentRun = dataMinerRunController;
+        mainRunner = dataMinerRunController;
 
     public void SetDialogueController(GameDialogController gameDialogController) =>
         dialogController = gameDialogController;

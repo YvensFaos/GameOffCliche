@@ -29,8 +29,6 @@ namespace GameUI.Buttons
             resourceImage.color = GameManager.Instance.Constants.GetColorForQualifier(processUpgrade.RequiredData);
             
             UpdateLabels();
-            if (!maxLevel) return;
-            DisableButton();
         }
 
         private void UpdateLabels()
@@ -46,6 +44,9 @@ namespace GameUI.Buttons
             }
             
             resourceNeeded.text = currentCost.ToString();
+            if (!maxLevel) return;
+            if (processUpgrade.CheckRequirements()) return;
+            DisableButton();
         }
 
         private void DisableButton()

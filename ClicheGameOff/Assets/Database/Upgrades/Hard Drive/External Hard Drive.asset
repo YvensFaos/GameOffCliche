@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83de28020be446fac5971b62d39f9a8, type: 3}
   m_Name: External Hard Drive
   m_EditorClassIdentifier: 
+  upgradeType: 1
   description: Increase the Hard Drive capacity by 10.
   repeatableUpgrade: 0
   progressCurve:
@@ -46,9 +47,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  uniqueCost: 0
+  uniqueCost: 40
   requiredData: 0
   requiredUpgrades: []
   requiredPublications: []
-  type: 0
+  resourceType: 0
   increaseBy: 10

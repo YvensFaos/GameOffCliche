@@ -9,6 +9,8 @@ namespace Progression
     [CreateAssetMenu(fileName = "New Game Upgrade", menuName = "Cliche/Game Upgrade", order = 0)]
     public class GameUpgrade : ScriptableObject
     {
+        [SerializeField] 
+        protected GameUpgradeType upgradeType;
         [SerializeField, TextArea]
         private string description;
         [SerializeField]
@@ -31,14 +33,17 @@ namespace Progression
             GameManager.Instance.UpgradeUnlock(this, level);
         }
 
-        public virtual bool CheckRequirements()
+        public bool CheckRequirements()
         {
             if (!HasRequirements()) return true;
             var playerData = GameManager.Instance.CurrentPlayerData;
             var hasUpgrades = requiredUpgrades.Select(upgrade => playerData.GetUpgradeLevel(upgrade)).All(level => level > -1);
-            // var hasPublications = requiredPublications.Select(publication => playerData.Get)
+            var hasPublications = requiredPublications.Select(publication =>
+            {
+                return playerData.Papers.FindIndex(paper => paper.publicationName.Equals(publication.name));
+            }).All(index => index >= 0);
 
-            return hasUpgrades;
+            return hasUpgrades && hasPublications;
         }
 
         public bool HasRequirements() => requiredUpgrades.Count > 0;
@@ -62,7 +67,7 @@ namespace Progression
         public CurveHandler ValueCurve => valueCurve;
         public DataQualifier RequiredData => requiredData;
         public int UniqueCost => uniqueCost;
-
         protected List<GamePublication> RequiredPublications => requiredPublications;
+        public GameUpgradeType UpgradeType => upgradeType;
     }
 }

@@ -1,5 +1,7 @@
+using System.Collections;
 using Dialog;
 using UnityEngine;
+using Yarn;
 using Yarn.Unity;
 
 public class GameDialogController : MonoBehaviour
@@ -19,9 +21,26 @@ public class GameDialogController : MonoBehaviour
 
     public void StartDialog(GameDialog dialog)
     {
-        dialogueRunner.yarnProject = dialog.yarnProject;
-        dialogueRunner.startNode = dialog.startNode;
-        dialogueRunner.startAutomatically = true;
+        StartCoroutine(DialogueStart(dialog));
+    }
+
+    private IEnumerator DialogueStart(GameDialog dialog)
+    {
         dialogueRunner.gameObject.SetActive(true);
+        yield return null;
+        dialogueRunner.SetProject(dialog.yarnProject);
+        yield return null;
+        dialogueRunner.Dialogue.SetNode(dialog.startNode);
+        dialogueRunner.Stop();
+        yield return null;
+        try
+        {
+            dialogueRunner.StartDialogue(dialog.startNode);
+        }
+        catch (DialogueException exception)
+        {
+            Debug.LogWarning(exception.Message);
+            Debug.LogWarning(exception.HelpLink);
+        }
     }
 }

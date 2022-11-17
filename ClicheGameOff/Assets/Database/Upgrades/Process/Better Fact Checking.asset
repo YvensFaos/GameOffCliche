@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4faf0e884adc40bcb0e84025fdb1a5cb, type: 3}
   m_Name: Better Fact Checking
   m_EditorClassIdentifier: 
+  upgradeType: 1
   description: Improves the chance of identifying Bad Data.
   repeatableUpgrade: 1
   progressCurve:
@@ -136,5 +137,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  uniqueCost: 0
   requiredData: 1
   requiredUpgrades: []
+  requiredPublications: []

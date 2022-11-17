@@ -7,14 +7,14 @@ namespace Progression
     public class GameResourceUpgrade : GameUpgrade
     {
         [SerializeField]
-        private ResourceType type;
+        private ResourceType resourceType;
         [SerializeField]
         private float increaseBy;
         
         public override void UpgradeUnlock(int level)
         {
             var playerData = GameManager.Instance.CurrentPlayerData;
-            switch (type)
+            switch (resourceType)
             {
                 case ResourceType.HardDrive:
                     playerData.HardDriveSize += (int)increaseBy;

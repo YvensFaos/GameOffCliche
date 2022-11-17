@@ -1,4 +1,3 @@
-using System.Linq;
 using Gameplay.Skills;
 using UnityEngine;
 
@@ -16,16 +15,16 @@ namespace Progression
             base.UpgradeUnlock(level);
         }
 
-        /// <summary>
-        /// Skill Upgrades requires ANY of its requirements to be available. 
-        /// </summary>
-        /// <returns></returns>
-        public override bool CheckRequirements()
-        {
-            if (!HasRequirements()) return true;
-            
-            var playerData = GameManager.Instance.CurrentPlayerData;
-            return requiredUpgrades.Select(upgrade => playerData.GetUpgradeLevel(upgrade)).Any(level => level > -1);
-        }
+        // /// <summary>
+        // /// Skill Upgrades requires ANY of its requirements to be available. 
+        // /// </summary>
+        // /// <returns></returns>
+        // public override bool CheckRequirements()
+        // {
+        //     if (!HasRequirements()) return true;
+        //     
+        //     var playerData = GameManager.Instance.CurrentPlayerData;
+        //     return requiredUpgrades.Select(upgrade => playerData.GetUpgradeLevel(upgrade)).Any(level => level > -1);
+        // }
     }
 }

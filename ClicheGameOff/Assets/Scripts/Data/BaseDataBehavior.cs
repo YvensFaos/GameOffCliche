@@ -152,7 +152,7 @@ namespace Data
         private void Collect()
         {
             wasCollected = true;
-            GameManager.Instance.CurrentRun.CollectData(this);
+            GameManager.Instance.MainRunner.CollectData(this);
             StopAllCoroutines();
             var particlesTransform = particles.transform;
             particlesTransform.parent = transform.parent;

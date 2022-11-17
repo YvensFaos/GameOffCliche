@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0289652b79c434aa991cfed0a810d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   processUpgrades:
   - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
   upgradeButtonPrefab: {fileID: 1171116698923282715, guid: d571cb48250514fd2a36a2d3ec3d3b7c, type: 3}
@@ -3210,6 +3211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0289652b79c434aa991cfed0a810d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   processUpgrades:
   - {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
   - {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
@@ -13714,7 +13716,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485387021}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.47, z: -3.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13722,8 +13724,8 @@ Transform:
   - {fileID: 1199386937}
   - {fileID: 115522249}
   - {fileID: 1006984223}
-  m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_Father: {fileID: 1875098866}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1504129160
 GameObject:
@@ -13791,14 +13793,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504129160}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.47, z: -3.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 829527773}
-  m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_Father: {fileID: 1875098866}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506314406
 GameObject:
@@ -15882,9 +15884,9 @@ MonoBehaviour:
   constants: {fileID: 11400000, guid: 0fa3a4f6f3c124a4d909e539a1487629, type: 2}
   player: {fileID: 334081033}
   currentPlayerData:
-    goodData: 100
-    badData: 100
-    hardDriveSize: 100
+    goodData: 32
+    badData: 22
+    hardDriveSize: 10
     stunResistance: 0
     upgrades: []
     skills: []
@@ -15895,7 +15897,10 @@ MonoBehaviour:
     upgradeNames: []
     skillNames: []
   dialogController: {fileID: 607855234}
-  spawner: {fileID: 730358127}
+  mainSpawner: {fileID: 730358127}
+  upgradeUIControllers:
+  - {fileID: 580397594}
+  - {fileID: 68982196}
   gameUpgrades:
   - {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
   - {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
@@ -16149,6 +16154,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865302581}
   m_CullTransparentMesh: 1
+--- !u!1 &1875098865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1875098866}
+  m_Layer: 0
+  m_Name: Timelines
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1875098866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875098865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1485387023}
+  - {fileID: 1504129162}
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1913438559
 GameObject:
   m_ObjectHideFlags: 0

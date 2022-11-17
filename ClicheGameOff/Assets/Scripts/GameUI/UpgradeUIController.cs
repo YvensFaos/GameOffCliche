@@ -8,6 +8,8 @@ namespace GameUI
 {
     public class UpgradeUIController : MonoBehaviour
     {
+        [SerializeField] 
+        private GameUpgradeType type;
         [SerializeField]
         private List<GameUpgrade> processUpgrades;
         [SerializeField]
@@ -37,7 +39,9 @@ namespace GameUI
 
         public void AddUpgrade(GameUpgrade gameUpgrade)
         {
+            if (gameUpgrade.UpgradeType != type) return;
             processUpgrades.Add(gameUpgrade);
+            GenerateButtons();
         }
     }
 }

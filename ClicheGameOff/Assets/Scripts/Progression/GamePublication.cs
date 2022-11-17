@@ -20,15 +20,18 @@ namespace Progression
         {
             if (spawnerUnlocked != null)
             {
-                GameManager.Instance.Spawner.SetDataSpawnerList(spawnerUnlocked);
+                Debug.Log($"Change spawner to -> {spawnerUnlocked.name}");
+                GameManager.Instance.MainSpawner.SetDataSpawnerList(spawnerUnlocked);
             }
             upgradesToOpen.ForEach(upgradeLevelPair =>
             {
+                Debug.Log($"Upgrade -> {upgradeLevelPair.One.name}");
                 upgradeLevelPair.UpgradeUnlock();
             });
             upgradesToUnlock.ForEach(upgrade =>
             {
-                
+                Debug.Log($"Open Upgrade -> {upgrade.name}");
+                GameManager.Instance.OpenUpgrade(upgrade);
             });
         }
         
