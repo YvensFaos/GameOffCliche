@@ -215,5 +215,20 @@ namespace Data
         public DataType Type => type;
 
         public int HardDriveUse => hardDriveUse;
+
+        #region Skills Behaviour Related
+
+        public void StopAgentMovement()
+        {
+            this.navMeshAgent.speed = 0.0f;
+            this.navMeshAgent.velocity = Vector3.zero;
+        }
+
+        public void ReturnAgentMovement()
+        {
+            this.navMeshAgent.speed = this.regularSpeed;
+        }
+
+        #endregion
     }
 }

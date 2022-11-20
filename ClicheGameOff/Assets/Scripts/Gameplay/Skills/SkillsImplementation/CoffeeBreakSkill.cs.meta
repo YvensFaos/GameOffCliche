@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d89266b8c5e0c8e47adfe1a712c8a4fb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - skill: {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}
+  - coffeeBreakObject: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
