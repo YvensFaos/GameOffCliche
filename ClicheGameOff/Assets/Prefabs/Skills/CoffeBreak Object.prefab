@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3369733f01373e744af27ed2b388b406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coffeeBreakParticles: {fileID: 0}
+  coffeeBreakParticles: {fileID: 5783212767063893822, guid: e977d202e7a094597a70494687a88237, type: 3}
