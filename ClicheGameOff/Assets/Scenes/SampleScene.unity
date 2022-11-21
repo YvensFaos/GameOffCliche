@@ -351,6 +351,7 @@ MonoBehaviour:
   type: 0
   processUpgrades:
   - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
+  - {fileID: 11400000, guid: 3663e80b9a7814742baac5ceaf288d3c, type: 2}
   upgradeButtonPrefab: {fileID: 1171116698923282715, guid: d571cb48250514fd2a36a2d3ec3d3b7c, type: 3}
   processButtonParent: {fileID: 1732179259}
   processButtons: []
@@ -3382,7 +3383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb28176c2603b441cadf488c09b8029c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runTime: 10
+  runTime: 30
 --- !u!4 &593325119
 Transform:
   m_ObjectHideFlags: 0
@@ -4164,6 +4165,7 @@ MonoBehaviour:
   spawnParticles: {fileID: 4301203614384923183, guid: 30e88e8747abd4e55a804d1bd4df633c, type: 3}
   particlesYOffset: 0.1
   currentData: []
+  gameplayEventsSo: {fileID: 11400000, guid: 4ed3ad1a2e4e43147b89843819eead3c, type: 2}
 --- !u!4 &714002088
 Transform:
   m_ObjectHideFlags: 0
@@ -4354,6 +4356,7 @@ MonoBehaviour:
   spawnParticles: {fileID: 4301203614384923183, guid: 30e88e8747abd4e55a804d1bd4df633c, type: 3}
   particlesYOffset: 0.1
   currentData: []
+  gameplayEventsSo: {fileID: 11400000, guid: 4ed3ad1a2e4e43147b89843819eead3c, type: 2}
 --- !u!4 &730358128
 Transform:
   m_ObjectHideFlags: 0
@@ -15906,8 +15909,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
   - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
   - {fileID: 11400000, guid: 9e25e02665722472a98553a53585709e, type: 2}
+  - {fileID: 11400000, guid: 3663e80b9a7814742baac5ceaf288d3c, type: 2}
   gameSkills:
   - {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
+  - {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}
   gamePublications:
   - {fileID: 11400000, guid: faff9302aa69b48b79485f83b438ca61, type: 2}
 --- !u!4 &1851474783
@@ -17621,6 +17626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2136122483}
   - component: {fileID: 2136122484}
+  - component: {fileID: 2136122485}
   m_Layer: 0
   m_Name: PlayerSkills
   m_TagString: Untagged
@@ -17658,6 +17664,22 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
   firewallObject: {fileID: 3085505308537069626, guid: d7aa1929d51b84107b5537cbbde2a1d0, type: 3}
   firewallDuration: 4
+--- !u!114 &2136122485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136122482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89266b8c5e0c8e47adfe1a712c8a4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}
+  coffeeBreakObject: {fileID: 4871682802142837813, guid: a3319cf11de72424297b514e9f512c8c, type: 3}
+  coffeeBreakDuration: 10
+  gameplayEventsSo: {fileID: 11400000, guid: 4ed3ad1a2e4e43147b89843819eead3c, type: 2}
 --- !u!1 &2142827248
 GameObject:
   m_ObjectHideFlags: 0
