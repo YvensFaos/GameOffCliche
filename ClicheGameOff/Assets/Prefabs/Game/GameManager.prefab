@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7028611170093061401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7028611170093061403}
+  - component: {fileID: 7028611170093061402}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7028611170093061403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028611170093061401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7028611170093061402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028611170093061401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1afb57de13d4abaab5f6c98f719e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constants: {fileID: 11400000, guid: 0fa3a4f6f3c124a4d909e539a1487629, type: 2}
+  player: {fileID: 0}
+  currentPlayerData:
+    goodData: 32
+    badData: 22
+    hardDriveSize: 10
+    stunResistance: 0
+    upgrades: []
+    skills: []
+    papers: []
+    publicationProgress: 0
+    goodDataUsedSoFar: 0
+    badDataUsedSoFar: 0
+    upgradeNames: []
+    skillNames: []
+  dialogController: {fileID: 0}
+  mainSpawner: {fileID: 0}
+  upgradeUIControllers:
+  - {fileID: 0}
+  - {fileID: 0}
+  gameUpgrades:
+  - {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
+  - {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
+  - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
+  - {fileID: 11400000, guid: 9e25e02665722472a98553a53585709e, type: 2}
+  - {fileID: 11400000, guid: 3663e80b9a7814742baac5ceaf288d3c, type: 2}
+  gameSkills:
+  - {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
+  - {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}
+  gamePublications:
+  - {fileID: 11400000, guid: faff9302aa69b48b79485f83b438ca61, type: 2}
