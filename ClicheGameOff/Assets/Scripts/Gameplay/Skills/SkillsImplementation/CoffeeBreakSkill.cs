@@ -1,32 +1,32 @@
 using UnityEngine;
 using DG.Tweening;
-using Gameplay.Events;
+using Events;
 
 namespace Gameplay.Skills.SkillsImplementation
 {
     public class CoffeeBreakSkill : PlayerSkill
     {
         [Header("Skill Settings")]
-        [SerializeField] private CoffeeBreakSkillBehavior _coffeeBreakObject;
-        [SerializeField] private float _coffeeBreakDuration;
+        [SerializeField] private CoffeeBreakSkillBehavior coffeeBreakObject;
+        [SerializeField] private float coffeeBreakDuration;
         
         [Header("Scriptable Objects Refs")]
-        [SerializeField] private GameplayEventsSO _gameplayEventsSO;
+        [SerializeField] private GameplayEventsSO gameplayEventsSo;
 
-        private float _timeSinceEffectStarted;
+        private float timeSinceEffectStarted;
 
         protected override void SkillEffect(in PlayerController playerController)
         {
             // Starts listening for new data created
-            this._gameplayEventsSO.OnNewDataCreated += this.HandleOnNewDataCreated;
+            gameplayEventsSo.OnNewDataCreated += HandleOnNewDataCreated;
 
-            this._timeSinceEffectStarted = Time.time;
+            timeSinceEffectStarted = Time.time;
 
             // Pause all spawned data movement
             GameManager.Instance.MainSpawner.GetCurrentDataList.ForEach(spawnedData => 
             {
                 spawnedData.StopAgentMovement();
-                DOVirtual.DelayedCall(this._coffeeBreakDuration, () => 
+                DOVirtual.DelayedCall(coffeeBreakDuration, () => 
                 {
                     if(spawnedData)
                         spawnedData.ReturnAgentMovement();
@@ -34,25 +34,27 @@ namespace Gameplay.Skills.SkillsImplementation
             });
 
             //Spawn VFX (global or for each data on scene?)
-            CoffeeBreakSkillBehavior coffeBreakObject = Instantiate(this._coffeeBreakObject);
-            coffeBreakObject.Initialize(this._coffeeBreakDuration);
-            Destroy(coffeBreakObject.gameObject, this._coffeeBreakDuration);
+            var breakObject = Instantiate(coffeeBreakObject);
+            breakObject.Initialize(coffeeBreakDuration);
+            Destroy(breakObject.gameObject, coffeeBreakDuration);
 
             //Stop listening for new data created
-            DOVirtual.DelayedCall(this._coffeeBreakDuration, () => 
+            DOVirtual.DelayedCall(coffeeBreakDuration, () => 
             {
-                this._gameplayEventsSO.OnNewDataCreated -= this.HandleOnNewDataCreated;
+                gameplayEventsSo.OnNewDataCreated -= HandleOnNewDataCreated;
             });        
         }
 
         private void HandleOnNewDataCreated(Data.BaseDataBehavior newData)
         {
-            float elapsedCooldownTime = Time.time - this._timeSinceEffectStarted;
+            var elapsedCooldownTime = Time.time - timeSinceEffectStarted;
             newData.StopAgentMovement();
-            DOVirtual.DelayedCall(Mathf.Max(0.0f, this._coffeeBreakDuration - elapsedCooldownTime) , () => 
+            DOVirtual.DelayedCall(Mathf.Max(0.0f, coffeeBreakDuration - elapsedCooldownTime) , () => 
             {
-                if(newData)
+                if (newData)
+                {
                     newData.ReturnAgentMovement();
+                }
             });
         }
     }

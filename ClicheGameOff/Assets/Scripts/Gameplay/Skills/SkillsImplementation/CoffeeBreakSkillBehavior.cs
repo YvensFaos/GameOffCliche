@@ -6,11 +6,11 @@ namespace Gameplay.Skills.SkillsImplementation
 {
     public class CoffeeBreakSkillBehavior : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem _coffeeBreakParticles;
+        [SerializeField] private ParticleSystem coffeeBreakParticles;
 
         public void Initialize(float coffeeBreakDuration)
         {
-            if(!this._coffeeBreakParticles)
+            if(!coffeeBreakParticles)
                 Debug.LogWarning($"CoffeeBreakSkillBehavior has no particle system attached");
         }
     }

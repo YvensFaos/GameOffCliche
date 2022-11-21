@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Data;
+using Events;
 using UnityEngine;
 using Utils;
-using Gameplay.Events;
 using Random = UnityEngine.Random;
 
 namespace Gameplay
@@ -28,9 +28,7 @@ namespace Gameplay
         [SerializeField] private List<BaseDataBehavior> currentData;
 
         [Header("Scriptable Objects Refs")]
-        [SerializeField] private GameplayEventsSO _gameplayEventsSO;
-
-        public List<BaseDataBehavior> GetCurrentDataList => this.currentData;
+        [SerializeField] private GameplayEventsSO gameplayEventsSo;
 
         private void Start()
         {
@@ -103,12 +101,13 @@ namespace Gameplay
                     data.Initialize(walkableArea, SpawnerList.GetRandomDataTypeFromList());
                     currentData.Add(data);
 
-                    this._gameplayEventsSO.InvokeOnNewDataCreated(data);
+                    gameplayEventsSo.InvokeOnNewDataCreated(data);
                 }
                 yield return new WaitForSeconds(spawnTime);
             }
         }
 
         public DataSpawnerList SpawnerList => spawnerList;
+        public List<BaseDataBehavior> GetCurrentDataList => currentData;
     }
 }
