@@ -16,8 +16,8 @@ namespace Gameplay
     
     public class DataMinerRunController : MonoBehaviour
     {
-        [SerializeField]
-        private float runTime;
+        // [SerializeField]
+        // private float runTime;
 
         private event RunTickDelegate RunTickEvents;
         private event CollectDataDelegate CollectDataEvents;
@@ -57,6 +57,7 @@ namespace Gameplay
             spawner.StartSpawner();
             var spawnerList = spawner.SpawnerList;
             currentTime = spawnerList.runLength;
+            var runTime = spawnerList.runLength;
             var restTime = spawnerList.RestTime;
             
             while (currentTime >= 0)
@@ -156,7 +157,7 @@ namespace Gameplay
                     //Starts with 0 to avoid branching.
                     collectedData.Add(data.Type, 0);
                 }
-                collectedData[data.Type]++;
+                collectedData[data.Type] += data.HardDriveUse;
             }
             else
             {

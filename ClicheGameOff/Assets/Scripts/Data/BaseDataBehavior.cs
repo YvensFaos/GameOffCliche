@@ -166,6 +166,7 @@ namespace Data
         {
             if (CollisionUtils.CheckLayerCollision(collisionLayer, collision.gameObject))
             {
+                Debug.Log("ME ENTER");
                 ToggleMining(true);
             }
         }
@@ -174,6 +175,7 @@ namespace Data
         {
             if (CollisionUtils.CheckLayerCollision(collisionLayer, collision.gameObject))
             {
+                Debug.Log("ME EXIT");
                 ToggleMining(false);
             }
         }
