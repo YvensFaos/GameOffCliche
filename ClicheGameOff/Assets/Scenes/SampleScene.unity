@@ -1010,6 +1010,9 @@ MonoBehaviour:
   spawnerList: {fileID: 11400000, guid: 7da1f4934f9ca452f8535b06e53106ba, type: 2}
   spawnParticles: {fileID: 4301203614384923183, guid: 30e88e8747abd4e55a804d1bd4df633c, type: 3}
   particlesYOffset: 0.1
+  spawnAnimationTimer: 0.9
+  destroyAnimationTimer: 2
+  destroyAnimationOffset: -2
   currentData: []
   gameplayEventsSo: {fileID: 11400000, guid: 4ed3ad1a2e4e43147b89843819eead3c, type: 2}
 --- !u!4 &714002088
@@ -10668,6 +10671,18 @@ PrefabInstance:
       propertyPath: walkableArea
       value: 
       objectReference: {fileID: 1833081376}
+    - target: {fileID: 6644843560611159941, guid: 3f07f2d79ef7d405996b347073223b6c, type: 3}
+      propertyPath: spawnAnimationTimer
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644843560611159941, guid: 3f07f2d79ef7d405996b347073223b6c, type: 3}
+      propertyPath: destroyAnimationTimer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644843560611159941, guid: 3f07f2d79ef7d405996b347073223b6c, type: 3}
+      propertyPath: destroyAnimationOffset
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 6644843560611159962, guid: 3f07f2d79ef7d405996b347073223b6c, type: 3}
       propertyPath: m_RootOrder
       value: 10

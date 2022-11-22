@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Data;
+using DG.Tweening;
 using Events;
 using UnityEngine;
 using Utils;
@@ -23,8 +24,11 @@ namespace Gameplay
         [SerializeField] private DataSpawnerList spawnerList;
         [SerializeField] private ParticleSystem spawnParticles;
         [SerializeField] private float particlesYOffset;
-        
-        [Header("Run Data")]
+
+        [Header("Run Data")] 
+        [SerializeField] private float spawnAnimationTimer = 0.5f;
+        [SerializeField] private float destroyAnimationTimer = 0.5f;
+        [SerializeField] private float destroyAnimationOffset = -10.0f;
         [SerializeField] private List<BaseDataBehavior> currentData;
 
         [Header("Scriptable Objects Refs")]
@@ -68,8 +72,10 @@ namespace Gameplay
             //Kill uncollected data behaviors
             foreach (var dataBehavior in currentData.Where(dataBehavior => dataBehavior != null))
             {
-                //TODO change to use animations
-                Destroy(dataBehavior.gameObject, 0.1f);
+                dataBehavior.transform.DOMoveY(destroyAnimationOffset - dataBehavior.transform.localScale.y / 2.0f, destroyAnimationTimer).OnComplete(() =>
+                {
+                    Destroy(dataBehavior.gameObject, 0.25f);
+                });
             }
         }
         
@@ -86,6 +92,7 @@ namespace Gameplay
                 {
                     var position = RandomPointUtils.GetRandomPointWithBox(walkableArea);
                     position = TransformUtils.GetPointOnTheGround(position, floorMask);
+                    position = TransformUtils.GetPointOnTheNavMesh(position);
                     positionPlaces.Add(position);
                     position.y += particlesYOffset;
                     var particles = Instantiate(spawnParticles, position, Quaternion.identity, selfTransform);
@@ -95,13 +102,20 @@ namespace Gameplay
                 
                 for (var i = 0; i < spawnNumber; i++)
                 {
-                    var data = Instantiate(RandomHelper<BaseDataBehavior>.GetRandomFromList(SpawnerList.dataBehaviors),
-                        positionPlaces[i], Quaternion.identity, selfTransform);
-                    //TODO change to use animations
+                    var dataToInstantiate = RandomHelper<BaseDataBehavior>.GetRandomFromList(SpawnerList.dataBehaviors);
+                    var positionUnderground = positionPlaces[i];
+                    positionUnderground.y -= dataToInstantiate.DataHeight;
+                        
+                    var data = Instantiate(dataToInstantiate,
+                        positionUnderground, Quaternion.identity, selfTransform);
                     data.Initialize(walkableArea, SpawnerList.GetRandomDataTypeFromList());
                     currentData.Add(data);
 
-                    gameplayEventsSo.InvokeOnNewDataCreated(data);
+                    data.transform.DOMoveY(positionPlaces[i].y + dataToInstantiate.transform.localScale.y / 2.0f, spawnAnimationTimer).OnComplete(() =>
+                    {
+                        data.StartBehavior();
+                        gameplayEventsSo.InvokeOnNewDataCreated(data);
+                    });
                 }
                 yield return new WaitForSeconds(spawnTime);
             }

@@ -20,6 +20,10 @@ PrefabInstance:
       value: Bigger Data Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
+      propertyPath: dataHeight
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: hardDriveUse
       value: 3
       objectReference: {fileID: 0}

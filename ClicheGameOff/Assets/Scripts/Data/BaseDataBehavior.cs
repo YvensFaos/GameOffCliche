@@ -17,6 +17,7 @@ namespace Data
         [SerializeField] private float maximalScale = 1.0f;
         [SerializeField] private float startCurveValue = 0.0f;
         [SerializeField] private float curveStepFactor = 0.1f;
+        [SerializeField] private float dataHeight;
         [SerializeField] private LayerMask collisionLayer;
         
         [Header("Behavior")]
@@ -75,16 +76,21 @@ namespace Data
             
             //Calculate material type given the player knowledge
             var upgrade = materials.Find(pair => pair.One.RequiredData == type.qualifier);
-            if (upgrade != null)
-            {
-                var chance = GameManager.Instance.GetCurrentUpgradeValue(upgrade.One);
-                //Try to change the material to be the specific material for this upgrade
-                if (RandomChanceUtils.GetChance(chance))
-                {
-                    selfRenderer.material = upgrade.Two;
-                }
-            }
+            if (upgrade == null) return;
             
+            var chance = GameManager.Instance.GetCurrentUpgradeValue(upgrade.One);
+            //Try to change the material to be the specific material for this upgrade
+            if (RandomChanceUtils.GetChance(chance))
+            {
+                selfRenderer.material = upgrade.Two;
+            }
+
+            navMeshAgent.enabled = false;
+        }
+
+        public void StartBehavior()
+        {
+            navMeshAgent.enabled = true;
             StartCoroutine(DataCoroutine());
         }
         
@@ -164,6 +170,8 @@ namespace Data
         public DataType Type => type;
 
         public int HardDriveUse => hardDriveUse;
+
+        public float DataHeight => dataHeight;
 
         #region Skills Behaviour Related
 

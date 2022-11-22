@@ -190,7 +190,7 @@ MonoBehaviour:
   maximalScale: 1
   startCurveValue: 0
   curveStepFactor: 0.01
-  canGrowBack: 0
+  dataHeight: 5
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -202,7 +202,6 @@ MonoBehaviour:
   actTimerFluctuation: 0.3
   stopDistance: 0.1
   type: {fileID: 0}
-  minedSpeed: 0.5
   regularSpeed: 4
   hardDriveUse: 1
   navMeshAgent: {fileID: 1686528903558524880}
