@@ -22,7 +22,7 @@ namespace Gameplay
         private void Update()
         {
             var ray = mainCamera.ScreenPointToRay (Input.mousePosition);
-            if (Physics.Raycast (ray, out RaycastHit hit, 100, floorMask))
+            if (Physics.Raycast (ray, out var hit, 100, floorMask))
             {
                 lastValidHit = hit.point;
                 inContactWithTheGround = true;

@@ -17,7 +17,6 @@ namespace Data
         [SerializeField] private float maximalScale = 1.0f;
         [SerializeField] private float startCurveValue = 0.0f;
         [SerializeField] private float curveStepFactor = 0.1f;
-        [SerializeField] private bool canGrowBack;
         [SerializeField] private LayerMask collisionLayer;
         
         [Header("Behavior")]
@@ -30,7 +29,6 @@ namespace Data
 
         [Header("Attributes")] 
         [SerializeField] private DataType type;
-        [SerializeField] private float minedSpeed;
         [SerializeField] private float regularSpeed;
         [SerializeField] private int hardDriveUse = 1;
         
@@ -125,30 +123,6 @@ namespace Data
             yield return new WaitUntil(() => navMeshAgent != null && navMeshAgent.remainingDistance <= stopDistance);
         }
 
-        private void Update()
-        {
-            if (wasCollected || stuck) return;
-            
-            if (beingMined)
-            {
-                //Checking if it shrink down to the minimal
-                if (Shrink())
-                {
-                    //Collect data!
-                    Collect();
-                }
-            }
-            else
-            {
-                //If can grow back, then proceed on getting back to its normal size
-                if (canGrowBack)
-                {
-                    //Grow back to its original size
-                    Grown();
-                }
-            }
-        }
-
         private void Collect()
         {
             wasCollected = true;
@@ -162,50 +136,23 @@ namespace Data
             Destroy(gameObject);
         }
 
-        private void OnTriggerEnter(Collider collision)
+        private void OnTriggerStay(Collider collision)
         {
-            if (CollisionUtils.CheckLayerCollision(collisionLayer, collision.gameObject))
-            {
-                Debug.Log("ME ENTER");
-                ToggleMining(true);
-            }
-        }
-        
-        private void OnTriggerExit(Collider collision)
-        {
-            if (CollisionUtils.CheckLayerCollision(collisionLayer, collision.gameObject))
-            {
-                Debug.Log("ME EXIT");
-                ToggleMining(false);
-            }
+            if (!CollisionUtils.CheckLayerCollision(collisionLayer, collision.gameObject)) return;
+            Shrink();
         }
 
-        private bool Shrink()
+        private void Shrink()
         {
-            if (!(currentScaleFactor > minimalScale)) return currentScaleFactor <= minimalScale;
-            
             //The curve goes from 0 (regular size) to 1 (minimal size)
             scaleTimeStamp = Mathf.Clamp(scaleTimeStamp + curveStepFactor * (100.0f * Time.deltaTime), minimalScale, maximalScale);
             currentScaleFactor = Mathf.Clamp( scaleCurve.Evaluate(scaleTimeStamp), minimalScale, maximalScale);
             UpdateSize();
 
-            return currentScaleFactor <= minimalScale;
-        }
-
-        private void Grown()
-        {
-            if (!(currentScaleFactor < maximalScale)) return;
-            
-            //The curve goes from 0 (regular size) to 1 (minimal size)
-            scaleTimeStamp = Mathf.Clamp(scaleTimeStamp - curveStepFactor, minimalScale, maximalScale);
-            currentScaleFactor = Mathf.Clamp( scaleCurve.Evaluate(scaleTimeStamp), minimalScale, maximalScale);
-            UpdateSize();
-        }
-
-        private void ToggleMining(bool mining)
-        {
-            beingMined = mining;
-            navMeshAgent.speed = (beingMined) ? regularSpeed : minedSpeed;
+            if (currentScaleFactor <= minimalScale)
+            {
+                Collect();
+            }
         }
 
         private void UpdateSize()
