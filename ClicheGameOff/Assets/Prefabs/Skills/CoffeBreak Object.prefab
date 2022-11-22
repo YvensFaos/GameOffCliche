@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coffeeBreakParticles: {fileID: 5783212767063893822, guid: e977d202e7a094597a70494687a88237, type: 3}
+  coffeePosition: {x: 0, y: 0.94, z: 1.13}

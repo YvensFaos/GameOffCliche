@@ -1,17 +1,17 @@
-using Data;
 using UnityEngine;
-using Utils;
 
 namespace Gameplay.Skills.SkillsImplementation
 {
     public class CoffeeBreakSkillBehavior : MonoBehaviour
     {
         [SerializeField] private ParticleSystem coffeeBreakParticles;
+        [SerializeField] private Vector3 coffeePosition;
 
         public void Initialize(float coffeeBreakDuration)
         {
-            if(!coffeeBreakParticles)
-                Debug.LogWarning($"CoffeeBreakSkillBehavior has no particle system attached");
+            var coffeeParticles = Instantiate(coffeeBreakParticles, coffeePosition, Quaternion.identity);
+            coffeeParticles.Play(true);
+            Destroy(coffeeParticles.gameObject, coffeeBreakDuration);
         }
     }
 }
