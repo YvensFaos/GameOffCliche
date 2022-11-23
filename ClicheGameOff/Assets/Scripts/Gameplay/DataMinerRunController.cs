@@ -71,11 +71,10 @@ namespace Gameplay
                 
                 if (currentTime < restTime)
                 {
-                    spawner.StopSpawner();
+                    spawner.StopSpawner(false);
                 }
             }
-            spawner.KillRemainingData();
-            
+
             runGoodData = 0;
             runBadData = 0;
             
@@ -98,6 +97,7 @@ namespace Gameplay
             }
             runTextResults = stringBuilder.ToString();
             GameManager.Instance.ManagePlayerCollectedData(runGoodData, runBadData);
+            spawner.KillRemainingData();
             FinishRunEvents?.Invoke();
         }
 

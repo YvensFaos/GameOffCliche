@@ -16,15 +16,18 @@ namespace GameUI
         [SerializeField] private Button startRunButton;
         [SerializeField] private GameObject finishRunPanel;
         [SerializeField] private TextMeshProUGUI finishRunTextResults;
+        [SerializeField] private Animator animator;
         
         private DataMinerRunController dataMinerRunController;
         
         private TweenerCore<float, float, FloatOptions> hardDriveFillerTween;
+        private static readonly int ShowResult = Animator.StringToHash("ShowResult");
+        private static readonly int HideResult = Animator.StringToHash("HideResult");
 
         public void StartRun(DataSpawner spawner)
         {
             ToggleStartButton(false);
-            ToggleResultPanel(false);
+            finishRunPanel.SetActive(false);
             dataMinerRunController = GameManager.Instance.MainRunner;
             timeFillSprite.fillAmount = 0.0f;
             hardDriveFillSprite.fillAmount = 0.0f;
@@ -58,12 +61,16 @@ namespace GameUI
             dataMinerRunController.RemoveCollectDataEvent(CollectData);
 
             var results = dataMinerRunController.GetResults();
-
             hardDriveFillSprite.DOFillAmount(0.0f, 1.0f);
             finishRunTextResults.text = results;
         }
         
         private void ToggleStartButton(bool toggle) => startRunButton.gameObject.SetActive(toggle);
-        private void ToggleResultPanel(bool toggle) => finishRunPanel.gameObject.SetActive(toggle);
+
+        private void ToggleResultPanel(bool toggle)
+        {
+            animator.SetTrigger(toggle ? ShowResult : HideResult);
+        }
+
     }
 }

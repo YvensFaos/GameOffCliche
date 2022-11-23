@@ -133,13 +133,19 @@ namespace Data
         {
             wasCollected = true;
             GameManager.Instance.MainRunner.CollectData(this);
-            StopAllCoroutines();
+            DisableData();
             var particlesTransform = particles.transform;
             particlesTransform.parent = transform.parent;
             particlesTransform.localScale = Vector3.one;
             particles.Stop();
 
             Destroy(gameObject);
+        }
+
+        public void DisableData()
+        {
+            StopAllCoroutines();
+            navMeshAgent.enabled = false;
         }
 
         private void OnTriggerStay(Collider collision)

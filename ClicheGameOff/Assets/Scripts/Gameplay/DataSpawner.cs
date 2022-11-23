@@ -72,6 +72,7 @@ namespace Gameplay
             //Kill uncollected data behaviors
             foreach (var dataBehavior in currentData.Where(dataBehavior => dataBehavior != null))
             {
+                dataBehavior.DisableData();
                 dataBehavior.transform.DOMoveY(destroyAnimationOffset - dataBehavior.transform.localScale.y / 2.0f, destroyAnimationTimer).OnComplete(() =>
                 {
                     Destroy(dataBehavior.gameObject, 0.25f);
