@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 473374891061087753}
   - component: {fileID: 473374891061087752}
   - component: {fileID: 473374891061087755}
+  - component: {fileID: 2928273454144746789}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -406,6 +407,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2928273454144746789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473374891061087749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &473374891201768046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1187,7 @@ GameObject:
   - component: {fileID: 473374892418507388}
   - component: {fileID: 473374892418507391}
   - component: {fileID: 473374892418507390}
+  - component: {fileID: 7601154205841817010}
   m_Layer: 5
   m_Name: Practice Button
   m_TagString: Untagged
@@ -1305,6 +1322,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &7601154205841817010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473374892418507384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &473374892431552259
 GameObject:
   m_ObjectHideFlags: 0

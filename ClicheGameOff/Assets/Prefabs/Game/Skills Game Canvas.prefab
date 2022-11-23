@@ -112,9 +112,9 @@ GameObject:
   - component: {fileID: 2322975528230011826}
   - component: {fileID: 2322975528230011854}
   - component: {fileID: 2322975528230011855}
-  - component: {fileID: 2322975528230011852}
   - component: {fileID: 2322975528230011853}
   - component: {fileID: 2322975528230011849}
+  - component: {fileID: 5351017617843737509}
   m_Layer: 5
   m_Name: Player Skill Panel
   m_TagString: Untagged
@@ -163,15 +163,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cfde41a3702ea4bbca7dcbe524dd6a54, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 8548d034b532fc64f9e26ecfe5f35ff7, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -179,22 +179,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &2322975528230011852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2322975528230011827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
+  m_PixelsPerUnitMultiplier: 2.84
 --- !u!114 &2322975528230011853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,3 +223,18 @@ MonoBehaviour:
   skillButtonPrefab: {fileID: 8730700266920474041, guid: 1d5480289a1714980b715f4bac28abcd, type: 3}
   skillButtonParent: {fileID: 2322975528230011826}
   skillButtons: []
+--- !u!114 &5351017617843737509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322975528230011827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.34901962}
+  m_EffectDistance: {x: -4, y: -4}
+  m_UseGraphicAlpha: 1
