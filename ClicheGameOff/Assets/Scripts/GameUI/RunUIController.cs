@@ -15,6 +15,7 @@ namespace GameUI
         [SerializeField] private Image hardDriveFillSprite;
         [SerializeField] private Button startRunButton;
         [SerializeField] private GameObject finishRunPanel;
+        [SerializeField] private GameObject helperText;
         [SerializeField] private TextMeshProUGUI finishRunTextResults;
         [SerializeField] private Animator animator;
 
@@ -29,6 +30,7 @@ namespace GameUI
         {
             ToggleStartButton(false);
             finishRunPanel.SetActive(false);
+            helperText.SetActive(true);
             dataMinerRunController = GameManager.Instance.MainRunner;
             timeFillSprite.fillAmount = 0.0f;
             
@@ -60,6 +62,7 @@ namespace GameUI
         {
             ToggleStartButton(true);
             ToggleResultPanel(true);
+            helperText.SetActive(false);
             dataMinerRunController.RemoveTickEvent(RunUITick);
             dataMinerRunController.RemoveFinishEvent(FinishUIRun);
             dataMinerRunController.RemoveCollectDataEvent(CollectData);

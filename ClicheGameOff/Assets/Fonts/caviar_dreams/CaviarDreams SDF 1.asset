@@ -53,7 +53,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: -0.16
+    - _FaceDilate: 0.19
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -67,12 +67,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.116
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.87525
-    - _ScaleRatioC: 0.87525
+    - _ScaleRatioB: 0.56025
+    - _ScaleRatioC: 0.56025
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -162,11 +162,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: CaviarDreams SDF
+  m_Name: CaviarDreams SDF 1
   m_EditorClassIdentifier: 
-  hashCode: -1014791437
+  hashCode: -1301278750
   material: {fileID: -6313035057222370215}
-  materialHashCode: -2087354765
+  materialHashCode: -188130046
   m_Version: 1.1.0
   m_SourceFontFileGUID: b8978b6449229421d8926ef256d96eaa
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: b8978b6449229421d8926ef256d96eaa, type: 3}
