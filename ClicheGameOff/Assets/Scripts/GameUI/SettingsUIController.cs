@@ -9,6 +9,7 @@ namespace GameUI
         {
             //Delete the save
             GameManager.DeleteSave();
+            GameManager.Instance.CreateNewSave();
             //Reload the scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

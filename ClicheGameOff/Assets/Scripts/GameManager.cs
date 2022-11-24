@@ -72,12 +72,7 @@ public class GameManager : MonoBehaviour
         var playerPrefsData = PlayerPrefs.GetString(PlayerPrefString);
         if (playerPrefsData is null or "")
         {
-            currentPlayerData = new PlayerData();
-            if (currentPlayerData.HardDriveSize == 0)
-            {
-                currentPlayerData.HardDriveSize = constants.initialHardDriveSize;
-            }
-            
+            CreateNewSave();
             //First run
             dialogController.StartTutorial();
         }
@@ -86,6 +81,16 @@ public class GameManager : MonoBehaviour
             currentPlayerData = PlayerData.InitializeFromJson(playerPrefsData);
             currentPlayerData.UnlockCurrentProgress();
         }
+    }
+
+    public void CreateNewSave()
+    {
+        currentPlayerData = new PlayerData();
+        if (currentPlayerData.HardDriveSize == 0)
+        {
+            currentPlayerData.HardDriveSize = constants.initialHardDriveSize;
+        }
+        Save();
     }
 
     private void Save()
