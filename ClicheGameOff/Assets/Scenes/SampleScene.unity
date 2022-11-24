@@ -9861,6 +9861,26 @@ PrefabInstance:
       propertyPath: objectsToDisable.Array.data[1]
       value: 
       objectReference: {fileID: 2093710884}
+    - target: {fileID: 1399901077890690584, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901077890690584, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901077890690584, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901077890690584, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901077890690584, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1399901077953870793, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
@@ -9869,6 +9889,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1944455204}
+    - target: {fileID: 1399901078784130041, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078784130041, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078784130041, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078784130041, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078784130041, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1399901078843217211, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
       propertyPath: m_Name
       value: Menu Game Canvas
@@ -9957,14 +9997,74 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1399901078862906257, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078862906257, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078862906257, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078862906257, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078862906257, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1399901078862906258, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1944455204}
+    - target: {fileID: 1399901078945670494, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078945670494, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078945670494, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078945670494, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901078945670494, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1399901078945670495, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1575232623}
+    - target: {fileID: 1399901079644360629, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901079644360629, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901079644360629, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901079644360629, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399901079644360629, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1399901079644360630, guid: 4c48571c52b474e6f8226e0e10c78163, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 

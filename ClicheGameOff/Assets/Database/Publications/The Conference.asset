@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc9b0e014cf84facbd9cceddb714d0f6, type: 3}
-  m_Name: My First Paper
+  m_Name: The Conference
   m_EditorClassIdentifier: 
   order: 1
-  requiredContentAmount: 30
+  requiredContentAmount: 50
   contentCostPerTick: 5
-  spawnerUnlocked: {fileID: 11400000, guid: f1aed2ea35623471b836e8515f36a1c9, type: 2}
+  spawnerUnlocked: {fileID: 11400000, guid: 5a74dbc8551e247a380594c12f9cd8de, type: 2}
   upgradesToOpen: []
   upgradesToUnlock:
-  - {fileID: 11400000, guid: 9e25e02665722472a98553a53585709e, type: 2}
+  - {fileID: 11400000, guid: 71bc06c4b6a3843efb4481bf934350e7, type: 2}
   dialog: {fileID: 11400000, guid: 324de43e1e94e43d7a5ba005cbdf5c98, type: 2}
