@@ -192,6 +192,15 @@ namespace Data
             this.navMeshAgent.speed = this.regularSpeed;
         }
 
+        public void RevealDataType()
+        {
+            //Calculate material type given the player knowledge
+            var upgrade = materials.Find(pair => pair.One.RequiredData == type.qualifier);
+            if (upgrade == null) return;
+
+            selfRenderer.material = upgrade.Two;
+        }
+
         #endregion
     }
 }
