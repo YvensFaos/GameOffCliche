@@ -10918,6 +10918,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 607855234}
     - target: {fileID: 7028611170093061402, guid: d8183c5296aa0486fabbf6e86a5ada07, type: 3}
+      propertyPath: gameSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028611170093061402, guid: d8183c5296aa0486fabbf6e86a5ada07, type: 3}
+      propertyPath: gameUpgrades.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028611170093061402, guid: d8183c5296aa0486fabbf6e86a5ada07, type: 3}
+      propertyPath: gameSkills.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}
+    - target: {fileID: 7028611170093061402, guid: d8183c5296aa0486fabbf6e86a5ada07, type: 3}
+      propertyPath: gameSkills.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3599ffecd4ef064a92c498bd83d9dc5, type: 2}
+    - target: {fileID: 7028611170093061402, guid: d8183c5296aa0486fabbf6e86a5ada07, type: 3}
+      propertyPath: gameUpgrades.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a793f6c8e5e07a469cf71d051ec2577, type: 2}
+    - target: {fileID: 7028611170093061402, guid: d8183c5296aa0486fabbf6e86a5ada07, type: 3}
       propertyPath: upgradeUIControllers.Array.data[0]
       value: 
       objectReference: {fileID: 580397594}

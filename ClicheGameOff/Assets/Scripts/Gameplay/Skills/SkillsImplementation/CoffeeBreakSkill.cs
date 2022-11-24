@@ -28,8 +28,10 @@ namespace Gameplay.Skills.SkillsImplementation
                 spawnedData.StopAgentMovement();
                 DOVirtual.DelayedCall(coffeeBreakDuration, () => 
                 {
-                    if(spawnedData)
+                    if (spawnedData != null)
+                    {
                         spawnedData.ReturnAgentMovement();
+                    }
                 });
             });
 
@@ -51,7 +53,7 @@ namespace Gameplay.Skills.SkillsImplementation
             newData.StopAgentMovement();
             DOVirtual.DelayedCall(Mathf.Max(0.0f, coffeeBreakDuration - elapsedCooldownTime) , () => 
             {
-                if (newData)
+                if (newData != null)
                 {
                     newData.ReturnAgentMovement();
                 }

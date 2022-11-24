@@ -57,7 +57,7 @@ namespace Editor
             GUILayout.BeginHorizontal();
             GUILayout.Label("Bad Data: ");
             addBadData = int.Parse(GUILayout.TextField(addBadData.ToString()));
-            if (GUILayout.Button($"Add {addGoodData} Bad Data"))
+            if (GUILayout.Button($"Add {addBadData} Bad Data"))
             {
                 GameManager.Instance.ManagePlayerCollectedData(0, addBadData);
             }

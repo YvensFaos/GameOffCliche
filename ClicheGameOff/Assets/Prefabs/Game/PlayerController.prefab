@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3572713239017458152}
   - component: {fileID: 3572713239017458159}
   - component: {fileID: 3572713239017458158}
+  - component: {fileID: 2297125754741332197}
   m_Layer: 0
   m_Name: PlayerSkills
   m_TagString: Untagged
@@ -64,6 +65,21 @@ MonoBehaviour:
   coffeeBreakObject: {fileID: 4871682802142837813, guid: a3319cf11de72424297b514e9f512c8c, type: 3}
   coffeeBreakDuration: 10
   gameplayEventsSo: {fileID: 11400000, guid: 4ed3ad1a2e4e43147b89843819eead3c, type: 2}
+--- !u!114 &2297125754741332197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572713239017458153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc4664d97150bd42a47026809771f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: e3599ffecd4ef064a92c498bd83d9dc5, type: 2}
+  darkModeObject: {fileID: 7200336796943435874, guid: 111f4ed98c40dc74b8b1104f19ccceba, type: 3}
+  darkModeDuration: 3
 --- !u!1 &3572713240683315612
 GameObject:
   m_ObjectHideFlags: 0
