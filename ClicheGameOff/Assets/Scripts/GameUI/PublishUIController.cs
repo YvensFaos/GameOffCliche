@@ -40,6 +40,7 @@ namespace GameUI
         private float publicationChance;
         private bool publicationContentLimitReached;
         private TweenerCore<float, float, FloatOptions> fillTween;
+        private static readonly int Step = Shader.PropertyToID("Step");
 
         private void Start()
         {
@@ -118,6 +119,7 @@ namespace GameUI
             publicationCurrentAmount = 0;
             
             NormalizeAndDisplayPublicationFill();
+            publicationFillImage.material.SetFloat(Step, 0);
             UpdateUIController();
         }
 
@@ -160,6 +162,7 @@ namespace GameUI
                 fillTween.Kill();
             }
             fillTween = publicationFillImage.DOFillAmount(normalizedPublicationProgress, 0.2f);
+            
         }
 
         private void UpdateUIController()
@@ -186,6 +189,8 @@ namespace GameUI
                     _ => result
                 };
                 result += $" [{Mathf.CeilToInt(successRatio * 100)}% of Success]";
+                Debug.Log(successRatio);
+                publicationFillImage.material.SetFloat(Step, successRatio);
                 progressText.text = result;
             }
         }
