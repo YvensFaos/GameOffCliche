@@ -13,14 +13,13 @@ namespace Gameplay.Skills.SkillsImplementation
         [SerializeField] private ParticleSystem laTexBindParticles;
         [SerializeField] private LayerMask dataLayer;
         [SerializeField] private GameObject slowdownLaTexBindParticles;
-
+        [SerializeField] private float slowPercentage;
+        
         private Dictionary<BaseDataBehavior, GameObject> instantiatedParticleEffectsDictionary;
         private SphereCollider sphereCollider;
-
         private PlayerController playerController;
-        private float slowPercentage;
 
-        public void Initialize(float laTexBindDuration, float slowPercentage, in PlayerController controller)
+        public void Initialize(float laTexBindDuration, in PlayerController controller)
         {
             playerController = controller;
 
@@ -40,7 +39,7 @@ namespace Gameplay.Skills.SkillsImplementation
         private void Start()
         {
             sphereCollider.radius = influenceSphereRadius;
-            sphereMesh.transform.localScale = Vector3.one * (2 * influenceSphereRadius);
+            sphereMesh.transform.localScale = Vector3.one * (2.0f * influenceSphereRadius);
             instantiatedParticleEffectsDictionary = new Dictionary<BaseDataBehavior, GameObject>();
         }
 
@@ -104,7 +103,6 @@ namespace Gameplay.Skills.SkillsImplementation
         {
             if (!CollisionUtils.CheckLayerCollision(dataLayer, other)) return;
 
-            var otherTransform = other.transform;
             var dataBehavior = other.GetComponent<BaseDataBehavior>();
             if (dataBehavior == null || dataBehavior.Type.qualifier != DataQualifier.Good) return;
 
@@ -112,12 +110,10 @@ namespace Gameplay.Skills.SkillsImplementation
             dataBehavior.ReturnAgentMovement();
 
             //VFX
-            GameObject slowdownParticleEffectGO;
-            if(instantiatedParticleEffectsDictionary.TryGetValue(dataBehavior, out slowdownParticleEffectGO))
-            {
-                instantiatedParticleEffectsDictionary.Remove(dataBehavior);
-                Destroy(slowdownParticleEffectGO);
-            }
+            if (!instantiatedParticleEffectsDictionary.TryGetValue(dataBehavior, out var slowdownParticleEffectGo))
+                return;
+            instantiatedParticleEffectsDictionary.Remove(dataBehavior);
+            Destroy(slowdownParticleEffectGo);
         }
 
         #endregion
