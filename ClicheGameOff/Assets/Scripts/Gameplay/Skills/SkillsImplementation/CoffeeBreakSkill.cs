@@ -25,7 +25,7 @@ namespace Gameplay.Skills.SkillsImplementation
             // Pause all spawned data movement
             GameManager.Instance.MainSpawner.GetCurrentDataList.ForEach(spawnedData => 
             {
-                spawnedData.StopAgentMovement();
+                spawnedData.SetAgentMovement(0.0f);
                 DOVirtual.DelayedCall(coffeeBreakDuration, () => 
                 {
                     if (spawnedData != null)
@@ -50,7 +50,7 @@ namespace Gameplay.Skills.SkillsImplementation
         private void HandleOnNewDataCreated(Data.BaseDataBehavior newData)
         {
             var elapsedCooldownTime = Time.time - timeSinceEffectStarted;
-            newData.StopAgentMovement();
+            newData.SetAgentMovement(0.0f);
             DOVirtual.DelayedCall(Mathf.Max(0.0f, coffeeBreakDuration - elapsedCooldownTime) , () => 
             {
                 if (newData != null)

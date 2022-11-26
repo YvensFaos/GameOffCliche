@@ -41,6 +41,9 @@ namespace Data
         [Header("Types")]
         [SerializeField] private List<GameUpgradeMaterialPair> materials;
 
+        //Public
+        public float GetNavMeshAgentSpeed => navMeshAgent.speed;
+
         //Private
         private float scaleTimeStamp;
         private bool beingMined;
@@ -181,10 +184,12 @@ namespace Data
 
         #region Skills Behaviour Related
 
-        public void StopAgentMovement()
+        public void SetAgentMovement(float speed)
         {
-            this.navMeshAgent.speed = 0.0f;
-            this.navMeshAgent.velocity = Vector3.zero;
+            this.navMeshAgent.speed = speed;
+
+            if(speed == 0.0f)
+                this.navMeshAgent.velocity = Vector3.zero;
         }
 
         public void ReturnAgentMovement()
