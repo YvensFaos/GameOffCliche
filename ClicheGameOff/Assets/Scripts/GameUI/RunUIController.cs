@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Data;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -13,11 +14,12 @@ namespace GameUI
     {
         [SerializeField] private Image timeFillSprite;
         [SerializeField] private Image hardDriveFillSprite;
-        [SerializeField] private Button startRunButton;
+        [SerializeField] private List<Button> startRunButtons;
         [SerializeField] private GameObject finishRunPanel;
         [SerializeField] private GameObject helperText;
         [SerializeField] private TextMeshProUGUI finishRunTextResults;
         [SerializeField] private Animator animator;
+        [SerializeField] private List<GameObject> disableOnStartRun;
 
         private DataMinerRunController dataMinerRunController;
         
@@ -41,6 +43,8 @@ namespace GameUI
             dataMinerRunController.StartRun(spawner);
             dataMinerRunController.AddFinishEvent(FinishUIRun);
             dataMinerRunController.AddCollectDataEvent(CollectData);
+            
+            disableOnStartRun.ForEach(gameObjectToBeDisabled => gameObjectToBeDisabled.SetActive(false));
         }
 
         private void RunUITick(float currentTime, float normalizedTime)
@@ -72,9 +76,11 @@ namespace GameUI
             timeFillSprite.fillAmount = 0.0f;
             timeFillSprite.material.SetFloat(Step, 0.0f);
             finishRunTextResults.text = results;
+            
+            disableOnStartRun.ForEach(gameObjectToBeDisabled => gameObjectToBeDisabled.SetActive(true));
         }
         
-        private void ToggleStartButton(bool toggle) => startRunButton.gameObject.SetActive(toggle);
+        private void ToggleStartButton(bool toggle) => startRunButtons.ForEach(button => button.gameObject.SetActive(toggle));
 
         private void ToggleResultPanel(bool toggle)
         {
