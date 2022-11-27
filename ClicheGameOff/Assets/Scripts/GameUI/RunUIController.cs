@@ -22,15 +22,21 @@ namespace GameUI
         [SerializeField] private List<GameObject> disableOnStartRun;
 
         private DataMinerRunController dataMinerRunController;
-        
+        private List<RectTransform> buttonsRectTransform;
         private TweenerCore<float, float, FloatOptions> hardDriveFillerTween;
         private static readonly int ShowResult = Animator.StringToHash("ShowResult");
         private static readonly int HideResult = Animator.StringToHash("HideResult");
         private static readonly int Step = Shader.PropertyToID("Step");
 
+        private void Awake()
+        {
+            buttonsRectTransform = new List<RectTransform>();
+            startRunButtons.ForEach(button => buttonsRectTransform.Add(button.GetComponent<RectTransform>()));
+        }
+        
         public void StartRun(DataSpawner spawner)
         {
-            ToggleStartButton(false);
+            ToggleStartButtons(false);
             finishRunPanel.SetActive(false);
             helperText.SetActive(true);
             dataMinerRunController = GameManager.Instance.MainRunner;
@@ -64,7 +70,7 @@ namespace GameUI
 
         private void FinishUIRun()
         {
-            ToggleStartButton(true);
+            ToggleStartButtons(true);
             ToggleResultPanel(true);
             helperText.SetActive(false);
             dataMinerRunController.RemoveTickEvent(RunUITick);
@@ -79,8 +85,31 @@ namespace GameUI
             
             disableOnStartRun.ForEach(gameObjectToBeDisabled => gameObjectToBeDisabled.SetActive(true));
         }
-        
-        private void ToggleStartButton(bool toggle) => startRunButtons.ForEach(button => button.gameObject.SetActive(toggle));
+
+        private void ToggleStartButtons(bool toggle)
+        {
+            for (var i = 0; i < startRunButtons.Capacity; i++)
+            {
+                var button = startRunButtons[i];
+                var rect = buttonsRectTransform[i];
+                if (toggle)
+                {
+                    button.gameObject.SetActive(true);
+                    rect.DOAnchorPosX(20.0f, 0.75f).OnComplete(() =>
+                    {
+                        button.interactable = true;    
+                    });
+                }
+                else
+                {
+                    button.interactable = false;
+                    rect.DOAnchorPosX(-180.0f, 1.25f).OnComplete(() =>
+                    {
+                        button.gameObject.SetActive(false);    
+                    });
+                }
+            }
+        } 
 
         private void ToggleResultPanel(bool toggle)
         {
