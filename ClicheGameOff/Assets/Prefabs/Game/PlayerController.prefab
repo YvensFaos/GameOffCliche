@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f837b8ad3aa4bf4bd6fc27e8c3196b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameplayEventsSO: {fileID: 11400000, guid: 4ed3ad1a2e4e43147b89843819eead3c, type: 2}
   floorMask:
     serializedVersion: 2
     m_Bits: 256
