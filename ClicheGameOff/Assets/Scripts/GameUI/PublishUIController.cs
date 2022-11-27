@@ -137,36 +137,13 @@ namespace GameUI
                 var paper = GameManager.Instance.PublishNewPaper(currentPublication, goodDataUsedSoFar, badDataUsedSoFar);
                 successPanel.gameObject.SetActive(true);
                 successPanel.Initialize(paper, currentPublication);
-                
+
                 var playerData = GameManager.Instance.CurrentPlayerData;
                 playerData.PublicationProgress++;
-                
-                //Player Upgrades based on publication progress
-                GameUpgrade hiddenUpgrade;
-                if(playerData.PublicationProgress == 2)
-                {   
-                    hiddenUpgrade = IncreasedPlayerRadiusUpgrade;
-                    UnlockHiddenUpgrade();
-                }
-
-                if(playerData.PublicationProgress == 3)
-                {
-                    hiddenUpgrade = IncreasedMiningRateUpgrade;
-                    UnlockHiddenUpgrade();
-                }
 
                 currentPublication.UnlockPublication();
                 UpdateCurrentPublication();
                 UpdateButtonCosts();
-
-                void UnlockHiddenUpgrade()
-                {
-                    GameManager.Instance.ManagePlayerCollected(hiddenUpgrade.RequiredData, 0);
-                    GameManager.Instance.CurrentPlayerData.IncreaseUpgradeLevel(hiddenUpgrade);
-                    var currentLevel = GameManager.Instance.CurrentPlayerData.GetUpgradeLevel(hiddenUpgrade);
-                
-                    hiddenUpgrade.UpgradeUnlock(currentLevel);
-                }
             }
             else
             {
@@ -216,7 +193,6 @@ namespace GameUI
                     _ => result
                 };
                 result += $" [{Mathf.CeilToInt(successRatio * 100)}% of Success]";
-                Debug.Log(successRatio);
                 publicationFillImage.material.SetFloat(Step, successRatio);
                 progressText.text = result;
             }

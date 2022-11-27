@@ -30,6 +30,7 @@ namespace Gameplay
             if(gameplayEventsSO)
             {
                 gameplayEventsSO.OnRunStarted += HandleOnRunStarted;
+                gameplayEventsSO.OnRunEnded += HandleOnRunEnded;
             }
             else
             {
@@ -42,6 +43,7 @@ namespace Gameplay
             if(gameplayEventsSO)
             {
                 gameplayEventsSO.OnRunStarted -= HandleOnRunStarted;
+                gameplayEventsSO.OnRunEnded -= HandleOnRunEnded;
             }
             else
             {
@@ -107,6 +109,12 @@ namespace Gameplay
             float increaseFactor = GameManager.Instance.CurrentPlayerData.PlayerRadius;
             displayObject.transform.localScale = Vector3.one * increaseFactor;
             turnedOnObject.transform.localScale = Vector3.one * increaseFactor;
+        }
+
+        private void HandleOnRunEnded()
+        {
+            displayObject.SetActive(false);
+            turnedOnObject.SetActive(false);
         }
 
         #endregion
