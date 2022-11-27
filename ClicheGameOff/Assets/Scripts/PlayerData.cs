@@ -19,6 +19,10 @@ public class PlayerData
     private int hardDriveSize;
     [SerializeField] 
     private float stunResistance;
+    [SerializeField] 
+    private float playerRadius;
+    [SerializeField] 
+    private float miningRate;
     [SerializeField]
     private List<GameUpgradeLevelPair> upgrades;
     [SerializeField] 
@@ -85,6 +89,14 @@ public class PlayerData
         if (playerData.HardDriveSize == 0 && GameManager.Instance != null)
         {
             playerData.hardDriveSize = GameManager.Instance.Constants.initialHardDriveSize;    
+        }
+        if (playerData.playerRadius == 0 && GameManager.Instance != null)
+        {
+            playerData.playerRadius = GameManager.Instance.Constants.initialPlayerRadius;    
+        }
+        if (playerData.miningRate == 0 && GameManager.Instance != null)
+        {
+            playerData.miningRate = GameManager.Instance.Constants.initialMiningRate;    
         }
         
         return playerData;
@@ -234,5 +246,17 @@ public class PlayerData
     {
         get => stunResistance;
         set => stunResistance = value;
+    }
+
+    public float PlayerRadius
+    {
+        get => playerRadius;
+        set => playerRadius = value;
+    }
+
+    public float MiningRate
+    {
+        get => miningRate;
+        set => miningRate = value;
     }
 }

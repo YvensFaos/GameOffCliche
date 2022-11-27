@@ -31,6 +31,7 @@ namespace Data
         [Header("Attributes")] 
         [SerializeField] private DataType type;
         [SerializeField] private float regularSpeed;
+        [SerializeField] private float regularMiningRate = 100.0f;
         [SerializeField] private int hardDriveUse = 1;
         
         [Header("References")] 
@@ -156,8 +157,10 @@ namespace Data
 
         private void Shrink()
         {
+            float miningRate = regularMiningRate * GameManager.Instance.CurrentPlayerData.MiningRate * Time.deltaTime;
+
             //The curve goes from 0 (regular size) to 1 (minimal size)
-            scaleTimeStamp = Mathf.Clamp(scaleTimeStamp + curveStepFactor * (100.0f * Time.deltaTime), minimalScale, maximalScale);
+            scaleTimeStamp = Mathf.Clamp(scaleTimeStamp + curveStepFactor * miningRate, minimalScale, maximalScale);
             currentScaleFactor = Mathf.Clamp( scaleCurve.Evaluate(scaleTimeStamp), minimalScale, maximalScale);
             UpdateSize();
 

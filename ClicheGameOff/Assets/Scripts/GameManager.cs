@@ -90,6 +90,14 @@ public class GameManager : MonoBehaviour
         {
             currentPlayerData.HardDriveSize = constants.initialHardDriveSize;
         }
+        if(currentPlayerData.PlayerRadius == 0)
+        {
+            currentPlayerData.PlayerRadius = constants.initialPlayerRadius;
+        }
+        if(currentPlayerData.MiningRate == 0)
+        {
+            currentPlayerData.MiningRate = constants.initialMiningRate;
+        }
         Save();
     }
 

@@ -30,6 +30,10 @@ namespace GameUI
         [Header("Progress")] 
         [SerializeField] private List<GamePublication> publications;
 
+        [Header("Hidden Upgrades")]
+        [SerializeField] private GamePlayerStatsUpgrade IncreasedPlayerRadiusUpgrade;
+        [SerializeField] private GamePlayerStatsUpgrade IncreasedMiningRateUpgrade;
+
         private GamePublication currentPublication;
         private int publicationProgress;
         private int publicationNecessaryAmount;
@@ -137,9 +141,32 @@ namespace GameUI
                 var playerData = GameManager.Instance.CurrentPlayerData;
                 playerData.PublicationProgress++;
                 
+                //Player Upgrades based on publication progress
+                GameUpgrade hiddenUpgrade;
+                if(playerData.PublicationProgress == 2)
+                {   
+                    hiddenUpgrade = IncreasedPlayerRadiusUpgrade;
+                    UnlockHiddenUpgrade();
+                }
+
+                if(playerData.PublicationProgress == 3)
+                {
+                    hiddenUpgrade = IncreasedMiningRateUpgrade;
+                    UnlockHiddenUpgrade();
+                }
+
                 currentPublication.UnlockPublication();
                 UpdateCurrentPublication();
                 UpdateButtonCosts();
+
+                void UnlockHiddenUpgrade()
+                {
+                    GameManager.Instance.ManagePlayerCollected(hiddenUpgrade.RequiredData, 0);
+                    GameManager.Instance.CurrentPlayerData.IncreaseUpgradeLevel(hiddenUpgrade);
+                    var currentLevel = GameManager.Instance.CurrentPlayerData.GetUpgradeLevel(hiddenUpgrade);
+                
+                    hiddenUpgrade.UpgradeUnlock(currentLevel);
+                }
             }
             else
             {

@@ -12,6 +12,10 @@ public class GameConstants : ScriptableObject
     [SerializeField]
     public int initialHardDriveSize = 10;
     [SerializeField]
+    public float initialPlayerRadius = 1.0f;
+    [SerializeField]
+    public float initialMiningRate = 100.0f;
+    [SerializeField]
     public Color defaultColorQualifier;
     [SerializeField] 
     private List<DataQualifierColorPair> colorPerQualifier;
