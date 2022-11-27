@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: minimalScale
-      value: 0.05
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: curveStepFactor
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[3].value
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[1].inSlope
@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[3].inSlope
-      value: -16.178703
+      value: -8.043391
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[1].inWeight
@@ -101,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[3].inWeight
-      value: 0.089771524
+      value: 0.17954305
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[3].outSlope
-      value: -16.178703
+      value: -8.043391
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[1].outWeight
