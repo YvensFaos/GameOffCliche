@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Data;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -13,22 +14,29 @@ namespace GameUI
     {
         [SerializeField] private Image timeFillSprite;
         [SerializeField] private Image hardDriveFillSprite;
-        [SerializeField] private Button startRunButton;
+        [SerializeField] private List<Button> startRunButtons;
         [SerializeField] private GameObject finishRunPanel;
         [SerializeField] private GameObject helperText;
         [SerializeField] private TextMeshProUGUI finishRunTextResults;
         [SerializeField] private Animator animator;
+        [SerializeField] private List<GameObject> disableOnStartRun;
 
         private DataMinerRunController dataMinerRunController;
-        
+        private List<RectTransform> buttonsRectTransform;
         private TweenerCore<float, float, FloatOptions> hardDriveFillerTween;
         private static readonly int ShowResult = Animator.StringToHash("ShowResult");
         private static readonly int HideResult = Animator.StringToHash("HideResult");
         private static readonly int Step = Shader.PropertyToID("Step");
 
+        private void Awake()
+        {
+            buttonsRectTransform = new List<RectTransform>();
+            startRunButtons.ForEach(button => buttonsRectTransform.Add(button.GetComponent<RectTransform>()));
+        }
+        
         public void StartRun(DataSpawner spawner)
         {
-            ToggleStartButton(false);
+            ToggleStartButtons(false);
             finishRunPanel.SetActive(false);
             helperText.SetActive(true);
             dataMinerRunController = GameManager.Instance.MainRunner;
@@ -41,6 +49,8 @@ namespace GameUI
             dataMinerRunController.StartRun(spawner);
             dataMinerRunController.AddFinishEvent(FinishUIRun);
             dataMinerRunController.AddCollectDataEvent(CollectData);
+            
+            disableOnStartRun.ForEach(gameObjectToBeDisabled => gameObjectToBeDisabled.SetActive(false));
         }
 
         private void RunUITick(float currentTime, float normalizedTime)
@@ -60,7 +70,7 @@ namespace GameUI
 
         private void FinishUIRun()
         {
-            ToggleStartButton(true);
+            ToggleStartButtons(true);
             ToggleResultPanel(true);
             helperText.SetActive(false);
             dataMinerRunController.RemoveTickEvent(RunUITick);
@@ -72,9 +82,34 @@ namespace GameUI
             timeFillSprite.fillAmount = 0.0f;
             timeFillSprite.material.SetFloat(Step, 0.0f);
             finishRunTextResults.text = results;
+            
+            disableOnStartRun.ForEach(gameObjectToBeDisabled => gameObjectToBeDisabled.SetActive(true));
         }
-        
-        private void ToggleStartButton(bool toggle) => startRunButton.gameObject.SetActive(toggle);
+
+        private void ToggleStartButtons(bool toggle)
+        {
+            for (var i = 0; i < startRunButtons.Capacity; i++)
+            {
+                var button = startRunButtons[i];
+                var rect = buttonsRectTransform[i];
+                if (toggle)
+                {
+                    button.gameObject.SetActive(true);
+                    rect.DOAnchorPosX(20.0f, 0.75f).OnComplete(() =>
+                    {
+                        button.interactable = true;    
+                    });
+                }
+                else
+                {
+                    button.interactable = false;
+                    rect.DOAnchorPosX(-180.0f, 1.25f).OnComplete(() =>
+                    {
+                        button.gameObject.SetActive(false);    
+                    });
+                }
+            }
+        } 
 
         private void ToggleResultPanel(bool toggle)
         {

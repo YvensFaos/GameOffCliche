@@ -175,7 +175,7 @@ MonoBehaviour:
       outWeight: 0.26138964
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: 0.3
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentScaleFactor: 1
-  minimalScale: 0.1
+  minimalScale: 0.3
   maximalScale: 1
   startCurveValue: 0
   curveStepFactor: 0.01
@@ -206,6 +206,7 @@ MonoBehaviour:
   hardDriveUse: 1
   navMeshAgent: {fileID: 1686528903558524880}
   particles: {fileID: 67949546731364357}
+  captureParticles: {fileID: 8929395145489646488, guid: 834f36b4bc9d64011ab70e6585b799aa, type: 3}
   selfRenderer: {fileID: 1686528903558524893}
   materials:
   - one: {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}

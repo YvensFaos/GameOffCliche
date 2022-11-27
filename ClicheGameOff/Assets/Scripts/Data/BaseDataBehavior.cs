@@ -36,6 +36,7 @@ namespace Data
         [Header("References")] 
         [SerializeField] protected NavMeshAgent navMeshAgent;
         [SerializeField] private ParticleSystem particles;
+        [SerializeField] private ParticleSystem captureParticles;
         [SerializeField] private Renderer selfRenderer;
 
         [Header("Types")]
@@ -51,6 +52,7 @@ namespace Data
         private bool stuck;
         private float minimalScaleValue;
         private float maximalScaleValue;
+        private float defaultParticleEmissionRate;
 
         private void Awake()
         {
@@ -58,6 +60,11 @@ namespace Data
             {
                 selfRenderer = GetComponent<Renderer>();
             }
+        }
+
+        private void Start()
+        {
+            defaultParticleEmissionRate = particles.emission.rateOverTime.constant;
         }
         
         private void OnEnable()
@@ -139,10 +146,13 @@ namespace Data
             DisableData();
             var particlesTransform = particles.transform;
             particlesTransform.parent = transform.parent;
+            ChangeParticleEmissionRateTo(1.0f);
             particlesTransform.localScale = Vector3.one;
             particles.Stop();
 
             Destroy(gameObject);
+
+            Instantiate(captureParticles, transform.position, Quaternion.identity);
         }
 
         public void DisableData()
@@ -173,9 +183,18 @@ namespace Data
         private void UpdateSize()
         {
             transform.localScale = new Vector3(currentScaleFactor, currentScaleFactor, currentScaleFactor);
+            ChangeParticleEmissionRateTo(defaultParticleEmissionRate * currentScaleFactor);
+        }
+
+        private void ChangeParticleEmissionRateTo(float changeTo)
+        {
+            var particlesEmission = particles.emission;
+            var emissionRateOverTime = particlesEmission.rateOverTime;
+            emissionRateOverTime.constant = changeTo;
+            particlesEmission.rateOverTime = emissionRateOverTime;
             particles.gameObject.transform.localScale = Vector3.one;
         }
-        
+
         public DataType Type => type;
 
         public int HardDriveUse => hardDriveUse;

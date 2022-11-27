@@ -25,8 +25,15 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        Debug.Log("Game Manager Started!");
         instance = this;
         DontDestroyOnLoad(this);
+    }
+
+    public void DestroyInstance()
+    {
+        Destroy(gameObject);
+        instance = null;
     }
     #endregion
     
@@ -83,7 +90,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CreateNewSave()
+    private void CreateNewSave()
     {
         currentPlayerData = new PlayerData();
         if (currentPlayerData.HardDriveSize == 0)

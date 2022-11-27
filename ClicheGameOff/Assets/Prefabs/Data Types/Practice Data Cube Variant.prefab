@@ -48,6 +48,10 @@ PrefabInstance:
       value: 0.6700342
       objectReference: {fileID: 0}
     - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
+      propertyPath: scaleCurve.m_Curve.Array.data[3].value
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
       propertyPath: scaleCurve.m_Curve.Array.data[2].inSlope
       value: -1.6357325
       objectReference: {fileID: 0}
