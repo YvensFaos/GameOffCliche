@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3572713239017458159}
   - component: {fileID: 3572713239017458158}
   - component: {fileID: 2297125754741332197}
+  - component: {fileID: 4560767151154058835}
   m_Layer: 0
   m_Name: PlayerSkills
   m_TagString: Untagged
@@ -80,6 +81,21 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: e3599ffecd4ef064a92c498bd83d9dc5, type: 2}
   darkModeObject: {fileID: 7200336796943435874, guid: 111f4ed98c40dc74b8b1104f19ccceba, type: 3}
   darkModeDuration: 3
+--- !u!114 &4560767151154058835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572713239017458153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1398b26bb31434545a051c03ad9e367c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 8d93b151620b9274fbedc7174130a5ec, type: 2}
+  laTexBindObject: {fileID: 2898252270432795694, guid: 2015bbe7e616fd84b859eaead3810e19, type: 3}
+  laTexBindDuration: 4
 --- !u!1 &3572713240683315612
 GameObject:
   m_ObjectHideFlags: 0
