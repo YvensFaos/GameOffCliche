@@ -14,6 +14,7 @@ namespace GameUI
     {
         [SerializeField] private Image timeFillSprite;
         [SerializeField] private Image hardDriveFillSprite;
+        [SerializeField] private RectTransform hardDriveRectTransform;
         [SerializeField] private List<Button> startRunButtons;
         [SerializeField] private GameObject finishRunPanel;
         [SerializeField] private GameObject helperText;
@@ -66,6 +67,7 @@ namespace GameUI
                 hardDriveFillerTween.Kill();
             }
             hardDriveFillerTween = hardDriveFillSprite.DOFillAmount(normalizedHardDriveUsed, 0.2f);
+            hardDriveRectTransform.DOShakePosition(1.0f, 5.0f, 20);
         }
 
         private void FinishUIRun()
@@ -79,6 +81,7 @@ namespace GameUI
 
             var results = dataMinerRunController.GetResults();
             hardDriveFillSprite.DOFillAmount(0.0f, 1.0f);
+            hardDriveRectTransform.DOShakePosition(1.0f, 10.0f);
             timeFillSprite.fillAmount = 0.0f;
             timeFillSprite.material.SetFloat(Step, 0.0f);
             finishRunTextResults.text = results;

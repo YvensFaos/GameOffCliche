@@ -170,7 +170,7 @@ namespace Data
 
         private void Shrink()
         {
-            float miningRate = regularMiningRate * GameManager.Instance.CurrentPlayerData.MiningRate * Time.deltaTime;
+            var miningRate = regularMiningRate * GameManager.Instance.CurrentPlayerData.MiningRate * Time.deltaTime;
 
             //The curve goes from 0 (regular size) to 1 (minimal size)
             scaleTimeStamp = Mathf.Clamp(scaleTimeStamp + curveStepFactor * miningRate, minimalScale, maximalScale);

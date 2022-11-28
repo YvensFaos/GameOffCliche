@@ -1017,6 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeFillSprite: {fileID: 473374892431552257}
   hardDriveFillSprite: {fileID: 473374892652720164}
+  hardDriveRectTransform: {fileID: 473374891201768047}
   startRunButtons:
   - {fileID: 473374891061087755}
   - {fileID: 473374892418507390}

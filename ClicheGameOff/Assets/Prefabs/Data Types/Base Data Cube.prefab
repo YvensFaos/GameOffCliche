@@ -203,6 +203,7 @@ MonoBehaviour:
   stopDistance: 0.1
   type: {fileID: 0}
   regularSpeed: 4
+  regularMiningRate: 1
   hardDriveUse: 1
   navMeshAgent: {fileID: 1686528903558524880}
   particles: {fileID: 67949546731364357}
