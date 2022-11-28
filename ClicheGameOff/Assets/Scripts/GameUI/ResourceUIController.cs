@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -28,7 +29,9 @@ namespace GameUI
         private void UpdatePlayerInfo(in PlayerData playerData)
         {
             goodDataText.text = playerData.GoodData.ToString();
+            goodDataText.rectTransform.DOShakePosition(0.75f, 6.0f);
             badDataText.text = playerData.BadData.ToString();
+            badDataText.rectTransform.DOShakePosition(0.75f, 6.0f);
         }
     }
 }
