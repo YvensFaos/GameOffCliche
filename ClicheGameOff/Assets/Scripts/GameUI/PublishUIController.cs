@@ -30,6 +30,10 @@ namespace GameUI
         [Header("Progress")] 
         [SerializeField] private List<GamePublication> publications;
 
+        [Header("Hidden Upgrades")]
+        [SerializeField] private GamePlayerStatsUpgrade IncreasedPlayerRadiusUpgrade;
+        [SerializeField] private GamePlayerStatsUpgrade IncreasedMiningRateUpgrade;
+
         private GamePublication currentPublication;
         private int publicationProgress;
         private int publicationNecessaryAmount;
@@ -133,10 +137,10 @@ namespace GameUI
                 var paper = GameManager.Instance.PublishNewPaper(currentPublication, goodDataUsedSoFar, badDataUsedSoFar);
                 successPanel.gameObject.SetActive(true);
                 successPanel.Initialize(paper, currentPublication);
-                
+
                 var playerData = GameManager.Instance.CurrentPlayerData;
                 playerData.PublicationProgress++;
-                
+
                 currentPublication.UnlockPublication();
                 UpdateCurrentPublication();
                 UpdateButtonCosts();
@@ -189,7 +193,6 @@ namespace GameUI
                     _ => result
                 };
                 result += $" [{Mathf.CeilToInt(successRatio * 100)}% of Success]";
-                Debug.Log(successRatio);
                 publicationFillImage.material.SetFloat(Step, successRatio);
                 progressText.text = result;
             }

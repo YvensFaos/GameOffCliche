@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Data;
+using Events;
 using UnityEngine;
 
 namespace Gameplay
@@ -19,6 +20,9 @@ namespace Gameplay
         // [SerializeField]
         // private float runTime;
 
+        [Header("Scriptable Objects")]
+        [SerializeField] private GameplayEventsSO gameplayEventsSO;
+
         private event RunTickDelegate RunTickEvents;
         private event CollectDataDelegate CollectDataEvents;
         private event FinishRunDelegate FinishRunEvents;
@@ -33,6 +37,9 @@ namespace Gameplay
         private float currentHardDrive;
         private float accumulatedHardDriveUse;
         private float normalizedHardDrive;
+
+        //Properties
+        public bool isRunning { get; private set; }
         
         private Dictionary<DataType, int> collectedData;
 
@@ -44,11 +51,15 @@ namespace Gameplay
 
         public void StartRun(DataSpawner spawner)
         {
+            isRunning = true;
+            
             currentHardDrive = GameManager.Instance.CurrentPlayerData.HardDriveSize;
             accumulatedHardDriveUse = 0.0f;
             normalizedHardDrive = accumulatedHardDriveUse / currentHardDrive;
             StopAllCoroutines();
             StartCoroutine(RunCoroutine(spawner));
+
+            gameplayEventsSO?.InvokeOnRunStarted();
         }
 
         private IEnumerator RunCoroutine(DataSpawner spawner)
@@ -99,6 +110,9 @@ namespace Gameplay
             GameManager.Instance.ManagePlayerCollectedData(runGoodData, runBadData);
             spawner.KillRemainingData();
             FinishRunEvents?.Invoke();
+
+            isRunning = false;
+            gameplayEventsSO?.InvokeOnRunEnded();
         }
 
         private void InitializeCollectedData()

@@ -19,4 +19,5 @@ MonoBehaviour:
   upgradesToOpen: []
   upgradesToUnlock:
   - {fileID: 11400000, guid: 71bc06c4b6a3843efb4481bf934350e7, type: 2}
+  - {fileID: 11400000, guid: a8354a2c7fce06d49861260be736a072, type: 2}
   dialog: {fileID: 11400000, guid: 324de43e1e94e43d7a5ba005cbdf5c98, type: 2}

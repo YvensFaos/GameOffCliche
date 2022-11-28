@@ -6592,6 +6592,9 @@ MonoBehaviour:
   failurePanel: {fileID: 1920021599}
   publications:
   - {fileID: 11400000, guid: faff9302aa69b48b79485f83b438ca61, type: 2}
+  - {fileID: 11400000, guid: 4c7cffd74012a498581689bcc3ea32a3, type: 2}
+  IncreasedPlayerRadiusUpgrade: {fileID: 11400000, guid: a8354a2c7fce06d49861260be736a072, type: 2}
+  IncreasedMiningRateUpgrade: {fileID: 11400000, guid: 81dca24e9a34032449497cd74fae2861, type: 2}
 --- !u!1 &1654078931015827904
 GameObject:
   m_ObjectHideFlags: 0
