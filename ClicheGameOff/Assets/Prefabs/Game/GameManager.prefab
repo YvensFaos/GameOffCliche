@@ -75,6 +75,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a793f6c8e5e07a469cf71d051ec2577, type: 2}
   - {fileID: 11400000, guid: a8354a2c7fce06d49861260be736a072, type: 2}
   - {fileID: 11400000, guid: 81dca24e9a34032449497cd74fae2861, type: 2}
+  - {fileID: 11400000, guid: 249bafe8ae4afdf41b7ccd6d7767e370, type: 2}
   gameSkills:
   - {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
   - {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}
