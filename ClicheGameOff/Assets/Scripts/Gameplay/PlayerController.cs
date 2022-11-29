@@ -53,7 +53,7 @@ namespace Gameplay
 
         private void Update()
         {
-            if(!GameManager.Instance.MainRunner.isRunning) return;
+            if(!GameManager.Instance.IsOnTheRun()) return;
 
             var ray = mainCamera.ScreenPointToRay (Input.mousePosition);
             if (Physics.Raycast (ray, out var hit, 100, floorMask))

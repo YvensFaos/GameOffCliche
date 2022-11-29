@@ -58,7 +58,12 @@ namespace Progression
         {
             return base.GetHashCode();
         }
-        
+
+        public override string ToString()
+        {
+            return name;
+        }
+
         //Getters & Setters
         public string GetName() => name;
         public string Description => description;

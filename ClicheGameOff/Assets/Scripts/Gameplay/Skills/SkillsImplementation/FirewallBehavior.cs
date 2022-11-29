@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Data;
 using UnityEngine;
 using Utils;
@@ -7,7 +8,7 @@ namespace Gameplay.Skills.SkillsImplementation
     public class FirewallBehavior : MonoBehaviour
     {
         [SerializeField]
-        private ParticleSystem firewallParticles;
+        private List<ParticleSystem> firewallParticlesSystems;
         [SerializeField]
         private LayerMask dataLayer;
         [SerializeField]
@@ -15,14 +16,20 @@ namespace Gameplay.Skills.SkillsImplementation
 
         public void Initialize(float firewallDuration)
         {
-            var firewallParticlesMain = firewallParticles.main;
-            firewallParticlesMain.duration = firewallDuration;
-            firewallParticles.Play();
+            firewallParticlesSystems.ForEach(firewall =>
+            {
+                var firewallParticlesMain = firewall.main;
+                firewallParticlesMain.duration = firewallDuration;
+                firewall.Play();
+            });
         }
     
         private void Start()
         {
-            firewallParticles.transform.SetParent(null);
+            firewallParticlesSystems.ForEach(firewall =>
+            {
+                firewall.transform.SetParent(null);
+            });
         }
 
         private void OnTriggerEnter(Collider other)

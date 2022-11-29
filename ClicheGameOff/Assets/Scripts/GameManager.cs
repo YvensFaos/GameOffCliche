@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void DestroyInstance()
     {
+        Destroy(player.gameObject);
         Destroy(gameObject);
         instance = null;
     }
@@ -248,4 +249,9 @@ public class GameManager : MonoBehaviour
 
     public void UnsubscribeUseSkillDelegate(UseSkillDelegate removeUseSkillDelegate) =>
         useSkillDelegate -= removeUseSkillDelegate;
+
+    public bool IsOnTheRun()
+    {
+        return mainRunner != null && mainRunner.isRunning;
+    }
 }

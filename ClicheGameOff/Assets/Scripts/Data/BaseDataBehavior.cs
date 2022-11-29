@@ -198,25 +198,23 @@ namespace Data
             particles.gameObject.transform.localScale = Vector3.one;
         }
 
-        public DataType Type => type;
-
-        public int HardDriveUse => hardDriveUse;
-
-        public float DataHeight => dataHeight;
-
         #region Skills Behaviour Related
-
         public void SetAgentMovement(float speed)
         {
-            this.navMeshAgent.speed = speed;
+            navMeshAgent.speed = speed;
 
-            if(speed == 0.0f)
-                this.navMeshAgent.velocity = Vector3.zero;
+            if (speed == 0.0f)
+            {
+                navMeshAgent.velocity = Vector3.zero;
+            }
         }
 
         public void ReturnAgentMovement()
         {
-            this.navMeshAgent.speed = this.regularSpeed;
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.speed = regularSpeed;    
+            }
         }
 
         public void RevealDataType()
@@ -229,5 +227,9 @@ namespace Data
         }
 
         #endregion
+        
+        public DataType Type => type;
+        public int HardDriveUse => hardDriveUse;
+        public float DataHeight => dataHeight;
     }
 }

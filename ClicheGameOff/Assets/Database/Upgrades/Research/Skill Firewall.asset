@@ -48,7 +48,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   uniqueCost: 20
-  requiredData: 0
+  requiredData: 1
   requiredUpgrades: []
   requiredPublications: []
   skill: {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
