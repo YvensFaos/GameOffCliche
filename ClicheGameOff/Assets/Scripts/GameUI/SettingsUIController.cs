@@ -10,6 +10,8 @@ namespace GameUI
         private AudioSource audioSource;
         [SerializeField] 
         private List<GameObject> reflectionObjects;
+        [SerializeField] 
+        private GameObject debugCanvas;
         
         public void ResetData()
         {
@@ -24,6 +26,11 @@ namespace GameUI
         public void ToggleAudio()
         {
             audioSource.enabled = !audioSource.enabled;
+        }
+
+        public void ToggleDebug()
+        {
+            debugCanvas.SetActive(!debugCanvas.activeSelf);
         }
 
         public void ToggleReflections()
