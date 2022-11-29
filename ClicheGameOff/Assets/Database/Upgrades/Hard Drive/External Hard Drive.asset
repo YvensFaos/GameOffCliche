@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: External Hard Drive
   m_EditorClassIdentifier: 
   upgradeType: 1
-  description: Increase the Hard Drive capacity by 10.
+  description: Increase the Hard Drive capacity by 30.
   repeatableUpgrade: 0
   progressCurve:
     curve:
@@ -52,4 +52,4 @@ MonoBehaviour:
   requiredUpgrades: []
   requiredPublications: []
   resourceType: 0
-  increaseBy: 10
+  increaseBy: 30

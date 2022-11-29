@@ -33,8 +33,8 @@ MonoBehaviour:
     two: 5
   defaultType: {fileID: 11400000, guid: eba59c5bc24b94bd98c26c9d95357a2f, type: 2}
   spawnParticle: {fileID: 4301203614384923183, guid: 30e88e8747abd4e55a804d1bd4df633c, type: 3}
-  runLength: 35
+  runLength: 30
   activeSpawnTime: 80
   particlesTime: 1.75
   spawnTime: 0.25
-  spawnRate: 4
+  spawnRate: 3

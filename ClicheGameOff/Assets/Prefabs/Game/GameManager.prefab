@@ -70,12 +70,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a02492d7539234286a07565e2baa2512, type: 2}
   - {fileID: 11400000, guid: 0c91ceaa200884e098fa0a52619c0649, type: 2}
   - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
-  - {fileID: 11400000, guid: 9e25e02665722472a98553a53585709e, type: 2}
   - {fileID: 11400000, guid: 3663e80b9a7814742baac5ceaf288d3c, type: 2}
   - {fileID: 11400000, guid: 5a793f6c8e5e07a469cf71d051ec2577, type: 2}
+  - {fileID: 11400000, guid: 249bafe8ae4afdf41b7ccd6d7767e370, type: 2}
+  - {fileID: 11400000, guid: 9e25e02665722472a98553a53585709e, type: 2}
+  - {fileID: 11400000, guid: 71bc06c4b6a3843efb4481bf934350e7, type: 2}
   - {fileID: 11400000, guid: a8354a2c7fce06d49861260be736a072, type: 2}
   - {fileID: 11400000, guid: 81dca24e9a34032449497cd74fae2861, type: 2}
-  - {fileID: 11400000, guid: 249bafe8ae4afdf41b7ccd6d7767e370, type: 2}
   gameSkills:
   - {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
   - {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}

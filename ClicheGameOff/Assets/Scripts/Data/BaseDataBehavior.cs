@@ -200,6 +200,8 @@ namespace Data
         #region Skills Behaviour Related
         public void SetAgentMovement(float speed)
         {
+            if (navMeshAgent == null) return;
+            
             navMeshAgent.speed = speed;
 
             if (speed == 0.0f)
