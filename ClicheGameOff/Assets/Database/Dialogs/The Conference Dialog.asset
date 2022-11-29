@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89678784cd8c4d35ab0471f1124b02dc, type: 3}
-  m_Name: TutorialDialogue
+  m_Name: The Conference Dialog
   m_EditorClassIdentifier: 
-  yarnProject: {fileID: 7545569452688597077, guid: 732d623681a6f4c57a8608c3b32b0140, type: 3}
-  startNode: Start
+  yarnProject: {fileID: 7545569452688597077, guid: 4ed6f53862a8246c1872fbfee47639d4, type: 3}
+  startNode: TheConference

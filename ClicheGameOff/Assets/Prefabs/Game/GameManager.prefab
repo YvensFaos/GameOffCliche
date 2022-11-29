@@ -79,5 +79,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11f897246ff984ac8affa085ebae6182, type: 2}
   - {fileID: 11400000, guid: ab4d57c10b5f1eb4db3972c2403edd25, type: 2}
   - {fileID: 11400000, guid: e3599ffecd4ef064a92c498bd83d9dc5, type: 2}
+  - {fileID: 11400000, guid: 8d93b151620b9274fbedc7174130a5ec, type: 2}
   gamePublications:
   - {fileID: 11400000, guid: faff9302aa69b48b79485f83b438ca61, type: 2}
+  - {fileID: 11400000, guid: 4c7cffd74012a498581689bcc3ea32a3, type: 2}

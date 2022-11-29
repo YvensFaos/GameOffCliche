@@ -1,0 +1,18 @@
+﻿title: TheConference
+---
+<<displayLeftPortrait PortraitManager Scientist>>
+Scientist: You're getting good at this!
+-> It gets easier with upgrades!
+-> This is boring...
+    Scientist: Mind your mouth, young one! Science is not boring!
+    Scientist: Well, in any case...
+Scientist: Congratulations! You are now a <b>junior junior</b> scientist.
+Scientist: Good work so far!
+Scientist: I will now fill in some paperwork to get some funds.
+-> Don't we get paid for publishing papers?
+    Scientist: Haha! That's a good one!
+    Scientist: Publications are not for money! They are for respect!
+-> Funds?
+    Scientist: Yes, yes. We need money to keep the lab moving.
+Scientist: Now, if you excuse me, I'll get back to my office.
+===
