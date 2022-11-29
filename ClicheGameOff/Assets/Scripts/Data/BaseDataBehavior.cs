@@ -140,7 +140,7 @@ namespace Data
             yield return new WaitUntil(() => navMeshAgent != null && navMeshAgent.remainingDistance <= stopDistance);
         }
 
-        private void Collect()
+        public void Collect()
         {
             wasCollected = true;
             GameManager.Instance.MainRunner.CollectData(this);
@@ -152,7 +152,6 @@ namespace Data
             particles.Stop();
 
             Destroy(gameObject);
-
             Instantiate(captureParticles, transform.position, Quaternion.identity);
         }
 

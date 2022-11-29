@@ -48,6 +48,7 @@ namespace Gameplay.Skills.SkillsImplementation
             var otherTransform = other.transform;
             var dataBehavior = other.GetComponent<BaseDataBehavior>();
             if (dataBehavior == null || dataBehavior.Type.qualifier != DataQualifier.Bad) return;
+            dataBehavior.Collect();
             Destroy(other.gameObject);
             Instantiate(destructionFirewallParticles, otherTransform.position, otherTransform.rotation);
         }
