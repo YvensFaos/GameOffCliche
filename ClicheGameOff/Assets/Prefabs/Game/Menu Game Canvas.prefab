@@ -3887,8 +3887,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   processUpgrades:
-  - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
   - {fileID: 11400000, guid: 249bafe8ae4afdf41b7ccd6d7767e370, type: 2}
+  - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
   - {fileID: 11400000, guid: 3663e80b9a7814742baac5ceaf288d3c, type: 2}
   - {fileID: 11400000, guid: 5a793f6c8e5e07a469cf71d051ec2577, type: 2}
   upgradeButtonPrefab: {fileID: 1171116698923282715, guid: d571cb48250514fd2a36a2d3ec3d3b7c, type: 3}
@@ -6728,9 +6728,9 @@ MonoBehaviour:
   failurePanel: {fileID: 1920021599}
   publications:
   - {fileID: 11400000, guid: faff9302aa69b48b79485f83b438ca61, type: 2}
+  - {fileID: 11400000, guid: 94fc2ad743dff4e4c92964f0cfa3f579, type: 2}
   - {fileID: 11400000, guid: 4c7cffd74012a498581689bcc3ea32a3, type: 2}
-  IncreasedPlayerRadiusUpgrade: {fileID: 11400000, guid: a8354a2c7fce06d49861260be736a072, type: 2}
-  IncreasedMiningRateUpgrade: {fileID: 11400000, guid: 81dca24e9a34032449497cd74fae2861, type: 2}
+  - {fileID: 11400000, guid: fc74fd103009744d1b1215adf1102357, type: 2}
 --- !u!1 &1654078931015827904
 GameObject:
   m_ObjectHideFlags: 0

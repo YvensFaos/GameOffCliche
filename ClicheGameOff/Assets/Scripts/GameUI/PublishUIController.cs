@@ -30,12 +30,7 @@ namespace GameUI
         [Header("Progress")] 
         [SerializeField] private List<GamePublication> publications;
 
-        [Header("Hidden Upgrades")]
-        [SerializeField] private GamePlayerStatsUpgrade IncreasedPlayerRadiusUpgrade;
-        [SerializeField] private GamePlayerStatsUpgrade IncreasedMiningRateUpgrade;
-
         private GamePublication currentPublication;
-        private int publicationProgress;
         private int publicationNecessaryAmount;
         private int publicationCurrentAmount;
         private int goodDataUsedSoFar;
@@ -49,7 +44,6 @@ namespace GameUI
         private void Start()
         {
             var playerData = GameManager.Instance.CurrentPlayerData;
-            publicationProgress = playerData.PublicationProgress;
             UpdateCurrentPublication();
             goodDataUsedSoFar = playerData.GoodDataUsedSoFar;
             badDataUsedSoFar = playerData.BadDataUsedSoFar;
@@ -62,9 +56,10 @@ namespace GameUI
 
         private void UpdateCurrentPublication()
         {
-            if (publicationProgress < publications.Count)
+            var playerData = GameManager.Instance.CurrentPlayerData;
+            if (playerData.PublicationProgress < publications.Count)
             {
-                currentPublication = publications[publicationProgress];
+                currentPublication = publications[playerData.PublicationProgress];
                 publicationNecessaryAmount = currentPublication.requiredContentAmount;
             }
             else
