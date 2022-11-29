@@ -1,0 +1,17 @@
+﻿title: Symposium
+---
+<<displayLeftPortrait PortraitManager Scientist>>
+Scientist: Look at you! Your first Symposium!
+Scientist: I hope the peer reviews were not too bad with you this time.
+-> I received a lot of good feedback.
+-> They are jealous of my work!
+    Scientist: Jealous? What are you talking about??
+Scientist: Well, with this, we can say you are a <b>junior</b> scientist this time!
+Scientist: If you keep it up like that, you might even have a career with this.
+Scientist: Be careful, though. We often face bad data but avoid succumbing to it.
+Scientist: We might not get rich with this, but that's not a reason to become unethical.
+Scientist: Right?
+-> Right!
+-> Some bad data ain't that bad...
+    Scientist: Oh my, oh my...
+===

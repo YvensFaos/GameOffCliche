@@ -10,28 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d567f022f2e94ed28d62cad2ff833e26, type: 3}
-  m_Name: Second Tier Spanwer
+  m_Name: Final Tier
   m_EditorClassIdentifier: 
   dataBehaviors:
   - {fileID: 6139946004505079330, guid: 935816bc6bcf247249a67c0fdd72d123, type: 3}
-  - {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
+  - {fileID: 3445296044473409197, guid: 34e0f0edaad7d4ed3bb547bae808fd60, type: 3}
+  - {fileID: 6139946004505079330, guid: 06cfbd86f46f5454b88f768ae92533b2, type: 3}
   dataTypes:
   - one: {fileID: 11400000, guid: 7b73445549aca4afd9618f814c43e092, type: 2}
-    two: 15
+    two: 12
   - one: {fileID: 11400000, guid: 3b196f68910ac48fd862a6d7a019c97a, type: 2}
-    two: 2
+    two: 3
   - one: {fileID: 11400000, guid: bbafe8b584b734abda24c167e69d9ecb, type: 2}
-    two: 18
+    two: 19
   - one: {fileID: 11400000, guid: eba59c5bc24b94bd98c26c9d95357a2f, type: 2}
-    two: 35
+    two: 20
   - one: {fileID: 11400000, guid: 2e022250721ac442eb8fc4fc1d1bb968, type: 2}
-    two: 10
+    two: 20
   - one: {fileID: 11400000, guid: 4e810f48b17ad422c9dfa666afd308d2, type: 2}
     two: 20
+  - one: {fileID: 11400000, guid: 5ccd0d375d7c74c7da332d8428376aa3, type: 2}
+    two: 5
+  - one: {fileID: 11400000, guid: d721835f77a804f669ee78ff81452057, type: 2}
+    two: 1
   defaultType: {fileID: 11400000, guid: eba59c5bc24b94bd98c26c9d95357a2f, type: 2}
   spawnParticle: {fileID: 4301203614384923183, guid: 30e88e8747abd4e55a804d1bd4df633c, type: 3}
-  runLength: 25
-  activeSpawnTime: 80
-  particlesTime: 1.75
-  spawnTime: 0.25
-  spawnRate: 4
+  runLength: 65
+  activeSpawnTime: 96
+  particlesTime: 0.125
+  spawnTime: 0.4
+  spawnRate: 6

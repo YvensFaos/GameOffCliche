@@ -83,4 +83,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d93b151620b9274fbedc7174130a5ec, type: 2}
   gamePublications:
   - {fileID: 11400000, guid: faff9302aa69b48b79485f83b438ca61, type: 2}
+  - {fileID: 11400000, guid: 94fc2ad743dff4e4c92964f0cfa3f579, type: 2}
   - {fileID: 11400000, guid: 4c7cffd74012a498581689bcc3ea32a3, type: 2}
+  - {fileID: 11400000, guid: fc74fd103009744d1b1215adf1102357, type: 2}

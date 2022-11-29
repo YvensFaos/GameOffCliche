@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc9b0e014cf84facbd9cceddb714d0f6, type: 3}
-  m_Name: The Conference
+  m_Name: Symposium
   m_EditorClassIdentifier: 
-  order: 2
-  requiredContentAmount: 30
-  contentCostPerTick: 5
-  spawnerUnlocked: {fileID: 11400000, guid: 5a74dbc8551e247a380594c12f9cd8de, type: 2}
+  order: 3
+  requiredContentAmount: 60
+  contentCostPerTick: 10
+  spawnerUnlocked: {fileID: 11400000, guid: 84095e252ac434e03a332b6464b4f7a9, type: 2}
   upgradesToOpen: []
   upgradesToUnlock:
-  - {fileID: 11400000, guid: 71bc06c4b6a3843efb4481bf934350e7, type: 2}
-  - {fileID: 11400000, guid: a8354a2c7fce06d49861260be736a072, type: 2}
-  dialog: {fileID: 11400000, guid: 95b504a4d82524f109e2eaf4dbcb6d49, type: 2}
+  - {fileID: 11400000, guid: 81dca24e9a34032449497cd74fae2861, type: 2}
+  dialog: {fileID: 11400000, guid: d983d7acac3bb407990997e80f9b7700, type: 2}

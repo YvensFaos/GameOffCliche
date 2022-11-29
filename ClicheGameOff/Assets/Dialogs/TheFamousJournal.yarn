@@ -1,0 +1,28 @@
+﻿title: TheFamousJournal
+---
+<<displayLeftPortrait PortraitManager Scientist>>
+Scientist: You did it!! You managed to publish in a famous journal!
+Scientist: You might get a handful of citations in a few years! Exciting!!
+Scientist: How do you feel?
+-> Very positive!
+-> Citations? When do we get money?
+    Scientist: Erm... About that... You know that's not how it works, right?
+    Scientist: Anyway!
+Scientist: The path of the scientist is filled with hardship, research, and sleepless nights.
+Scientist: But then, when we managed to get validated by the scientific community, it was all worth it!
+Scientist: I know you might question money, funds, and so on, but you see, there is more to it.
+Scientist: On the one hand, there could be more opportunities to value our hard work.
+Scientist: But, on the other hand, we get to cherish these moments in which we make sciences.
+Scientist: Do you get it? 
+-> I think so.
+    Scientist: Take your time to think about it.
+    Scientist: Not every rose in life smells great, but some compensate for others.
+-> I should have invested my time in crypto...
+    Scientist: Please don't say that! We are not evil!
+Scientist: With this, I can finally name you...
+<<wait 0.5>> 
+Scientist: A <b>beginner</b> scientist!!
+Scientist: Congratulations!   
+Scientist: I was also told to tell you, "Thanks for playing"!
+Scientist: See you around.
+===
