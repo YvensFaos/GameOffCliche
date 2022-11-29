@@ -47,7 +47,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  uniqueCost: 100
+  uniqueCost: 40
   requiredData: 1
   requiredUpgrades: []
   requiredPublications: []

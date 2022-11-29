@@ -3753,6 +3753,7 @@ MonoBehaviour:
   type: 0
   processUpgrades:
   - {fileID: 11400000, guid: 1f0c5346eb30c4599882ac7f8f314477, type: 2}
+  - {fileID: 11400000, guid: 249bafe8ae4afdf41b7ccd6d7767e370, type: 2}
   - {fileID: 11400000, guid: 3663e80b9a7814742baac5ceaf288d3c, type: 2}
   - {fileID: 11400000, guid: 5a793f6c8e5e07a469cf71d051ec2577, type: 2}
   upgradeButtonPrefab: {fileID: 1171116698923282715, guid: d571cb48250514fd2a36a2d3ec3d3b7c, type: 3}

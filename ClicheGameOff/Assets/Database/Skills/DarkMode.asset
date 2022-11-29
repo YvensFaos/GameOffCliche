@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DarkMode
   m_EditorClassIdentifier: 
   cooldown: 10
-  shortCut: 114
+  shortCut: 101

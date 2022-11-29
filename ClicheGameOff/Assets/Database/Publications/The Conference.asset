@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: The Conference
   m_EditorClassIdentifier: 
   order: 1
-  requiredContentAmount: 50
+  requiredContentAmount: 30
   contentCostPerTick: 5
   spawnerUnlocked: {fileID: 11400000, guid: 5a74dbc8551e247a380594c12f9cd8de, type: 2}
   upgradesToOpen: []
   upgradesToUnlock:
   - {fileID: 11400000, guid: 71bc06c4b6a3843efb4481bf934350e7, type: 2}
   - {fileID: 11400000, guid: a8354a2c7fce06d49861260be736a072, type: 2}
-  dialog: {fileID: 11400000, guid: 324de43e1e94e43d7a5ba005cbdf5c98, type: 2}
+  dialog: {fileID: 11400000, guid: 95b504a4d82524f109e2eaf4dbcb6d49, type: 2}

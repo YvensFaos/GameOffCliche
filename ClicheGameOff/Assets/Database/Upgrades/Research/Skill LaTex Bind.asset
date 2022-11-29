@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skill LaTex Bind
   m_EditorClassIdentifier: 
   upgradeType: 0
-  description: Slow down good data nearby the player
+  description: Slow down good data nearby the player.
   repeatableUpgrade: 0
   progressCurve:
     curve:
@@ -47,8 +47,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  uniqueCost: 30
-  requiredData: 0
+  uniqueCost: 20
+  requiredData: 1
   requiredUpgrades: []
   requiredPublications: []
   skill: {fileID: 11400000, guid: 8d93b151620b9274fbedc7174130a5ec, type: 2}

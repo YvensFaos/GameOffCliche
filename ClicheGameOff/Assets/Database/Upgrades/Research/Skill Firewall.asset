@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade069a9adac4129bceb9ef3b443be37, type: 3}
   m_Name: Skill Firewall
   m_EditorClassIdentifier: 
+  upgradeType: 0
   description: Creates a wall of fire that destroys Bad Data.
   repeatableUpgrade: 0
   progressCurve:
@@ -46,7 +47,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  uniqueCost: 30
+  uniqueCost: 20
   requiredData: 0
   requiredUpgrades: []
   requiredPublications: []

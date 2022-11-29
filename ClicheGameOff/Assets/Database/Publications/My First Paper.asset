@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: My First Paper
   m_EditorClassIdentifier: 
   order: 1
-  requiredContentAmount: 30
+  requiredContentAmount: 15
   contentCostPerTick: 5
   spawnerUnlocked: {fileID: 11400000, guid: f1aed2ea35623471b836e8515f36a1c9, type: 2}
   upgradesToOpen: []

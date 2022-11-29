@@ -2,7 +2,7 @@
 ---
 <<displayLeftPortrait PortraitManager Scientist>>
 Scientist: Oh my, oh my! You managed to have your first publication!
-Scientist: Congratulations! You are now a junior junior junior scientist.
+Scientist: Congratulations! You are now a <b>junior junior junior</b> scientist.
 Scientist: How does it feel?
 -> Pretty good!
 -> I expected it to be more challenging.
