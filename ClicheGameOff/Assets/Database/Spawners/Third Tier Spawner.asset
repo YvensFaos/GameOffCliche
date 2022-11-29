@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataBehaviors:
   - {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
-  - {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
-  - {fileID: 1686528903558524894, guid: a3e4e7bdc1d82410fb786b1d81dd13ed, type: 3}
+  - {fileID: 6139946004505079330, guid: 935816bc6bcf247249a67c0fdd72d123, type: 3}
+  - {fileID: 3445296044473409197, guid: 34e0f0edaad7d4ed3bb547bae808fd60, type: 3}
   dataTypes:
   - one: {fileID: 11400000, guid: 7b73445549aca4afd9618f814c43e092, type: 2}
     two: 15
@@ -33,7 +33,7 @@ MonoBehaviour:
     two: 5
   defaultType: {fileID: 11400000, guid: eba59c5bc24b94bd98c26c9d95357a2f, type: 2}
   spawnParticle: {fileID: 4301203614384923183, guid: 30e88e8747abd4e55a804d1bd4df633c, type: 3}
-  runLength: 25
+  runLength: 35
   activeSpawnTime: 80
   particlesTime: 1.75
   spawnTime: 0.25
